@@ -18,3 +18,7 @@ Route::get('/', function () {
 Route::get('view', function () {
     return view('clients.layouts.master');
 });
+
+Route::get('course', function () {
+    return view('clients.courses.index');
+});

@@ -245,33 +245,33 @@ button:focus {
       color: #fdc632; }
 
 #search_input_box {
-  background: #fdc632;
+  background: #FFFFCC;
   text-align: center;
   padding: 5px 20px; }
   #search_input_box .form-control {
     padding-left: 0;
     background: transparent;
     border: 0;
-    color: #ffffff;
+    color: black;
     font-weight: 400;
     font-size: 18px; }
     #search_input_box .form-control:focus {
       box-shadow: none;
       outline: none; }
   #search_input_box input.placeholder {
-    color: #ffffff;
+    color: black;
     font-size: 16px;
     font-weight: normal; }
   #search_input_box input:-moz-placeholder {
-    color: #ffffff;
+    color: #CCCCCC;
     font-size: 16px;
     font-weight: normal; }
   #search_input_box input::-moz-placeholder {
-    color: #ffffff;
+    color: #CCCCCC;
     font-size: 16px;
     font-weight: normal; }
   #search_input_box input::-webkit-input-placeholder {
-    color: #ffffff;
+    color: #CCCCCC;
     font-size: 16px;
     font-weight: normal; }
   #search_input_box .btn {
@@ -280,7 +280,7 @@ button:focus {
     padding: 0;
     border: 0; }
   #search_input_box #close_search {
-    color: #fff;
+    color: black;
     font-weight: 600;
     cursor: pointer;
     padding: 10px 0; }
@@ -354,9 +354,9 @@ button:focus {
 
 .banner_area {
   position: relative;
-  background: url(../img/banner/banner.jpg) no-repeat center center;
+  background: url(/storage/image/bg/education-banner-background-13.jpg) no-repeat center center;
   z-index: 1;
-  min-height: 392px;
+  min-height: 650px;
   padding-top: 0 !important; }
   .banner_area .banner_inner {
     position: relative;
@@ -370,7 +370,7 @@ button:focus {
       right: 0;
       top: 0;
       bottom: 0;
-      background: rgba(0, 35, 71, 0.8); }
+     }
     .banner_area .banner_inner .banner_content {
       position: relative;
       z-index: 2;
