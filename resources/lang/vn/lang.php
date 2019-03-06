@@ -24,5 +24,6 @@ return [
     'communications_body' => 'Bạn có thể liên lạc cho chúng tôi qua',
     'email' => 'Email',
     'title_course' => 'Khóa học của chúng tôi',
-    'body_course' => 'Bạn sẽ có nhiều sự lựa chọn cho bản thân!'
+    'body_course' => 'Bạn sẽ có nhiều sự lựa chọn cho bản thân!',
+    'course_outline' =>  'Tóm tắt nội dung',
 ];

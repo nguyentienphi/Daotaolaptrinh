@@ -7,7 +7,7 @@
           content="width=device-width, initial-scale=1, shrink-to-fit=no"
         />
         <link rel="icon" href="{{ asset('storage/image/elements/college-graduation.png') }}" type="image/png" />
-        <title>Edustage Education</title>
+        <title>@yield('title')</title>
         <link rel="stylesheet" href="{{ asset('css/clients/bootstrap.css') }}" />
         <link rel="stylesheet" href="{{ asset('css/clients/flaticon.css') }}" />
         <link rel="stylesheet" href="{{ asset('css/clients/themify-icons.css') }}" />
