@@ -35,5 +35,6 @@
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
         <script src="{{ asset('js/clients/gmaps.min.js')}}"></script>
         <script src="{{ asset('js/clients/theme.js')}}"></script>
+        <script src="{{ asset('js/clients/jquery.sticky-kit.min.js')}}"></script>
     </body>
 </html>

@@ -26,3 +26,11 @@ Route::get('course', function () {
 Route::get('course-details', function () {
     return view('clients.courses.detail');
 });
+
+Route::get('post', function () {
+    return view('clients.posts.index');
+});
+
+Route::get('abc', function(){
+    return view('test');
+});
