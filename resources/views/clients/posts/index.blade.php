@@ -12,8 +12,8 @@
         </div>
     </div>
     <div class="container content-post">
-        <div class="row">
-            <div class="col-lg-8 course_details_left">
+        <div class="row post">
+            <div class="col-lg-7 course_details_left">
                 <div class="content_wrapper">
                     <div>
                         {{ Html::image(asset('storage/image/bg/18698271_386164775111588_1630485189916696433_n.jpg'), '', ['class' => 'img-user-post']) }}
@@ -100,6 +100,7 @@
                 <div class="form-group">
                     <input type="text" class="form-control" placeholder="Nhập tên bài viết">
                 </div>
+                <hr>
                 <h3>Bài viết mới nhất</h3>
                 <hr>
                 <div>

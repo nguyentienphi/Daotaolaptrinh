@@ -27,5 +27,9 @@ return [
     'body_course' => 'Bạn sẽ có nhiều sự lựa chọn cho bản thân!',
     'course_outline' =>  'Tóm tắt nội dung',
     'title_post' => 'Bài viết của chúng tôi',
-    'body_post' => 'Hãy trải nghiệm và chia sẽ những kiến thức của bạn cho chúng tôi!'
+    'body_post' => 'Hãy trải nghiệm và chia sẽ những kiến thức của bạn cho chúng tôi!',
+    'create_post' => 'Thêm mới bài viết',
+    'title_create_post' => 'Tiêu đề bài viết',
+    'category' => 'Tên danh mục',
+    'save_post' => 'Lưu bài viết'
 ];

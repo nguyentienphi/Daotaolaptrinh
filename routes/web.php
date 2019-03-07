@@ -31,6 +31,6 @@ Route::get('post', function () {
     return view('clients.posts.index');
 });
 
-Route::get('abc', function(){
-    return view('test');
+Route::get('create-post', function () {
+    return view('clients.posts.create');
 });
