@@ -51,7 +51,7 @@
                     </div>
                     <br>
                     <div class="col-md-8">
-                        <ul style="list-style-type: none;">
+                        <ul style="list-style-type: none;" class="list_introduction">
                             <li class="process_item">
                                 <div class="counter_item">@lang('lang.feature_1')</div>
                                 <div class="title_item" ">

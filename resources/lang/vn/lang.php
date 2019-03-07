@@ -26,4 +26,6 @@ return [
     'title_course' => 'Khóa học của chúng tôi',
     'body_course' => 'Bạn sẽ có nhiều sự lựa chọn cho bản thân!',
     'course_outline' =>  'Tóm tắt nội dung',
+    'title_post' => 'Bài viết của chúng tôi',
+    'body_post' => 'Hãy trải nghiệm và chia sẽ những kiến thức của bạn cho chúng tôi!'
 ];

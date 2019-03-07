@@ -14,6 +14,7 @@
     "/js/bootstrap.min.js": "/js/bootstrap.min.js",
     "/js/clients/popper.js": "/js/clients/popper.js",
     "/js/clients/gmaps.min.js": "/js/clients/gmaps.min.js",
+    "/js/clients/jquery.sticky-kit.min.js": "/js/clients/jquery.sticky-kit.min.js",
     "/js/clients/jquery.nice-select.min.js": "/js/clients/jquery.nice-select.min.js",
     "/js/clients/owl-carousel-thumb.min.js": "/js/clients/owl-carousel-thumb.min.js",
     "/js/clients/owl.carousel.min.js": "/js/clients/owl.carousel.min.js"

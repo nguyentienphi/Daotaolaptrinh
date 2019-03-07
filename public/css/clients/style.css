@@ -3303,10 +3303,18 @@ h6 {
     color: #FF0000;
 }
 
-.process_item {
-    height: 150px;
+@media (min-width: 768px){
+    .process_item {
+        height: 150px;
+    }
 }
 
+
+@media (max-width: 768px){
+    ul.list_introduction {
+        padding: 0;
+    }
+}
 .counter_item {
     float: left; height: 40px;
     width: 40px; border: solid 2px blue;
@@ -3335,4 +3343,48 @@ h6 {
     font-size: 14px;
     color: #999999;
     width: 300px;
+}
+
+.img_banner_post{
+    margin-top: 23px;
+    z-index: 1;
+    max-height: 300px;
+    width: 100%;
+}
+
+.img-user-post {
+    width: 60px;
+    height: 60px;
+    float: left;
+    border-radius: 50%
+}
+
+.title-post {
+    margin-left: 70px;
+}
+
+.icons-post {
+    margin-left: 10px;
+}
+
+.icons-post-items {
+    padding-right: 5px;
+}
+
+.color-title-post {
+    color: #555555;
+}
+
+@media(max-width: 768px) {
+    .right-post-content {
+        display: none;
+    }
+}
+
+.author-post{
+    font-size: 15px;
+}
+
+.content-post {
+    margin-bottom: 30px;
 }

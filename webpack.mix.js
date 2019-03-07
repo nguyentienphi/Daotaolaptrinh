@@ -25,6 +25,7 @@ mix.copy('resources/js/clients/jquery-3.2.1.min.js', 'public/js/jquery-3.2.1.min
 mix.copy('resources/js/clients/bootstrap.min.js', 'public/js/bootstrap.min.js');
 mix.copy('resources/js/clients/popper.js', 'public/js/clients/popper.js');
 mix.copy('resources/js/clients/gmaps.min.js', 'public/js/clients/gmaps.min.js');
+mix.copy('resources/js/clients/jquery.sticky-kit.min.js', 'public/js/clients/jquery.sticky-kit.min.js');
 mix.copy('resources/js/clients/jquery.nice-select.min.js', 'public/js/clients/jquery.nice-select.min.js');
 mix.copy('resources/js/clients/owl-carousel-thumb.min.js', 'public/js/clients/owl-carousel-thumb.min.js');
 mix.copy('resources/js/clients/owl.carousel.min.js', 'public/js/clients/owl.carousel.min.js');
