@@ -22,3 +22,7 @@ Route::get('view', function () {
 Route::get('course', function () {
     return view('clients.courses.index');
 });
+
+Route::get('course-details', function () {
+    return view('clients.courses.detail');
+});
