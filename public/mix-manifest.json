@@ -1,6 +1,7 @@
 {
     "/js/app.js": "/js/app.js",
     "/css/app.css": "/css/app.css",
+    "/js/clients/item.js": "/js/clients/item.js",
     "/js/clients/jquery.ajaxchimp.min.js": "/js/clients/jquery.ajaxchimp.min.js",
     "/js/clients/mail-script.js": "/js/clients/mail-script.js",
     "/js/clients/theme.js": "/js/clients/theme.js",

@@ -32,3 +32,4 @@ mix.copy('resources/js/clients/owl.carousel.min.js', 'public/js/clients/owl.caro
 mix.js('resources/js/clients/jquery.ajaxchimp.min.js', 'public/js/clients/jquery.ajaxchimp.min.js');
 mix.js('resources/js/clients/mail-script.js', 'public/js/clients/mail-script.js');
 mix.js('resources/js/clients/theme.js', 'public/js/clients/theme.js');
+mix.js('resources/js/clients/item.js', 'public/js/clients/item.js');

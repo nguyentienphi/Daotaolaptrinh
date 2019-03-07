@@ -27,7 +27,7 @@
         <script src="{{ asset('js/jquery-3.2.1.min.js') }}"></script>
         <script src="{{ asset('js/clients/popper.js') }}"></script>
         <script src="{{ asset('js/bootstrap.min.js')}}"></script>
-        <script src="{{ asset('js/clients/jquery.nice-select.min.js')}}"></script>
+        {{-- <script src="{{ asset('js/clients/jquery.nice-select.min.js')}}"></script> --}}
         <script src="{{ asset('js/clients/owl.carousel.min.js')}}"></script>
         <script src="{{ asset('js/clients/owl-carousel-thumb.min.js')}}"></script>
         <script src="{{ asset('js/clients/jquery.ajaxchimp.min.js')}}"></script>
@@ -36,5 +36,7 @@
         <script src="{{ asset('js/clients/gmaps.min.js')}}"></script>
         <script src="{{ asset('js/clients/theme.js')}}"></script>
         <script src="{{ asset('js/clients/jquery.sticky-kit.min.js')}}"></script>
+        <script src="{{ asset('vendor/unisharp/laravel-ckeditor/ckeditor.js') }}"></script>
+        <script src="{{ asset('js/clients/item.js') }}"></script>
     </body>
 </html>

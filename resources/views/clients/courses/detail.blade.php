@@ -5,7 +5,7 @@
     </section>
     <div class="container">
             <div class="row">
-                <div class="col-lg-8 course_details_left">
+                <div class="col-lg-8 course-detail">
                     <div class="content_wrapper">
                         <h3 class="title">Khóa học Javascript</h3>
                         <div class="content">
