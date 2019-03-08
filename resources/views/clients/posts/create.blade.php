@@ -21,4 +21,5 @@
         {{ Form::close() }}
     </div>
 @include('clients.layouts.footer')
-
+{{ Html::script(asset('vendor/unisharp/laravel-ckeditor/ckeditor.js')) }}
+{{ Html::script(asset('js/clients/item.js')) }}

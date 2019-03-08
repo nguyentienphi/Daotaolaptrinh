@@ -37,7 +37,5 @@
         <script src="{{ asset('js/clients/gmaps.min.js')}}"></script>
         <script src="{{ asset('js/clients/theme.js')}}"></script>
         <script src="{{ asset('js/clients/jquery.sticky-kit.min.js')}}"></script>
-        <script src="{{ asset('vendor/unisharp/laravel-ckeditor/ckeditor.js') }}"></script>
-        <script src="{{ asset('js/clients/item.js') }}"></script>
     </body>
 </html>

@@ -34,3 +34,7 @@ Route::get('post', function () {
 Route::get('create-post', function () {
     return view('clients.posts.create');
 });
+
+Route::get('post-details', function () {
+    return view('clients.posts.detail');
+});
