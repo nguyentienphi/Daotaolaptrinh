@@ -1,6 +1,6 @@
 @section('title', 'details')
 @include('clients.layouts.header')
-    <section class="section_gap">
+    <section class="section_gap banner_setting">
         {{ Html::image(asset('storage/image/bg/banner.jpg'), '', ['class' => 'img_banner_course_detail']) }}
     </section>
     <div class="container">

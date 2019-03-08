@@ -31,5 +31,6 @@ return [
     'create_post' => 'Thêm mới bài viết',
     'title_create_post' => 'Tiêu đề bài viết',
     'category' => 'Tên danh mục',
-    'save_post' => 'Lưu bài viết'
+    'save_post' => 'Lưu bài viết',
+    'phone' => 'Số điện thoại'
 ];

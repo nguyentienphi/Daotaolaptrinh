@@ -3410,3 +3410,12 @@ h6 {
     padding-top: 10px;
     margin-bottom: 50px;
 }
+
+.single-footer-widget p {
+    color : #ffffff;
+}
+
+.banner_setting {
+    width: 100wv;
+    overflow: hidden;
+}
