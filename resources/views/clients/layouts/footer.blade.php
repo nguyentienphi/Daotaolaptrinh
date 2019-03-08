@@ -9,6 +9,7 @@
                     <h4>@lang('lang.communications')</h4>
                     <p>@lang('lang.communications_body')</p>
                     <p>@lang('lang.email') : {{ config('settings.email') }}</p>
+                    <p>@lang('lang.phone') : {{ config('settings.phone') }}</p>
                 </div>
             </div>
             <div class="row footer-bottom d-flex justify-content-between">
