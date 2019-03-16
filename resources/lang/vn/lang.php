@@ -32,5 +32,9 @@ return [
     'title_create_post' => 'Tiêu đề bài viết',
     'category' => 'Tên danh mục',
     'save_post' => 'Lưu bài viết',
-    'phone' => 'Số điện thoại'
+    'phone' => 'Số điện thoại',
+    'comment' => 'Bình luận',
+    'placeholder_comment' => 'Nhập nội dung bình luận',
+    'reply' => 'Trả lời',
+    'cancle' => 'Hủy'
 ];

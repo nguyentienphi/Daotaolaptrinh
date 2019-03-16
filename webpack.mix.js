@@ -33,3 +33,4 @@ mix.js('resources/js/clients/jquery.ajaxchimp.min.js', 'public/js/clients/jquery
 mix.js('resources/js/clients/mail-script.js', 'public/js/clients/mail-script.js');
 mix.js('resources/js/clients/theme.js', 'public/js/clients/theme.js');
 mix.js('resources/js/clients/item.js', 'public/js/clients/item.js');
+mix.js('resources/js/clients/add-form-comment.js', 'public/js/clients/add-form-comment.js');

@@ -4,7 +4,7 @@ body {
   font-size: 16px;
   font-family: "Helvetica", sans-serif;
   font-weight: 400;
-  color: #555555;
+  color: #444444;
   background-color: #f0f0f0;
 }
 
@@ -3418,4 +3418,115 @@ h6 {
 .banner_setting {
     width: 100wv;
     overflow: hidden;
+}
+
+.clearfix {
+    clear: both;
+    display: block;
+}
+
+.content-post-detail {
+    background: #fff;
+    padding-bottom: 30px;
+}
+
+.header-post-detail {
+    margin-bottom: 10px;
+    height: 70px;
+    line-height: 70px
+}
+
+.title-post-detail {
+    padding: 15px;
+}
+
+.container-comment {
+    margin-top: 20px;
+    background: #fff;
+    padding: 15px
+}
+
+.conten-comment {
+    margin-top: 20px;
+    margin-left: 125px;
+}
+
+.item-comment {
+    margin-bottom: 10px;
+    padding: 10px 0 0 10px;
+}
+
+.img-comment {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    float: left;
+}
+
+.content_comment {
+    float: left;
+    margin-left: 15px;
+    width: 540px;
+    height: auto;
+}
+
+.reply {
+    padding-right: 20px;
+    font-size: 15px
+}
+
+.reply-to-reply {
+    font-size: 15px;
+    margin-left: 55px;
+}
+
+.form-comment {
+    width: 590px;
+    margin-left: 158px;
+    padding:10px;
+    background-color: #DDDDDD;
+    margin-top: 20px
+}
+
+.form-comment-append {
+    width: 590px;
+    padding:10px;
+    background-color: #DDDDDD;
+    margin-top: 20px
+}
+
+.box-img-comment {
+    width: 50px;
+    height: 50px;
+    float: left;
+}
+
+.img-form-comment {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%
+}
+
+.content-form-comment {
+    float: left;
+    width: 520px;
+    padding-left: 10px
+}
+
+.btn-comment {
+    clear: both;
+    display: block;
+    float: right;
+}
+
+.reply-content {
+    margin:10px 0 35px 0;
+}
+
+.element-reply {
+    margin-bottom: 5px;
+}
+
+.element-reply p {
+    padding-left: 55px;
 }
