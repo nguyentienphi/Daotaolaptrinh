@@ -3530,3 +3530,49 @@ h6 {
 .element-reply p {
     padding-left: 55px;
 }
+
+.input{
+    height: 45px;
+}
+
+.mb-5 {
+    margin-bottom: 2rem !important;
+}
+
+.blue-text {
+    font-size: 13px;
+}
+
+.blue-gradient {
+    background: #067ef3c4;
+    height: 45px;
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 13px;
+    font-weight: bold;
+    box-shadow: 5px 5px 5px #666;
+}
+
+.blue-gradient:hover {
+    background: #031d95c4;
+}
+
+.label-login {
+    font-weight: bold;
+    color: #919173;
+}
+
+.modal-header {
+    border-bottom: none;
+    margin-bottom: -20px;
+}
+
+.title-login {
+    color: #769fd9;
+    text-transform: uppercase;
+}
+
+input[placeholder] {
+    font-size: 15px;
+    font-family: inherit;
+}
