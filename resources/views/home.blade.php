@@ -1,3 +1,4 @@
+@section('title',trans('lang.home'))
 @include('clients.layouts.header')
     <section class="home_banner_area">
       <div class="banner_inner">
@@ -89,3 +90,4 @@
     </section>
 @include('clients.layouts.footer')
 @include('auth.login')
+@include('auth.register')

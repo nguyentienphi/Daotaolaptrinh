@@ -3572,6 +3572,16 @@ h6 {
     text-transform: uppercase;
 }
 
+.label-register {
+    font-weight: bold;
+    color: #919173;
+}
+
+.title-register {
+    color: #769fd9;
+    text-transform: uppercase;
+}
+
 input[placeholder] {
     font-size: 15px;
     font-family: inherit;

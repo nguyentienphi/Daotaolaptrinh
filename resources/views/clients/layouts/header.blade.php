@@ -38,11 +38,11 @@
                         <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
                             <ul class="nav navbar-nav menu_nav ml-auto">
                                 <li class="nav-item active">
-                                    <a class="nav-link" href="index.html">Trang chu</a>
+                                    <a class="nav-link" href="index.html">@lang('lang.home')</a>
                                 </li>
                                 <li class="nav-item submenu dropdown">
                                     <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button"
-                                        aria-haspopup="true" aria-expanded="false">Bai Viet</a>
+                                        aria-haspopup="true" aria-expanded="false">@lang('lang.post')</a>
                                     <ul class="dropdown-menu">
                                         <li class="nav-item">
                                             <a class="nav-link" href="courses.html">Git</a>
@@ -57,7 +57,7 @@
                                 </li>
                                 <li class="nav-item submenu dropdown">
                                     <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button"
-                                        aria-haspopup="true" aria-expanded="false">Video</a>
+                                        aria-haspopup="true" aria-expanded="false">@lang('lang.video')</a>
                                     <ul class="dropdown-menu">
                                         <li class="nav-item">
                                             <a class="nav-link" href="courses.html">Git</a>
@@ -72,7 +72,7 @@
                                 </li>
                                 <li class="nav-item submenu dropdown">
                                     <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button"
-                                        aria-haspopup="true" aria-expanded="false">Khoa hoc</a>
+                                        aria-haspopup="true" aria-expanded="false">@lang('lang.course')</a>
                                     <ul class="dropdown-menu">
                                         <li class="nav-item">
                                             <a class="nav-link" href="courses.html">Git</a>
@@ -86,16 +86,13 @@
                                     </ul>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">Tro giup</a>
+                                    <a class="nav-link" href="#">@lang('lang.help')</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">Tao bai viet</a>
+                                    <a class="nav-link" href="#" data-toggle="modal" data-target="#modalLogin">@lang('lang.login')</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#" data-toggle="modal" data-target="#modalLogin">Dang nhap</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">Dang ky</a>
+                                    <a class="nav-link" href="#" data-toggle="modal" data-target="#modalRegister">@lang('lang.register')</a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="#" class="nav-link search" id="search">
