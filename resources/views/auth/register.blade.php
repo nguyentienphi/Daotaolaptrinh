@@ -1,77 +1,65 @@
-@extends('layouts.app')
-
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
-
-                <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
-                        @csrf
-
-                        <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" required autofocus>
-
-                                @if ($errors->has('name'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('name') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required>
-
-                                @if ($errors->has('email'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
-
-                                @if ($errors->has('password'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
-                            </div>
-                        </div>
-
-                        <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Register') }}
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
+<div class="modal fade" id="modalRegister" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content form-elegant">
+            <div class="modal-header text-center">
+                <h3 class="modal-title w-100 dark-grey-text font-weight-bold my-3" id="myModalLabel">
+                    <strong class="title-register">@lang('lang.register')</strong>
+                </h3>
+                <button type="button" class="close btn-close-form" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body mx-4">
+                {{ Form::open() }}
+                    {{ Form::label('name', trans('lang.name') . '(*)', ['data-error' => ' ', 'data-success' => ' ', 'class' => 'label-register']) }}
+                        <span class="help-block name-messages"></span>
+                    <div class="md-form mb-5">
+                        {{ Form::text('name', old('name'), [
+                            'class' => 'form-control validate input',
+                            'placeholder' => trans('lang.name_placeholder'),
+                            'id' => 'name'
+                        ]) }}
+                    </div>
+                    <div class="md-form mb-5">
+                        {{ Form::label('email', trans('lang.email') . '(*)', ['data-error' => ' ', 'data-success' => ' ', 'class' => 'label-register']) }}
+                        <span class="help-block email-messages"></span>
+                        {{ Form::email('email', old('email'), [
+                            'class' => 'form-control validate input',
+                            'placeholder' => trans('lang.email_placeholder'),
+                            'id' => 'email-register'
+                        ]) }}
+                    </div>
+                    <div class="md-form mb-5">
+                        {{ Form::label('password', trans('lang.password') . '(*)', ['data-error' => ' ', 'data-success' => ' ', 'class' => 'label-register']) }}
+                        <span class="help-block password-messages"></span>
+                        {{ Form::password('password', [
+                            'class' => 'form-control validate input',
+                            'placeholder' => trans('lang.password_placeholder'),
+                            'id' => 'password-register'
+                        ]) }}
+                    </div>
+                    <div class="md-form mb-3">
+                        {{ Form::label('password_confirmation', trans('lang.password_confirmation') . '(*)', ['data-error' => ' ', 'data-success' => ' ', 'class' => 'label-register']) }}
+                        <span class="help-block password-confirmation-messages"></span>
+                        {{ Form::password('password_confirmation', [
+                            'class' => 'form-control validate input',
+                            'placeholder' => trans('lang.password_placeholder'),
+                            'id' => 'password-confirm'
+                        ]) }}
+                    </div>
+                    <div class="text-center mb-3">
+                        {{ Form::button(trans('lang.register'), ['type' => 'submit', 'class' => 'btn blue-gradient btn-block btn-rounded z-depth-1a', ]) }}
+                    </div>
+                {{ Form::close() }}
+            </div>
+            <div class="modal-footer mx-5 pt-3 mb-1">
+                <p class="font-small grey-text d-flex justify-content-end">
+                    @lang('lang.already_has_an_account')
+                    <a href="#" data-toggle="modal" data-dismiss="modal" data-target="#modalLogin" class="blue-text ml-1">
+                        @lang('lang.login')
+                    </a>
+                </p>
             </div>
         </div>
     </div>
 </div>
-@endsection
