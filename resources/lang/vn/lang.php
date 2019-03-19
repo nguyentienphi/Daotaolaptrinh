@@ -36,5 +36,12 @@ return [
     'comment' => 'Bình luận',
     'placeholder_comment' => 'Nhập nội dung bình luận',
     'reply' => 'Trả lời',
-    'cancle' => 'Hủy'
+    'cancle' => 'Hủy',
+    'login' => 'Đăng nhập',
+    'password' => 'Mật khẩu',
+    'forgot' => 'Quên',
+    'not_a_member' => 'Chưa có tài khoản?',
+    'register' => 'Đăng ký',
+    'email_placeholder' => 'Nhập email của bạn',
+    'password_placeholder' => 'Nhập mật khẩu của bạn'
 ];
