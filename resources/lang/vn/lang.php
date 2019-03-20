@@ -54,4 +54,10 @@ return [
     'course' => 'Khóa học',
     'video' => 'Video',
     'help' => 'Trợ giúp',
+    'logout' => 'Đăng xuất',
+    'list_post' => 'Danh sách bài viết',
+    'add_coin' => 'Nạp xu',
+    'comment' => 'Bình luận',
+    'profile' => 'Trang cá nhân',
+    'create_post' => 'Tạo bài viết'
 ];

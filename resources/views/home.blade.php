@@ -88,6 +88,6 @@
         </div>
       </div>
     </section>
-@include('clients.layouts.footer')
 @include('auth.login')
 @include('auth.register')
+@include('clients.layouts.footer')

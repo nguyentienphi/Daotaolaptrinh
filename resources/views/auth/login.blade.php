@@ -10,24 +10,24 @@
                 </button>
             </div>
             <div class="modal-body mx-4">
-                {{ Form::open() }}
+                {{ Form::open(['route' => 'login', 'id' => 'formLogin']) }}
                     {{ Form::label('email', trans('lang.email') . '(*)', ['data-error' => ' ', 'data-success' => ' ', 'class' => 'label-login']) }}
-                        <span class="help-block login-messages"></span>
                     <div class="md-form mb-5">
                         {{ Form::email('email', old('email'), [
                             'class' => 'form-control validate input',
                             'placeholder' => trans('lang.email_placeholder'),
                             'id' => 'email'
                         ]) }}
+                        <span class="help-block login-messages"></span>
                     </div>
                     <div class="md-form pb-3">
                         {{ Form::label('password', trans('lang.password') . '(*)', ['data-error' => ' ', 'data-success' => ' ', 'class' => 'label-login']) }}
-                        <span class="help-block login-messages-password"></span>
                         {{ Form::password('password', [
                             'class' => 'form-control validate input',
                             'placeholder' => trans('lang.password_placeholder'),
                             'id' => 'password'
                         ]) }}
+                        <span class="help-block login-messages-password"></span>
                         <p class="font-small blue-text d-flex justify-content-end">
                             <a data-toggle="modal" data-dismiss="modal" data-target="#modalForgotPassword" href="javascript:void(0)" class="blue-text ml-1">
                                 @lang('lang.forgot') @lang('lang.password')&#63;
