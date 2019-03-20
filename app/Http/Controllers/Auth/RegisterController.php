@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\User;
+use Auth;
+use App\Models\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\Request;
+use App\Http\Requests\RegisterRequest;
 
 class RegisterController extends Controller
 {
@@ -41,32 +44,38 @@ class RegisterController extends Controller
     }
 
     /**
-     * Get a validator for an incoming registration request.
-     *
-     * @param  array  $data
-     * @return \Illuminate\Contracts\Validation\Validator
-     */
-    protected function validator(array $data)
-    {
-        return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:6', 'confirmed'],
-        ]);
-    }
-
-    /**
      * Create a new user instance after a valid registration.
      *
      * @param  array  $data
      * @return \App\User
      */
-    protected function create(array $data)
+    protected function register(RegisterRequest $request)
     {
-        return User::create([
+        $data = $request->only([
+            'name',
+            'email',
+            'password',
+        ]);
+
+        $input = [
             'name' => $data['name'],
             'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-        ]);
+            'password' => $data['password'],
+            'role' => config('settings.member'),
+            'avatar' => config('settings.avatar'),
+            'gender' => null,
+            'address' => null,
+            'coin_number' => config('settings.coin_default'),
+            'phone' => null
+        ];
+        $user = User::create($input);
+
+        if ($user) {
+            Auth::login($user);
+
+            return response()->json(true);
+        }
+
+        return response()->json(false);
     }
 }

@@ -11,6 +11,8 @@
 |
 */
 
+Route::get('/home', 'HomeController@index')->name('home');
+
 Route::get('/', function () {
     return view('home');
 });
@@ -40,5 +42,3 @@ Route::get('post-details', function () {
 });
 
 Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');

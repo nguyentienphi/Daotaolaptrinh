@@ -37,5 +37,7 @@
         <script src="{{ asset('js/clients/gmaps.min.js')}}"></script>
         <script src="{{ asset('js/clients/theme.js')}}"></script>
         <script src="{{ asset('js/clients/jquery.sticky-kit.min.js')}}"></script>
+        {{ Html::script('messages.js') }}
+        <script src="{{ asset('js/clients/auth.js')}}"></script>
     </body>
 </html>
