@@ -6,6 +6,7 @@
           name="viewport"
           content="width=device-width, initial-scale=1, shrink-to-fit=no"
         />
+        <meta name="csrf-token" content="{{ csrf_token() }}" />
         <link rel="icon" href="{{ asset('storage/image/elements/college-graduation.png') }}" type="image/png" />
         <title>@yield('title')</title>
         <link rel="stylesheet" href="{{ asset('css/clients/bootstrap.css') }}" />

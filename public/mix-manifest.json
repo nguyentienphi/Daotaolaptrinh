@@ -1,23 +1,10 @@
 {
     "/js/app.js": "/js/app.js",
     "/css/app.css": "/css/app.css",
-    "/js/clients/add-form-comment.js": "/js/clients/add-form-comment.js",
-    "/js/clients/item.js": "/js/clients/item.js",
-    "/js/clients/jquery.ajaxchimp.min.js": "/js/clients/jquery.ajaxchimp.min.js",
-    "/js/clients/mail-script.js": "/js/clients/mail-script.js",
-    "/js/clients/theme.js": "/js/clients/theme.js",
     "/css/clients/bootstrap.css": "/css/clients/bootstrap.css",
     "/css/clients/flaticon.css": "/css/clients/flaticon.css",
     "/css/clients/nice-select.css": "/css/clients/nice-select.css",
     "/css/clients/owl.carousel.min.css": "/css/clients/owl.carousel.min.css",
     "/css/clients/themify-icons.css": "/css/clients/themify-icons.css",
-    "/css/clients/style.css": "/css/clients/style.css",
-    "/js/jquery-3.2.1.min.js": "/js/jquery-3.2.1.min.js",
-    "/js/bootstrap.min.js": "/js/bootstrap.min.js",
-    "/js/clients/popper.js": "/js/clients/popper.js",
-    "/js/clients/gmaps.min.js": "/js/clients/gmaps.min.js",
-    "/js/clients/jquery.sticky-kit.min.js": "/js/clients/jquery.sticky-kit.min.js",
-    "/js/clients/jquery.nice-select.min.js": "/js/clients/jquery.nice-select.min.js",
-    "/js/clients/owl-carousel-thumb.min.js": "/js/clients/owl-carousel-thumb.min.js",
-    "/js/clients/owl.carousel.min.js": "/js/clients/owl.carousel.min.js"
+    "/css/clients/style.css": "/css/clients/style.css"
 }
