@@ -3630,3 +3630,138 @@ input[placeholder] {
 .show-box-user li:hover a{
   color: #fff;
 }
+
+.table-bordered thead th {
+    border-bottom-width: 2px;
+    color: #f7f7f6;
+    background: #0aa6f3ad;
+    font-size: 17px;
+}
+
+.content-title {
+    max-width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.badge {
+    display: inline-block;
+    padding: .25em .4em;
+    font-size: 75%;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25rem;
+    box-shadow: 5px 4px 4px #666;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.action-post {
+    font-size: 20px;
+    padding: 5px 10px 5px 10px;
+    display: inline-block;
+    border-radius: 4px;
+    margin-right: 5px;
+}
+
+.view {
+    color: #142edbd1;
+    background: #11f30e91;
+}
+
+.edit {
+    color: #e4ed89f0;
+    background: #062fc6b8;
+}
+
+.delete {
+    color: #0c1edb75;
+    background: #f11534ad;
+}
+
+.block {
+    background-color: #fff;
+    border-radius: 5px;
+    border: 1px solid #e6ecf5;
+    margin-bottom: 15px;
+    padding: 15px 35px 20px 40px;
+}
+
+.table-bordered {
+    color: #0e0f0fba;
+    font-size: 15px;
+    font-weight: 700;
+}
+
+@media (min-width: 1300px){
+  .table td, .table th {
+      padding: 18px 12px;
+  }
+}
+
+.empty-data {
+    padding: 2%;
+    background: #f8f8f8;
+    border-radius: 1%;
+    margin-top: 2%;
+    color: #888da8;
+}
+
+.element-search-post {
+  height: 45px;
+}
+
+.form-search-list-post {
+    display: inherit;
+    margin-bottom: 2%;
+}
+
+.select-list-post {
+    padding: 0.5rem 1.1rem !important;
+    font-weight: 400 !important;
+    color: #0c0d0d9e !important;
+    border-color: #dddddd !important;
+    font-size: 15px;
+    -webkit-appearance: none
+}
+
+.list-menu-profile {
+    background-color: #fff;
+    border-radius: 5px;
+    border: 1px solid #e6ecf5;
+    margin-bottom: 15px;
+    padding: 32px 35px 31px 40px;"
+}
+
+.section-list-post-user {
+  padding : 50px 0px 10px 0px;
+}
+
+.title-profile {
+    color: #76765ec4;
+    font-weight: 600;
+    font-size: 15px;
+}
+
+.title-profile:hover {
+    color: #151514c9;
+}
+
+.title-profile.active {
+    color: #151514c9;
+}
+
+.btn-search-post {
+    margin: 7px 0px 0px 0px;
+    height: 32px;
+}
+
+.icons-search-post {
+    font-weight: 900;
+}

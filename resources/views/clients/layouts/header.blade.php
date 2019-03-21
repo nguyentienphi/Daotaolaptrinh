@@ -104,7 +104,7 @@
                                                 <a href="">@lang('lang.profile')</a>
                                             </li>
                                             <li>
-                                                <a href="">@lang('lang.list_post')</a>
+                                                <a href="{{ route('list-post-user') }}">@lang('lang.list_post')</a>
                                             </li>
                                             <li>
                                                 <a href="">@lang('lang.add_coin')</a>
