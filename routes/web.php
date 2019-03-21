@@ -44,5 +44,5 @@ Route::get('post-details', function () {
 Auth::routes();
 
 Route::get('/admin', function () {
-   return 'a';
+   return view('admin.layouts.master');
 });
