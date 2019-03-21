@@ -116,10 +116,12 @@ return [
     'attributes' => [
         'phone' => 'số điện thoại',
         'name' => 'tên',
-        'image' => 'ảnh',
-        'birthday' => 'ngày sinh',
+        'avatar' => 'ảnh',
         'address' => 'địa chỉ',
         'gender' => 'giới tính',
+        'content' => 'nội dung bài viết',
+        'title' => 'tiêu đề bài viết',
+        'password' => 'mật khẩu'
     ],
     'msg' => [
         'required' => 'Thông tin bắt buộc',

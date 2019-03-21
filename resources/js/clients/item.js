@@ -1,3 +1,3 @@
 $(document).ready(function () {
-    CKEDITOR.replace( 'content-post' );
+    CKEDITOR.replace( 'content' );
 });
