@@ -46,3 +46,5 @@ Auth::routes();
 Route::get('/admin', function () {
    return view('admin.layouts.master');
 });
+
+Route::get('/logout', 'Auth\LoginController@logout');

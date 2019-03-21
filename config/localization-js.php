@@ -12,6 +12,8 @@ return [
      * ],
      */
     'messages' => [
+        'auth',
+        'lang',
         'validation',
     ],
 
