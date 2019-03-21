@@ -88,7 +88,7 @@
                                     </li>
                                 @else
                                     <li class="nav-item">
-                                        <a class="nav-link" href="#" data-toggle="modal" data-target="#modalRegister">@lang('lang.create_post')</a>
+                                        <a class="nav-link" href="{{ route('post.create') }}">@lang('lang.create_post')</a>
                                     </li>
                                     <li class="nav-item user-dropdown last show">
                                         <a class="nav-link dropdown-toggle user-nav-show" href="javascript:void(0)" id="navbarDropdownProfile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">

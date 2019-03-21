@@ -59,5 +59,7 @@ return [
     'add_coin' => 'Nạp xu',
     'comment' => 'Bình luận',
     'profile' => 'Trang cá nhân',
-    'create_post' => 'Tạo bài viết'
+    'create_post' => 'Tạo bài viết',
+    'title_post' => 'Nhập tiêu đề bài viết...',
+    'content_post' => 'Nội dung bài viết'
 ];

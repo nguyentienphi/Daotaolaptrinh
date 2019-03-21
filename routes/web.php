@@ -17,10 +17,6 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::get('view', function () {
-    return view('clients.layouts.master');
-});
-
 Route::get('course', function () {
     return view('clients.courses.index');
 });
@@ -43,4 +39,5 @@ Route::get('post-details', function () {
 
 Auth::routes();
 
-Route::get('/logout', 'Auth\LoginController@logout');
+Route::get('logout', 'Auth\LoginController@logout');
+Route::resource('post', 'Client\PostController');
