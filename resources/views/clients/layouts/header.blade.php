@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ Config::get('app.locale') }}">
     <head>
         <meta charset="utf-8" />
         <meta
@@ -19,16 +19,6 @@
     <body>
         <header class="header_area">
             <div class="main_menu">
-                <div class="search_input" id="search_input_box">
-                    <div class="container">
-                        <form class="d-flex justify-content-between" method="" action="">
-                            <input type="text" class="form-control" id="search_input"
-                            placeholder="Search here"/>
-                          <button type="submit" class="btn"></button>
-                          <span class="ti-close" id="close_search" title="Close Search"></span>
-                        </form>
-                    </div>
-                </div>
                 <nav class="navbar navbar-expand-lg navbar-light">
                     <div class="container">
                         <button class="navbar-toggler" type="button" data-toggle="collapse"
@@ -39,7 +29,7 @@
                         <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
                             <ul class="nav navbar-nav menu_nav ml-auto">
                                 <li class="nav-item active">
-                                    <a class="nav-link" href="index.html">@lang('lang.home')</a>
+                                    <a class="nav-link" href="{{ route('home') }}">@lang('lang.home')</a>
                                 </li>
                                 <li class="nav-item submenu dropdown">
                                     <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button"
@@ -89,17 +79,45 @@
                                 <li class="nav-item">
                                     <a class="nav-link" href="#">@lang('lang.help')</a>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#" data-toggle="modal" data-target="#modalLogin">@lang('lang.login')</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#" data-toggle="modal" data-target="#modalRegister">@lang('lang.register')</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="#" class="nav-link search" id="search">
-                                        <i class="ti-search"></i>
-                                    </a>
-                                </li>
+                                @guest
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#" data-toggle="modal" data-target="#modalLogin">@lang('lang.login')</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#" data-toggle="modal" data-target="#modalRegister">@lang('lang.register')</a>
+                                    </li>
+                                @else
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#" data-toggle="modal" data-target="#modalRegister">@lang('lang.create_post')</a>
+                                    </li>
+                                    <li class="nav-item user-dropdown last show">
+                                        <a class="nav-link dropdown-toggle user-nav-show" href="javascript:void(0)" id="navbarDropdownProfile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                            <span class="user-profile">
+                                                {{ Html::image(asset(Auth::user()->avatar), '', ['class' => 'user-imgaes']) }}
+                                                <span class="user-name d-none-992">
+                                                    {{Auth::user()->name}}
+                                                </span>
+                                            </span>
+                                        </a>
+                                        <ul class="dropdown-menu dropdown-menu-right header-menu show-box-user" aria-labelledby="navbarDropdownProfile">
+                                            <li>
+                                                <a href="">@lang('lang.profile')</a>
+                                            </li>
+                                            <li>
+                                                <a href="">@lang('lang.list_post')</a>
+                                            </li>
+                                            <li>
+                                                <a href="">@lang('lang.add_coin')</a>
+                                            </li>
+                                            <li>
+                                                <a href="">@lang('lang.comment')</a>
+                                            </li>
+                                            <li>
+                                                <a href="{{ route('logout') }}">@lang('lang.logout')</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                @endguest
                           </ul>
                         </div>
                     </div>
