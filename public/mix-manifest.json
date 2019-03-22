@@ -1,6 +1,8 @@
 {
     "/js/app.js": "/js/app.js",
     "/css/app.css": "/css/app.css",
+    "/css/libs.css": "/css/libs.css",
+    "/css/vendor.css": "/css/vendor.css",
     "/css/clients/bootstrap.css": "/css/clients/bootstrap.css",
     "/css/clients/flaticon.css": "/css/clients/flaticon.css",
     "/css/clients/nice-select.css": "/css/clients/nice-select.css",

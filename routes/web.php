@@ -43,8 +43,16 @@ Route::get('post-details', function () {
 
 Auth::routes();
 
-Route::get('/admin', function () {
-   return view('admin.layouts.master');
+Route::group([
+    'namespace' => 'Admin',
+    'prefix' => 'admin'
+], function () {
+    Route::get('/', function () {
+        return view('admin.layouts.master');
+    });
+
+    Route::get('/users', 'UserController@index')
+        ->name('admin.users.index');
 });
 
 Route::get('/logout', 'Auth\LoginController@logout');
