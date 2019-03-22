@@ -59,5 +59,15 @@ return [
     'add_coin' => 'Nạp xu',
     'comment' => 'Bình luận',
     'profile' => 'Trang cá nhân',
-    'create_post' => 'Tạo bài viết'
+    'create_post' => 'Tạo bài viết',
+    'title_post_content' => 'Nhập tiêu đề bài viết...',
+    'content_post' => 'Nội dung bài viết',
+    'list_post_user' => 'Bài viết của bạn',
+    'approved' => 'Đã phê duyệt',
+    'waiting_approved' => 'Chờ phê duyệt',
+    'list_comment' => 'Danh sách bình luận',
+    'list_course' => 'Danh sách khóa học',
+    'view' => 'Xem',
+    'edit' => 'Sửa',
+    'delete' => 'Xóa'
 ];

@@ -25,9 +25,9 @@
             </div>
         </div>
     </footer>
-        <script src="{{ asset('js/jquery-3.2.1.min.js') }}"></script>
+        <script src="{{ asset('js/clients/jquery-3.2.1.min.js') }}"></script>
         <script src="{{ asset('js/clients/popper.js') }}"></script>
-        <script src="{{ asset('js/bootstrap.min.js')}}"></script>
+        <script src="{{ asset('js/clients/bootstrap.min.js')}}"></script>
         {{-- <script src="{{ asset('js/clients/jquery.nice-select.min.js')}}"></script> --}}
         <script src="{{ asset('js/clients/owl.carousel.min.js')}}"></script>
         <script src="{{ asset('js/clients/owl-carousel-thumb.min.js')}}"></script>
@@ -39,5 +39,6 @@
         <script src="{{ asset('js/clients/jquery.sticky-kit.min.js')}}"></script>
         {{ Html::script('messages.js') }}
         <script src="{{ asset('js/clients/auth.js')}}"></script>
+        <script src="{{ asset('js/clients/main.js')}}"></script>
     </body>
 </html>

@@ -13,13 +13,7 @@
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/', function () {
-    return view('home');
-});
-
-Route::get('view', function () {
-    return view('clients.layouts.master');
-});
+Route::get('/', 'HomeController@index');
 
 Route::get('course', function () {
     return view('clients.courses.index');
@@ -29,7 +23,7 @@ Route::get('course-details', function () {
     return view('clients.courses.detail');
 });
 
-Route::get('post', function () {
+Route::get('post1', function () {
     return view('clients.posts.index');
 });
 
@@ -55,4 +49,7 @@ Route::group([
         ->name('admin.users.index');
 });
 
-Route::get('/logout', 'Auth\LoginController@logout');
+
+Route::get('logout', 'Auth\LoginController@logout');
+Route::resource('post', 'Client\PostController');
+Route::get('list-post-user', 'Client\PostController@showPostUser')->name('list-post-user');

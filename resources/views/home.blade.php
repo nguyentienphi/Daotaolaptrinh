@@ -1,5 +1,10 @@
 @section('title',trans('lang.home'))
 @include('clients.layouts.header')
+    @if (Session::has('check_show_login'))
+        {{ Html::link('#', '', [
+            'class' => 'btn-show-pupup-login',
+        ]) }}
+    @endif
     <section class="home_banner_area">
       <div class="banner_inner">
         <div class="container">
@@ -16,8 +21,8 @@
                         </div>
                         <div class="col-xl-2 col-md-2 col-sm-2 col-5 ">
                             <div class="counter" data-count="300">
-                                200
-                            </div> <span class="digit">Post</span>
+                                {{ $post }}
+                            </div> <span class="digit">Bài Viết</span>
                         </div>
                         <div class="col-xl-2 col-md-2 col-sm-2 col-5 ">
                             <div class="counter" data-count="300">
