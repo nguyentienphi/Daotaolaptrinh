@@ -7,6 +7,10 @@
         'avatar' => 'storage/image/avatar/abstract-user-flat-3.svg',
         'view_number' => 0,
         'status' => [
-            'post' => 0
+            'waiting_approved' => 0,
+            'approved' => 1
         ],
+        'paginate' => [
+            'post_user' => 10
+        ]
     ];

@@ -11,6 +11,10 @@ use App\Http\Requests\PostRequest;
 
 class PostController extends Controller
 {
+    public function __construct()
+    {
+        return $this->middleware('profile');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -43,7 +47,7 @@ class PostController extends Controller
     {
         $data = $request->all();
         $data['user_id'] = Auth::user()->id;
-        $data['status'] = config('settings.status.post');
+        $data['status'] = config('settings.status.waiting_approved');
         $data['view_number'] = config('settings.view_number');
         $post = Post::create($data);
 
@@ -95,5 +99,12 @@ class PostController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function showPostUser()
+    {
+        $postUsers = Post::where('user_id', Auth::user()->id)->paginate(config('settings.paginate.post_user'));
+
+        return view('clients.posts.user.index', compact('postUsers'));
     }
 }

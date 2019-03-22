@@ -9,7 +9,7 @@
             </div>
             <div class="form-group">
                 {{ Form::label(trans('lang.title_create_post')) }}
-                {{ Form::text('title', '', ['class' => 'form-control', 'placeholder' => trans('lang.title_post')]) }}
+                {{ Form::text('title', '', ['class' => 'form-control', 'placeholder' => trans('lang.title_post_content')]) }}
                 <span class="message-title-post"></span>
             </div>
             <div class="form-group">

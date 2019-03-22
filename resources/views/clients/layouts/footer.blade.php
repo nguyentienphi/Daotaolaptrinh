@@ -39,5 +39,6 @@
         <script src="{{ asset('js/clients/jquery.sticky-kit.min.js')}}"></script>
         {{ Html::script('messages.js') }}
         <script src="{{ asset('js/clients/auth.js')}}"></script>
+        <script src="{{ asset('js/clients/main.js')}}"></script>
     </body>
 </html>
