@@ -12,8 +12,12 @@ $(document).ready(function () {
             data : data,
             dataType: 'json',
             success : function (data) {
-                window.onbeforeunload = null;
-                $(window).attr('location', data.redirect);
+                if (data.success) {
+                    window.onbeforeunload = null;
+                    $(window).attr('location', data.redirect);
+                } else {
+                    alert(data.message);
+                }
             },
             error : function (data) {
                 var errors = JSON.parse(data.responseText).errors;

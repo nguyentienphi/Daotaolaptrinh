@@ -45,15 +45,32 @@ class PostController extends Controller
      */
     public function store(PostRequest $request)
     {
-        $data = $request->all();
-        $data['user_id'] = Auth::user()->id;
-        $data['status'] = config('settings.status.waiting_approved');
-        $data['view_number'] = config('settings.view_number');
-        $post = Post::create($data);
+        if (!$request->ajax()) {
+            return response()->json([
+                'success' => false,
+            ]);
+        }
 
-        return response()->json([
-            'redirect' => route('home'),
-        ]);
+        try {
+            $data = $request->all();
+            $data['user_id'] = Auth::user()->id;
+            $data['status'] = config('settings.status.waiting_approved');
+            $data['view_number'] = config('settings.view_number');
+            $post = Post::create($data);
+
+            $request->session()->flash('success', trans('post.create_success'));
+
+            return response()->json([
+                'success' => true,
+                'redirect' => route('list-post-user'),
+            ]);
+        } catch (Exception $e) {
+            return response()->json([
+                'success' => false,
+                'message' => trans('post.create_failed'),
+            ]);
+        }
+
     }
 
     /**
@@ -106,5 +123,21 @@ class PostController extends Controller
         $postUsers = Post::where('user_id', Auth::user()->id)->paginate(config('settings.paginate.post_user'));
 
         return view('clients.posts.user.index', compact('postUsers'));
+    }
+
+    public function showPostCategory($id)
+    {
+        try {
+            $posts = Post::where('category_id', $id)
+            ->where('status', config('settings.status.approved'))
+            ->orderBy('created_at', 'desc')->paginate(config('settings.paginate.post_category'));
+
+            $postNews = Post::where('status', config('settings.status.approved'))
+            ->take(3)->orderBy('created_at', 'desc')->get();
+
+            return view('clients.posts.index', compact('posts', 'postNews'));
+        } catch (Exception $e) {
+            return view('errors.404');
+        }
     }
 }

@@ -35,15 +35,11 @@
                                     <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button"
                                         aria-haspopup="true" aria-expanded="false">@lang('lang.post')</a>
                                     <ul class="dropdown-menu">
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="courses.html">Git</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="course-details.html">PHP</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="elements.html">Java</a>
-                                        </li>
+                                        @foreach ($categories as $category)
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="{{ route('list-post-category', $category->id) }}">{{ $category->name }}</a>
+                                            </li>
+                                        @endforeach
                                     </ul>
                                 </li>
                                 <li class="nav-item submenu dropdown">
