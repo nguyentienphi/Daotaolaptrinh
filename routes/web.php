@@ -34,7 +34,7 @@ Route::get('post-details', function () {
 Auth::routes();
 
 Route::get('logout', 'Auth\LoginController@logout');
-Route::resource('post', 'Client\PostController')->except(['index']);
-Route::get('list-post-user', 'Client\PostController@showPostUser')->name('list-post-user');
+Route::resource('post', 'Client\PostController');
+Route::get('list-post-user', 'Client\PostController@showPostUser')->name('list-post-user')->middleware('profile');
 Route::get('list-post-category/{id}', 'Client\PostController@showPostCategory')->name('list-post-category');
 

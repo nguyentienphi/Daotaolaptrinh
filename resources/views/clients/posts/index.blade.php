@@ -18,7 +18,7 @@
                     @foreach ($posts as $post)
                         <div class="content_wrapper">
                             <div>
-                                {{ Html::image(asset(Auth::user()->avatar), '', ['class' => 'img-user-post']) }}
+                                {{ Html::image(asset($post->user->avatar), '', ['class' => 'img-user-post']) }}
                             </div>
                             <div class="content title-post">
                                 <a class="title author-post" href="">{{ $post->user->name }}</a>

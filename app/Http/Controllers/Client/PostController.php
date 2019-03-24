@@ -11,18 +11,9 @@ use App\Http\Requests\PostRequest;
 
 class PostController extends Controller
 {
-    public function __construct()
-    {
-        return $this->middleware('profile');
-    }
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        //
+        return view('errors.404');
     }
 
     /**
