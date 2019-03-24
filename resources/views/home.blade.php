@@ -1,5 +1,6 @@
 @section('title',trans('lang.home'))
-@include('clients.layouts.header')
+@extends('clients.layouts.master')
+@section('content')
     @if (Session::has('check_show_login'))
         {{ Html::link('#', '', [
             'class' => 'btn-show-pupup-login',
@@ -93,6 +94,4 @@
         </div>
       </div>
     </section>
-@include('auth.login')
-@include('auth.register')
-@include('clients.layouts.footer')
+@endsection

@@ -23,7 +23,7 @@
                             <div class="content title-post">
                                 <a class="title author-post" href="">{{ $post->user->name }}</a>
                                 <p>
-                                    <a href="#" class="color-title-post">{{ $post->title }}</a>
+                                    <a href="{{ route('post.show', $post) }}" class="color-title-post">{{ $post->title }}</a>
                                 </p>
                                 <p>
                                     <span title="{{ trans('post.view') }}"><i class="ti-eye icons-post-items""></i>{{ $post->view_number }}</span>

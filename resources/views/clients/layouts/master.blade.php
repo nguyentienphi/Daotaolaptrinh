@@ -1,0 +1,11 @@
+@include('clients.layouts.header')
+@section('css')
+@show
+<div>
+    @yield('content')
+</div>
+@include('auth.login')
+@include('auth.register')
+@section('js')
+@show
+@include('clients.layouts.footer')

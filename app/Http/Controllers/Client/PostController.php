@@ -70,9 +70,22 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Post $post)
     {
-        //
+        try {
+            $user = $post->user->id;
+            $morePosts = Post::where('user_id', $user)
+                ->where('status', config('settings.status.approved'))
+                ->where('id', '!=', $post->id)->get();
+
+            if (count($morePosts) > 3) {
+                $morePosts = $morePosts->random(3);
+            }
+
+            return view('clients.posts.detail', compact('post', 'morePosts'));
+        } catch (Exception $e) {
+            return view('clients.errors.404');
+        }
     }
 
     /**
