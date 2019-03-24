@@ -16,7 +16,5 @@
         'create_date' => 'Ngày Tạo',
         'title' => 'Tiêu đề',
         'status' => 'Trạng thái',
-        'statistical' => 'Thống kê',
-        'create_success' => 'Tạo bài viết thành công. Đang chờ phê duyệt',
-        'create_failed' => 'Tạo bài viết thất bại!',
+        'statistical' => 'Thống kê'
     ];

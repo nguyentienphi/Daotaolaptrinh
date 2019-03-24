@@ -11,7 +11,6 @@
             'approved' => 1
         ],
         'paginate' => [
-            'post_user' => 10,
-            'post_category' => 10
+            'post_user' => 10
         ]
     ];

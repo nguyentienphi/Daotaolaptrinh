@@ -2,7 +2,6 @@
 @include('clients.layouts.header')
     <section class="section-list-post-user">
         {{ Html::image(asset('storage/image/bg/bannerpost.jpg'), '', ['class' => 'img_banner_post']) }}
-        @include('clients.layouts.notice')
         @include('clients.profiles.layouts')
     </section>
     <div class="container content-post">

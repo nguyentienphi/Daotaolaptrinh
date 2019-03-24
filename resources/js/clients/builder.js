@@ -12,12 +12,8 @@ $(document).ready(function () {
             data : data,
             dataType: 'json',
             success : function (data) {
-                if (data.success) {
-                    window.onbeforeunload = null;
-                    $(window).attr('location', data.redirect);
-                } else {
-                    alert(data.message);
-                }
+                window.onbeforeunload = null;
+                $(window).attr('location', data.redirect);
             },
             error : function (data) {
                 var errors = JSON.parse(data.responseText).errors;
