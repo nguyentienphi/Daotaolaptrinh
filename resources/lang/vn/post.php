@@ -19,4 +19,6 @@
         'statistical' => 'Thống kê',
         'create_success' => 'Tạo bài viết thành công. Đang chờ phê duyệt',
         'create_failed' => 'Tạo bài viết thất bại!',
+        'more' => 'Nhiều hơn',
+        'post_comment' => 'Bình luận'
     ];
