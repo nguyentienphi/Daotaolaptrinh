@@ -12,6 +12,7 @@
         ],
         'paginate' => [
             'post_user' => 10,
-            'post_category' => 10
+            'post_category' => 10,
+            'course' => 10
         ]
     ];

@@ -38,3 +38,5 @@ Route::resource('post', 'Client\PostController');
 Route::get('list-post-user', 'Client\PostController@showPostUser')->name('list-post-user')->middleware('profile');
 Route::get('list-post-category/{id}', 'Client\PostController@showPostCategory')->name('list-post-category');
 
+Route::get('list-course-category/{id}', 'Client\CourseController@showCourseCategory')->name('list-course-category');
+
