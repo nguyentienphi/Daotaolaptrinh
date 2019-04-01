@@ -23,7 +23,7 @@
                                            {{  Html::image(asset($course->image), '', ['class' => 'img-course'])}}
                                         </div>
                                         <div class="col-md-7">
-                                            <p class="name-course"><a href="">{{ $course->name }}</a></p>
+                                            <p class="name-course"><a href="{{ route('show-course', $course->id) }}">{{ $course->name }}</a></p>
                                             <p class="detail-course">
                                                 <span>{{ count($course->videos) }} @lang('lang.video')</span>
                                                 <span>{{ $course->created_at }}</span>

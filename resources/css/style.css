@@ -3842,3 +3842,14 @@ input[placeholder] {
     margin-top: 29px;
     float: right;
 }
+
+.btn-register-course {
+    background: #002347;
+    color: #f0f0f0;
+}
+
+.btn-register-course:hover {
+  background: #1122e7e6;
+  content: #fff;
+  cursor: pointer;
+}
