@@ -23,12 +23,12 @@
                         <div class="col-xl-2 col-md-2 col-sm-2 col-5 ">
                             <div class="counter" data-count="300">
                                 {{ $post }}
-                            </div> <span class="digit">Bài Viết</span>
+                            </div> <span class="digit">@lang('lang.post')</span>
                         </div>
                         <div class="col-xl-2 col-md-2 col-sm-2 col-5 ">
                             <div class="counter" data-count="300">
-                                50
-                            </div> <span class="digit">Course</span>
+                                {{ $course }}
+                            </div> <span class="digit">@lang('lang.course')</span>
                         </div>
                     </div>
                     </div>

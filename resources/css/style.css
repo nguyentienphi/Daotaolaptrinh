@@ -3812,3 +3812,33 @@ input[placeholder] {
 .box-content-post {
     margin-bottom: 50px;
 }
+
+.box-item-course {
+    margin-top: 20px
+}
+
+.img-course {
+    width:225px;
+    height:110px;
+}
+
+.name-course {
+  font-size: 25px
+}
+
+.title-course {
+  margin-top: 10px;
+  font-size: 15px;
+  color: #555555
+}
+
+.detail-course {
+  padding-top: 10px;
+  font-size: 14px;
+  color: #886;
+}
+
+.paginate-course {
+    margin-top: 29px;
+    float: right;
+}

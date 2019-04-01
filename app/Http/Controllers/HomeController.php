@@ -4,17 +4,20 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Post;
+use App\Services\Course\CourseService;
 
 class HomeController extends Controller
 {
+    protected $courseService;
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(CourseService $courseService)
     {
         // $this->middleware('auth');
+        $this->courseService = $courseService;
     }
 
     /**
@@ -25,7 +28,8 @@ class HomeController extends Controller
     public function index()
     {
         $post = Post::count();
+        $course = $this->courseService->count();
 
-        return view('home', compact('post'));
+        return view('home', compact('post', 'course'));
     }
 }
