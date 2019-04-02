@@ -24,4 +24,6 @@ Route::get('list-post-category/{id}', 'Client\PostController@showPostCategory')-
 
 Route::get('list-course-category/{id}', 'Client\CourseController@showCourseCategory')->name('list-course-category');
 Route::get('show-course/{id}', 'Client\CourseController@show')->name('show-course');
+Route::post('register-course', 'Client\CourseController@registerCourse')->name('register-course');
+Route::get('list-course-register', 'Client\CourseController@listCourse')->name('list-course-register');
 

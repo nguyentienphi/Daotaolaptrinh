@@ -95,6 +95,9 @@
                                                 <a href="{{ route('list-post-user') }}">@lang('lang.list_post')</a>
                                             </li>
                                             <li>
+                                                <a href="{{ route('list-course-register') }}">@lang('lang.list_course')</a>
+                                            </li>
+                                            <li>
                                                 <a href="">@lang('lang.add_coin')</a>
                                             </li>
                                             <li>

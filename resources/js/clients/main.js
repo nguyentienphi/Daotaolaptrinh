@@ -30,4 +30,52 @@ $(document).ready(function() {
             }
         });
     });
+
+    //modal register course false
+    var coin = parseInt($('.coin').val());
+    var price = parseInt($('.price').val());
+    var remain = coin - price;
+    var course_id = parseInt($('.course_id').val());
+
+    function showResult() {
+        $('.show-coin-user').text(coin);
+        $('.show-price-course').text(price);
+        $('.result-register-course').text(remain);
+    }
+
+    $(document).on('click', '#btn-register-course', function () {
+        if (coin < price) {
+            setTimeout(function() {
+                showResult();
+                $('#modalcoin').modal('show');
+            }, -50);
+        } else {
+            setTimeout(function() {
+                showResult();
+                $('#modalRegisterCoin').modal('show');
+            }, -50);
+        }
+
+    });
+
+    $(document).on('submit', '#registerCourse', function (e) {
+        e.preventDefault();
+        $.ajax({
+            url : $(this).attr('action'),
+            method : $(this).attr('method'),
+            dataType : 'json',
+            data : {
+                'remain' : remain,
+                'course_id' : course_id
+            },
+            success : function (data) {
+                if (data.success) {
+                    $(window).attr('location', data.redirect);
+                } else {
+                    $('#modalRegisterCoin').modal('hide');
+                    alert(data.message);
+                }
+            }
+        });
+    })
 });
