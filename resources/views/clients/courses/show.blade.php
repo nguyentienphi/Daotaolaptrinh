@@ -7,8 +7,11 @@
             'class' => 'btn-show-pupup-coin',
         ]) }}
     @endif
-    {{ Form::hidden('price', $course->price, ['class' => 'price']) }}
-    {{ Form::hidden('coin', Auth::user()->coin_number, ['class' => 'coin']) }}
+    @guest
+    @else
+        {{ Form::hidden('price', $course->price, ['class' => 'price']) }}
+        {{ Form::hidden('coin', Auth::user()->coin_number, ['class' => 'coin']) }}
+    @endguest
     <section class="section_gap banner_setting">
         {{ Html::image(asset('storage/image/bg/banner.jpg'), '', ['class' => 'img_banner_course_detail']) }}
     </section>
