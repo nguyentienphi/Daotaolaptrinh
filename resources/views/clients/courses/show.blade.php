@@ -1,6 +1,14 @@
+
 @section('title', $course->name)
 @extends('clients.layouts.master')
 @section('content')
+    @if (Session::has('register_course_false'))
+        {{ Html::link('#', '', [
+            'class' => 'btn-show-pupup-coin',
+        ]) }}
+    @endif
+    {{ Form::hidden('price', $course->price, ['class' => 'price']) }}
+    {{ Form::hidden('coin', Auth::user()->coin_number, ['class' => 'coin']) }}
     <section class="section_gap banner_setting">
         {{ Html::image(asset('storage/image/bg/banner.jpg'), '', ['class' => 'img_banner_course_detail']) }}
     </section>
@@ -45,10 +53,15 @@
                         </div>
                     </li>
                 </ul>
-                {{ Form::open() }}
-                    {{ Form::submit(trans('course.register'), ['class' => 'btn-register-course form-control']) }}
-                {{ Form::close() }}
+                @guest
+                    {{ Form::button(trans('course.register'), ['class' => 'btn-register-course form-control', 'data-toggle' => 'modal', 'data-target' => '#modalLogin']) }}
+                @else
+                    {{ Form::hidden('course_id', $course->id, ['class' => 'course_id']) }}
+                    {{ Form::button(trans('course.register'), ['class' => 'btn-register-course form-control', 'id' => 'btn-register-course']) }}
+                @endguest
             </div>
         </div>
     </div>
+@include('clients.elements.modal_coin')
+@include('clients.elements.modal_register_course')
 @endsection

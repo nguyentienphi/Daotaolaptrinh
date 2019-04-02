@@ -1,5 +1,6 @@
 @section('title', 'post')
-@include('clients.layouts.header')
+@extends('clients.layouts.master')
+@section('content')
     <section class="section_gap">
         {{ Html::image(asset('storage/image/bg/bannerpost.jpg'), '', ['class' => 'img_banner_post']) }}
     </section>
@@ -83,4 +84,4 @@
             </div>
         </div>
     </div>
-@include('clients.layouts.footer')
+@endsection
