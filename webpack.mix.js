@@ -22,3 +22,8 @@ mix.styles('resources/css/style.css', 'public/css/clients/style.css');
 mix.copyDirectory('resources/fonts', 'public/css/fonts');
 mix.copyDirectory('resources/js/clients', 'public/js/clients');
 
+//
+mix.sass('resources/sass/libs.scss', 'public/css')
+    .sass('resources/sass/vendor.scss', 'public/css');
+
+mix.copyDirectory('resources/js/libs', 'public/js');
