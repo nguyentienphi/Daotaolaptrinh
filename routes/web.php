@@ -15,26 +15,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/', 'HomeController@index');
 
-Route::get('course', function () {
-    return view('clients.courses.index');
-});
-
-Route::get('course-details', function () {
-    return view('clients.courses.detail');
-});
-
-Route::get('post1', function () {
-    return view('clients.posts.index');
-});
-
-Route::get('create-post', function () {
-    return view('clients.posts.create');
-});
-
-Route::get('post-details', function () {
-    return view('clients.posts.detail');
-});
-
 Auth::routes();
 
 Route::group([
@@ -52,4 +32,11 @@ Route::group([
 
 Route::get('logout', 'Auth\LoginController@logout');
 Route::resource('post', 'Client\PostController');
-Route::get('list-post-user', 'Client\PostController@showPostUser')->name('list-post-user');
+Route::get('list-post-user', 'Client\PostController@showPostUser')->name('list-post-user')->middleware('profile');
+Route::get('list-post-category/{id}', 'Client\PostController@showPostCategory')->name('list-post-category');
+
+Route::get('list-course-category/{id}', 'Client\CourseController@showCourseCategory')->name('list-course-category');
+Route::get('show-course/{id}', 'Client\CourseController@show')->name('show-course');
+Route::post('register-course', 'Client\CourseController@registerCourse')->name('register-course');
+Route::get('list-course-register', 'Client\CourseController@listCourse')->name('list-course-register');
+

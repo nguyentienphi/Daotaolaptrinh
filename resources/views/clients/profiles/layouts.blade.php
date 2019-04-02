@@ -19,7 +19,7 @@
                 <div class="row">
 
                 <div class="col-md-6 text-center">
-                    <a href="" class="title-profile">@lang('lang.list_course')</a>
+                    <a href="{{ route('list-course-register') }}" class="title-profile">@lang('lang.list_course')</a>
                 </div>
                 <div class="col-md-6 text-center">
                     <a href="" class="title-profile">@lang('lang.list_comment')</a>

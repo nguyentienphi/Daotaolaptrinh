@@ -2,6 +2,7 @@
 @include('clients.layouts.header')
     <section class="section-list-post-user">
         {{ Html::image(asset('storage/image/bg/bannerpost.jpg'), '', ['class' => 'img_banner_post']) }}
+        @include('clients.layouts.notice')
         @include('clients.profiles.layouts')
     </section>
     <div class="container content-post">
@@ -55,9 +56,3 @@
         </div>
     </div>
 @include('clients.layouts.footer')
-<script type="text/javascript">
-    $(document).ready(function () {
-        $(" .table-list-post tr:even").css("background-color", "#F4F4F8");
-        // $(".table-list-post tr:odd").css("background-color", "red");
-    });
-</script>

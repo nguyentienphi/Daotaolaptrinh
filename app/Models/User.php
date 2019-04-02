@@ -47,7 +47,7 @@ class User extends Authenticatable
 
     public function courses()
     {
-        return $this->belongsToMany(Question::class);
+        return $this->belongsToMany(Course::class, 'user_course')->withTimestamps();
     }
 
     public function results()
@@ -68,5 +68,10 @@ class User extends Authenticatable
     public function setPasswordAttribute($value)
     {
         $this->attributes['password'] = bcrypt($value);
+    }
+
+    public function posts()
+    {
+        return $this->hasMany(Post::class);
     }
 }

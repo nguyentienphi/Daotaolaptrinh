@@ -69,5 +69,10 @@ return [
     'list_course' => 'Danh sách khóa học',
     'view' => 'Xem',
     'edit' => 'Sửa',
-    'delete' => 'Xóa'
+    'delete' => 'Xóa',
+    'top_author' => 'Top thành viên',
+    'new_post' => 'Bài viết mới nhất',
+    '404' => 'Không tìm thấy trang phù hợp',
+    'back' => 'Trở về',
+    'video' => 'Video'
 ];

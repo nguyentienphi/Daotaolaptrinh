@@ -3,12 +3,29 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
 
 class Course extends Model
 {
+    protected $fillable = [
+        'name',
+        'category_id',
+        'title',
+        'description',
+        'image',
+        'price',
+        'category_id',
+    ];
+    protected $dates = [
+        'created_at',
+        'updated_at',
+        'date_register'
+    ];
+
+
     public function users()
     {
-        return $this->belongsToMany(User::class);
+        return $this->belongsToMany(User::class, 'user_course')->withTimestamps();
     }
 
     public function tests()
@@ -24,5 +41,15 @@ class Course extends Model
     public function category()
     {
         return $this->belongsTo(Category::class);
+    }
+
+    public function getCreatedAtAttribute()
+    {
+        return Carbon::parse($this->attributes['created_at'])->format('d-m-Y');
+    }
+
+    public function getDateRegisterAttribute()
+    {
+        return Carbon::parse($this->pivot->attributes['created_at'])->format('d-m-Y');
     }
 }

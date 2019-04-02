@@ -40,5 +40,6 @@
         {{ Html::script('messages.js') }}
         <script src="{{ asset('js/clients/auth.js')}}"></script>
         <script src="{{ asset('js/clients/main.js')}}"></script>
+        <script src="{{ asset('js/clients/dataTable.js')}}"></script>
     </body>
 </html>
