@@ -19,5 +19,9 @@
         'date_register' => 'Ngày đăng ký',
         'stt' => 'STT',
         'exists' => 'Khóa học này đã được đăng ký !',
-        'search' => 'Tìm kiếm'
+        'search' => 'Tìm kiếm',
+        'error_video' => 'Load không thành công',
+        'content' => 'Nội dung',
+        'rate_course' => 'Đánh gía khóa học',
+        'overview' => 'Tổng quan về khóa học'
     ];

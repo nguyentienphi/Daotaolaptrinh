@@ -78,4 +78,32 @@ $(document).ready(function() {
             }
         });
     })
+
+     //load video ajax
+    $('.show-title-video li:first-child a').addClass('active');
+    $('.video').click(function (e) {
+        e.preventDefault();
+        $(this).closest('ul').find('.video.active').removeClass('active');
+        $(this).addClass('active');
+        var id_video = $(this).attr('id');
+
+        $.ajax({
+            url : $(this).attr('href'),
+            method : 'get',
+            data : {
+                'id_video' : id_video
+            },
+            success : function (data) {
+                if (data.success) {
+                    $('.show-video').html(`
+                        <video width="100%" height="auto" controls autoplay>
+                            <source src="` + data.url +`" type="video/mp4" class="video">
+                        </video>
+                    `)
+                } else {
+                    alert(data.errors)
+                }
+            }
+        });
+    });
 });

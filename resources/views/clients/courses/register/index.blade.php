@@ -1,5 +1,5 @@
 
-@section('title', trans('lang.list_post'))
+@section('title', trans('lang.list_course'))
 @extends('clients.layouts.master')
 @section('content')
      <section class="section-list-post-user">
@@ -24,7 +24,7 @@
                             @foreach ($courses as $course)
                                 <tr>
                                     <td class="text-center">{{ $loop->iteration }}</td>
-                                    <td>{{ $course->name }}</td>
+                                     <td><a href="{{ route('course-detail', $course->id) }}">{{ $course->name }}</a></td>
                                     <td class="text-center">{{ $course->date_register }}</td>
                                 </tr>
                             @endforeach
