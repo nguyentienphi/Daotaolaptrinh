@@ -17,19 +17,6 @@ Route::get('/', 'HomeController@index');
 
 Auth::routes();
 
-Route::group([
-    'namespace' => 'Admin',
-    'prefix' => 'admin'
-], function () {
-    Route::get('/', function () {
-        return view('admin.layouts.master');
-    });
-
-    Route::get('/users', 'UserController@index')
-        ->name('admin.users.index');
-});
-
-
 Route::get('logout', 'Auth\LoginController@logout');
 Route::resource('post', 'Client\PostController');
 Route::get('list-post-user', 'Client\PostController@showPostUser')->name('list-post-user')->middleware('profile');
