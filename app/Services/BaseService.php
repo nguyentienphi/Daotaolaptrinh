@@ -94,18 +94,6 @@ abstract class BaseService
         return $this->model->find($id, $columns);
     }
 
-    public function findOrFail($id, $columns = ['*'])
-    {
-        try {
-            $model = $this->model->findOrFail($id, $columns);
-            $this->makeModel();
-
-            return $model;
-        } catch (ModelNotFoundException $e) {
-            throw new \App\Exceptions\Api\NotFoundException('Model not found with id:' . $id, NOT_FOUND);
-        }
-    }
-
     public function whereIn($column, $values)
     {
         $values = is_array($values) ? $values : [$values];

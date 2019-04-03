@@ -31,12 +31,16 @@ Route::group([
 
 
 Route::get('logout', 'Auth\LoginController@logout');
-Route::resource('post', 'Client\PostController');
-Route::get('list-post-user', 'Client\PostController@showPostUser')->name('list-post-user')->middleware('profile');
-Route::get('list-post-category/{id}', 'Client\PostController@showPostCategory')->name('list-post-category');
 
-Route::get('list-course-category/{id}', 'Client\CourseController@showCourseCategory')->name('list-course-category');
-Route::get('show-course/{id}', 'Client\CourseController@show')->name('show-course');
-Route::post('register-course', 'Client\CourseController@registerCourse')->name('register-course');
-Route::get('list-course-register', 'Client\CourseController@listCourse')->name('list-course-register');
+Route::group(['namespace' => 'Client'], function () {
+    Route::resource('post', 'PostController');
+    Route::get('list-post-user', 'PostController@showPostUser')->name('list-post-user')->middleware('profile');
+    Route::get('list-post-category/{id}', 'PostController@showPostCategory')->name('list-post-category');
 
+    Route::get('list-course-category/{id}', 'CourseController@showCourseCategory')->name('list-course-category');
+    Route::get('show-course/{id}', 'CourseController@show')->name('show-course');
+    Route::post('register-course', 'CourseController@registerCourse')->name('register-course');
+    Route::get('list-course-register', 'CourseController@listCourse')->name('list-course-register');
+    Route::get('course-detail/{id}', 'CourseController@getDetailCourseRegister')->name('course-detail');
+    Route::get('show-video-ajax', 'CourseController@showVideoAjax')->name('show-video-ajax');
+});

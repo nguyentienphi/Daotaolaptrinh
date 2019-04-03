@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Services\Course\CourseService;
 use App\Services\User\UserService;
+use App\Services\Video\VideoService;
 use Auth;
 
 class CourseController extends Controller
@@ -13,10 +14,14 @@ class CourseController extends Controller
     protected $courseService;
     protected $userService;
 
-    public function __construct(CourseService $courseService, UserService $userService)
+    public function __construct(CourseService $courseService,
+        UserService $userService,
+        VideoService $videoService
+    )
     {
         $this->courseService = $courseService;
         $this->userService = $userService;
+        $this->videoService = $videoService;
     }
 
     public function showCourseCategory($id)
@@ -33,14 +38,10 @@ class CourseController extends Controller
 
     public function show($id)
     {
-        try {
-            $course = $this->courseService->where('id', $id)->first();
+        $course = $this->courseService->findOrFail($id);
 
-            return view('clients.courses.show', compact('course','videos'));
-        } catch (Exception $e) {
-            return view('errors.404');
-        }
-    }
+        return view('clients.courses.show', compact('course','videos'));
+}
 
     public function registerCourse(Request $request)
     {
@@ -82,5 +83,34 @@ class CourseController extends Controller
         $courses = $this->userService->getCourse();
 
         return view('clients.courses.register.index', compact('courses'));
+    }
+
+    public function getDetailCourseRegister($id)
+    {
+        $course = $this->courseService->findOrFail($id);
+        $videos = $course->videos()->get();
+
+        return view('clients.courses.register.detail', compact('course', 'videos'));
+    }
+    public function showVideoAjax(Request $request)
+    {
+        if (!$request->ajax()) {
+            return response()->json([
+                'success' => false
+            ]);
+        }
+        try {
+            $id_video = $request->id_video;
+            $video = $this->videoService->getVideoId($id_video);
+            $url = asset($video->url);
+            return response()->json([
+                'url' => $url,
+                'success' => true
+            ]);
+        } catch (Exception $e) {
+            return response()->json([
+                'errors' => trans('course.error_video')
+            ]);
+        }
     }
 }
