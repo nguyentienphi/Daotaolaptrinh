@@ -1,5 +1,6 @@
 @section('title', trans('lang.list_post'))
-@include('clients.layouts.header')
+@extends('clients.layouts.master')
+@section('content')
     <section class="section-list-post-user">
         {{ Html::image(asset('storage/image/bg/bannerpost.jpg'), '', ['class' => 'img_banner_post']) }}
         @include('clients.layouts.notice')
@@ -39,9 +40,9 @@
                                         @endif
                                     </td>
                                     <td class="text-center">
-                                        <a href="" title={{trans('lang.view')}}><i class="ti-eye action-post view"></i></a>
-                                        <a href="" title={{trans('lang.edit')}}><i class="ti-pencil action-post edit"></i></a>
-                                        <a href="" title={{trans('lang.delete')}}><i class="ti-trash action-post delete"></i></a>
+                                        <a href="{{ route('post.show', $postUser->id) }}" title={{trans('lang.view')}}><i class="ti-eye action-post view"></i></a>
+                                        <a href="{{ route('post.edit', $postUser->id) }}" title={{trans('lang.edit')}}><i class="ti-pencil action-post edit"></i></a>
+                                        <a href="{{ route('delete-post', $postUser->id) }}" title={{trans('lang.delete')}} class="confirm-delete"><i class="ti-trash action-post delete"></i></a>
                                     </td>
                                 </tr>
                             @endforeach
@@ -55,4 +56,4 @@
 
         </div>
     </div>
-@include('clients.layouts.footer')
+@endsection
