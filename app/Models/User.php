@@ -11,6 +11,17 @@ class User extends Authenticatable
     use Notifiable;
 
     /**
+     * Number perPage
+     *
+     * @var int
+     */
+    protected $perPage = 7;
+
+    CONST ROLE_ADMIN = 1;
+    CONST ROLE_USER = 2;
+    CONST ROLE_TEACHER =3;
+
+    /**
      * The attributes that are mass assignable.
      *
      * @var array
