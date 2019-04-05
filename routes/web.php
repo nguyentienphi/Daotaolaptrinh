@@ -44,3 +44,11 @@ Route::group(['namespace' => 'Client'], function () {
     Route::get('course-detail/{id}', 'CourseController@getDetailCourseRegister')->name('course-detail');
     Route::get('show-video-ajax', 'CourseController@showVideoAjax')->name('show-video-ajax');
 });
+
+Route::group(['namespace' => 'Admin'], function () {
+    Route::group([
+            'prefix' => 'users'
+    ], function () {
+        Route::get('/', 'UserController@index')->name('admin.users.index');
+    });
+});

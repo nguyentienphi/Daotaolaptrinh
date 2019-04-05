@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Services\UserService;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\User;
+use App\Services\User\UserService;
 
 class UserController extends Controller
 {
@@ -18,9 +18,24 @@ class UserController extends Controller
         $this->userService =  new UserService();
     }
 
+    /**
+     * Show list user
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function index(){
-        $users = $this->userService->getAll();
+        $data['users'] = $this->userService->getAll();
 
-        return view('admin.users.add');
+        foreach ($data['users'] as $user) {
+            if ($user->role == User::ROLE_ADMIN) {
+                $user->role = "Admin";
+            } elseif ($user->role == User::ROLE_USER) {
+                $user->role = "User";
+            } else {
+                $user->role = "Teacher";
+            }
+        }
+
+        return view('admin.users.index', $data);
     }
 }

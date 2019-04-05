@@ -46,4 +46,16 @@ class UserService extends BaseService
 
         return $course;
     }
+
+    /**
+     * get list user of sys
+     *
+     * @return mixed
+     */
+    public function getAll()
+    {
+        $users = User::paginate();
+
+        return $users;
+    }
 }
