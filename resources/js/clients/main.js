@@ -115,4 +115,36 @@ $(document).ready(function() {
             }
         });
     });
+
+    //comment
+    $(document).on('submit', '#formCommentPost', function (e) {
+        e.preventDefault();
+        var post = $('#post').val();
+        var content = $('.comment-post').val();
+
+        $.ajax({
+            url : $(this).attr('action'),
+            method : $(this).attr('method'),
+            dataType : 'json',
+            data : {
+                'post' : post,
+                'content' : content
+            },
+            success : function (data) {
+                $('.content-comment').append(`
+                    <div class="item-comment">
+                        <img src="`+ data.image +`" class="img-comment">
+                        <div class="content_comment">
+                            <a href="">` + data.name +`</a>
+                            <p>` + content +`</p>
+                            <a class="reply" href="javascript:void(0)">`+ Lang.get('lang.reply') +`</a>
+                        </div>
+                        <div class="clearfix"></div>
+                        <hr>
+                    </div>
+                `);
+                $('.comment-post').val('');
+            }
+        });
+    });
 });

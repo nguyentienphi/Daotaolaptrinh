@@ -1,5 +1,6 @@
-@section('title', 'post details')
-@include('clients.layouts.header')
+@section('title', $post->title)
+@extends('clients.layouts.master')
+@section('content')
     <section class="section_gap">
         {{ Html::image(asset('storage/image/bg/bannerpost.jpg'), '', ['class' => 'img_banner_post']) }}
     </section>
@@ -48,59 +49,53 @@
             <div class="col-lg-1"></div>
             <div class="col-lg-10 container-comment">
                 <h3>@lang('post.post_comment')</h3>
-                <div class="conten-comment">
-                    <div class="item-comment">
-                        <img src="{{ asset('storage/image/bg/banner.jpg') }}" class="img-comment">
-                        <div class="content_comment">
-                            <p>Nguyen tienasd phi
-                            </p>
-                            <a class="reply" href="javascript:void(0)">@lang('lang.reply')</a>
-                            <div class="reply-content">
-                                <div class="element-reply">
-                                    <img src="{{ asset('storage/image/bg/banner.jpg') }}" class="img-comment">
-                                    <p>dhsalkhlfkshalfk</p>
-                                    <a href="javascript:void(0)" class="reply-to-reply">@lang('lang.reply')</a>
-                                </div>
+                <div class="content-comment">
+                    @foreach ($comments as $comment)
+                        <div class="item-comment">
+                            <img src="{{ asset($comment->user->avatar) }}" class="img-comment">
+                            <div class="content_comment">
+                                <a href="">{{ $comment->user->name }}</a>
+                                <p>{{ $comment->content }}</p>
+                                <a class="reply" href="javascript:void(0)">Trả lời</a>
+                                {{-- <div class="reply-content">
+                                    <div class="element-reply">
+                                        <img src="{{ asset($comment->user->avatar) }}" class="img-comment">
+                                        <p>dhsalkhlfkshalfk</p>
+                                        <a href="javascript:void(0)" class="reply-to-reply">@lang('lang.reply')</a>
+                                    </div>
+                                </div> --}}
                             </div>
+                            <div class="clearfix"></div>
+                            <hr>
                         </div>
-                        <div class="clearfix"></div>
-                        <hr>
-                    </div>
-                    <div class="item-comment">
-                        <img src="{{ asset('storage/image/bg/banner.jpg') }}" class="img-comment">
-                        <div class="content_comment">
-                            <p>Nguyen tienasd phi
-                            </p>
-                            <a class="reply" href="javascript:void(0)">Trả lời</a>
-                            <div class="reply-content">
-                                <div class="element-reply">
-                                    <img src="{{ asset('storage/image/bg/banner.jpg') }}" class="img-comment">
-                                    <p>dhsalkhlfkshalfk</p>
-                                    <a href="javascript:void(0)" class="reply-to-reply">@lang('lang.reply')</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="clearfix"></div>
-                        <hr>
-                    </div>
+                    @endforeach
                 </div>
-                {{ Form::open() }}
-                    <div class="form-comment">
-                        <div class="box-img-comment">
-                            {{ Html::image(asset('storage/image/bg/banner.jpg'), '', ['class' => 'img-form-comment']) }}
-                        </div>
-                        <div class="content-form-comment">
-                            {{ Form::textarea('comment', '', ['class' => 'form-control', 'rows' => 1, 'placeholder' => trans('lang.placeholder_comment')]) }}
-                        </div>
-                        <div class="btn-comment">
-                            {{ Form::submit(trans('lang.comment'), ['class' => 'btn btn-primary btn-sm']) }}
-                        </div>
-                        <div class="clearfix"></div>
+                @guest
+                    <div>
+                        <p>@lang('post.checkLogin')</p>
                     </div>
-                {{ Form::close() }}
+                @else
+                    {{ Form::open(['id' => 'formCommentPost', 'route' => 'add-comment']) }}
+                        {{ Form::hidden('post', $post->id, ['id' => 'post']) }}
+                        {{ Form::hidden('avatar', asset(Auth::user()->avatar), ['class' => 'avatar']) }}
+                        <div class="form-comment">
+                            <div class="box-img-comment">
+                                {{ Html::image(asset(Auth::user()->avatar), '', ['class' => 'img-form-comment']) }}
+                            </div>
+                            <div class="content-form-comment">
+                                {{ Form::textarea('comment', '', ['class' => 'form-control comment-post auto-resize', 'rows' => 1, 'placeholder' => trans('lang.placeholder_comment')]) }}
+                            </div>
+                            <div class="btn-comment">
+                                {{ Form::submit(trans('lang.comment'), ['class' => 'btn btn-primary btn-sm']) }}
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    {{ Form::close() }}
+                @endguest
             </div>
         </div>
     </div>
-
-@include('clients.layouts.footer')
-{{ Html::script(asset('js/clients/add-form-comment.js')) }}
+@endsection
+@section('js')
+    {{ Html::script(asset('js/clients/add-form-comment.js')) }}
+@endsection

@@ -29,6 +29,10 @@ Route::group([
         'prefix' => 'users'
     ], function () {
         Route::get('/', 'UserController@index')->name('admin.users.index');
+
+        Route::get('/create', 'UserController@create')->name('admin.users.add');
+
+        Route::post('/', 'UserController@store')->name('admin.users.store');
     });
 });
 
@@ -47,5 +51,8 @@ Route::group(['namespace' => 'Client'], function () {
     Route::get('list-course-register', 'CourseController@listCourse')->name('list-course-register');
     Route::get('course-detail/{id}', 'CourseController@getDetailCourseRegister')->name('course-detail');
     Route::get('show-video-ajax', 'CourseController@showVideoAjax')->name('show-video-ajax');
+
+    //comment
+    Route::post('add-comment', 'CommentController@addCommentPost')->name('add-comment');
 });
 

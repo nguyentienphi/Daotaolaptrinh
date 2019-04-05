@@ -1,10 +1,11 @@
 $(document).ready(function () {
     function elements() {
+        var avatar = $('.avatar').val();
         return `
             <form>
                 <div class="form-comment-append">
                     <div class="box-img-comment">
-                        <img src="./storage/image/bg/banner.jpg" class="img-form-comment">
+                        <img src="`+ avatar +`" class="img-form-comment">
                     </div>
                     <div class="content-form-comment">
                         <textarea class="form-control" rows="1" placeholder="Nhập nội dung bình luận"></textarea>
@@ -19,15 +20,16 @@ $(document).ready(function () {
         `;
     }
 
-    $('.reply').click(function () {
+     $(document).on('click', '.reply', function () {
+
         if ($(this).parent().find('.form-comment-append').length == 0) {
-            $(this).parent().append(elements)
+            $(this).parent().append(elements());
         }
     });
 
-    $('.reply-to-reply').click(function () {
+    $(document).on('click', '.reply-to-reply', function () {
         if ($(this).parent().parent().parent().find('.form-comment-append').length == 0) {
-            $(this).parent().parent().parent().append(elements);
+            $(this).parent().parent().parent().append(elements());
         }
     });
 
