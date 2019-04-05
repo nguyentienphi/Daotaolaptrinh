@@ -34,6 +34,7 @@ Route::get('logout', 'Auth\LoginController@logout');
 
 Route::group(['namespace' => 'Client'], function () {
     Route::resource('post', 'PostController');
+    Route::get('delete-post/{id}', 'PostController@destroy')->name('delete-post');
     Route::get('list-post-user', 'PostController@showPostUser')->name('list-post-user')->middleware('profile');
     Route::get('list-post-category/{id}', 'PostController@showPostCategory')->name('list-post-category');
 
