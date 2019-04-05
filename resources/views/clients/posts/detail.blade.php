@@ -9,7 +9,9 @@
             <div class="col-lg-10 content-post-detail">
                 <div class="header-post-detail">
                     <a class="title author-post" href="">{{ $post->user->name }}</a>
+                    @if ($post->user->id != Auth::user()->id)
                         {{ Form::button('<i class="ti-plus"></i> Follow', ['class' => 'btn btn-primary btn-sm']) }}
+                    @endif
                     <div style="float: right;">
                         <span title="{{ trans('post.view') }}"><i class="ti-eye icons-post-items"></i>{{ $post->view_number }}</span>
                         <span class="icons-post" title="{{ trans('post.comment') }}"><i class="ti-comment icons-post-items"></i>{{ count($post->comment) }}</span>

@@ -21,4 +21,8 @@
         'create_failed' => 'Tạo bài viết thất bại!',
         'more' => 'Nhiều hơn',
         'post_comment' => 'Bình luận',
+        'delete_success' => 'Xóa bài viết thành công',
+        'delete_error' => 'Xóa bài viết thất bại',
+        'update_success' => 'Cập nhật bài viết thành công',
+        'update_failed' => 'Cập nhật bài viết thất bại'
     ];

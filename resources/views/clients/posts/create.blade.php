@@ -1,5 +1,6 @@
 @section('title', trans('lang.create_post'))
-@include('clients.layouts.header')
+@extends('clients.layouts.master')
+@section('content')
     <section class="section_gap"></section>
     <div class="container">
         {{ Form::open(['route' => 'post.store', 'method' => 'post', 'id' => 'formCreatePost']) }}
@@ -22,7 +23,9 @@
             </div>
         {{ Form::close() }}
     </div>
-@include('clients.layouts.footer')
+@endsection
+@section('js')
 {{ Html::script(asset('vendor/unisharp/laravel-ckeditor/ckeditor.js')) }}
 {{ Html::script(asset('js/clients/item.js')) }}
 {{ Html::script(asset('js/clients/builder.js')) }}
+@endsection

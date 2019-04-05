@@ -1,4 +1,13 @@
 $(document).ready(function() {
+    $('.confirm-delete').click(function () {
+        var check = confirm('Bạn có muốn xóa?');
+
+        if(check) {
+            return true;
+        } else {
+            return false;
+        }
+    });
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')

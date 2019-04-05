@@ -24,7 +24,7 @@
                             <div class="content title-post">
                                 <a class="title author-post" href="">{{ $post->user->name }}</a>
                                 <p>
-                                    <a href="{{ route('post.show', $post) }}" class="color-title-post">{{ $post->title }}</a>
+                                    <a href="{{ route('post.show', $post->id) }}" class="color-title-post">{{ $post->title }}</a>
                                 </p>
                                 <p>
                                     <span title="{{ trans('post.view') }}"><i class="ti-eye icons-post-items""></i>{{ $post->view_number }}</span>
@@ -47,7 +47,7 @@
                 <hr>
                     @foreach ($postNews as $postNew)
                          <div>
-                            <h4><a href="#" class="color-title-post">{{ $postNew->title }}</a></h4>
+                            <h4><a href="{{ route('post.show', $postNew->id) }}" class="color-title-post">{{ $postNew->title }}</a></h4>
                             <span title="{{ trans('post.view') }}"><i class="ti-eye icons-post-items"></i>{{ $postNew->view_number }}</span>
                             <span class="icons-post" title="{{ trans('post.comment') }}"><i class="ti-comment icons-post-items"></i>{{ count($postNew->comment) }}</span>
                             <p><a href="#">{{ $postNew->user->name }}</a></p>

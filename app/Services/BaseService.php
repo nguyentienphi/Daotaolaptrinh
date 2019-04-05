@@ -181,7 +181,7 @@ abstract class BaseService
 
     public function update($id, $input)
     {
-        $model = $this->model->withTrashed()->findOrFail($id);
+        $model = $this->model->findOrFail($id);
         $model->fill($input);
         $model->save();
 
@@ -314,5 +314,10 @@ abstract class BaseService
         $this->makeModel();
 
         return $model;
+    }
+
+    public function findOrFail($id, $columns = ['*'])
+    {
+        return $this->model->findOrFail($id, $columns);
     }
 }
