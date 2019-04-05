@@ -28,7 +28,7 @@
                                 </p>
                                 <p>
                                     <span title="{{ trans('post.view') }}"><i class="ti-eye icons-post-items""></i>{{ $post->view_number }}</span>
-                                    <span class="icons-post" title="{{ trans('post.comment') }}"><i class="ti-comment icons-post-items"></i>{{ count($post->comment) }}</span>
+                                    <span class="icons-post" title="{{ trans('post.comment') }}"><i class="ti-comment icons-post-items"></i>{{ count($post->comments) }}</span>
                                 </p>
                             </div>
                         </div>
@@ -49,7 +49,7 @@
                          <div>
                             <h4><a href="{{ route('post.show', $postNew->id) }}" class="color-title-post">{{ $postNew->title }}</a></h4>
                             <span title="{{ trans('post.view') }}"><i class="ti-eye icons-post-items"></i>{{ $postNew->view_number }}</span>
-                            <span class="icons-post" title="{{ trans('post.comment') }}"><i class="ti-comment icons-post-items"></i>{{ count($postNew->comment) }}</span>
+                            <span class="icons-post" title="{{ trans('post.comment') }}"><i class="ti-comment icons-post-items"></i>{{ count($postNew->comments) }}</span>
                             <p><a href="#">{{ $postNew->user->name }}</a></p>
                         </div>
                         <hr>
@@ -59,7 +59,7 @@
                 <div>
                     {{ Html::image(asset('storage/image/bg/18698271_386164775111588_1630485189916696433_n.jpg'), '', ['class' => 'img-user-post']) }}
                 </div>
-                    <div class="content title-post">
+                <div class="content title-post">
                     <a class="title author-post" href="">Nguyen Tien Phi</a>
                     <br>
                     <p>

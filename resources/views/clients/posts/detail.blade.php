@@ -10,13 +10,16 @@
             <div class="col-lg-10 content-post-detail">
                 <div class="header-post-detail">
                     <a class="title author-post" href="">{{ $post->user->name }}</a>
-                    @if ($post->user->id != Auth::user()->id)
+                    @guest
                         {{ Form::button('<i class="ti-plus"></i> Follow', ['class' => 'btn btn-primary btn-sm']) }}
-                    @endif
+                    @else
+                        @if ($post->user->id != Auth::user()->id)
+                            {{ Form::button('<i class="ti-plus"></i> Follow', ['class' => 'btn btn-primary btn-sm']) }}
+                        @endif
+                    @endguest
                     <div style="float: right;">
                         <span title="{{ trans('post.view') }}"><i class="ti-eye icons-post-items"></i>{{ $post->view_number }}</span>
-                        <span class="icons-post" title="{{ trans('post.comment') }}"><i class="ti-comment icons-post-items"></i>{{ count($post->comment) }}</span>
-
+                        <span class="icons-post" title="{{ trans('post.comment') }}"><i class="ti-comment icons-post-items"></i>{{ count($post->comments) }}</span>
                     </div>
                 </div>
                 <hr>
@@ -36,8 +39,8 @@
                                 <h3><a href="{{ route('post.show', $morePost) }}" class="color-title-post">{{$morePost->title}}</a></h3>
                                 <a href="">{{ $morePost->user->name }}</a>
                                 <p style="padding-top: 15px;">
-                                    <span title="{{ trans('post.view') }}"><i class="ti-eye icons-post-items"></i>{{ $post->view_number }}</span>
-                                    <span class="icons-post" title="{{ trans('post.comment') }}"><i class="ti-comment icons-post-items"></i>{{ count($post->comment) }}</span>
+                                    <span title="{{ trans('post.view') }}"><i class="ti-eye icons-post-items"></i>{{ $morePost->view_number }}</span>
+                                    <span class="icons-post" title="{{ trans('post.comment') }}"><i class="ti-comment icons-post-items"></i>{{ count($morePost->comments) }}</span>
                                 </p>
                             </div>
                         @endforeach
@@ -56,14 +59,35 @@
                             <div class="content_comment">
                                 <a href="">{{ $comment->user->name }}</a>
                                 <p>{{ $comment->content }}</p>
-                                <a class="reply" href="javascript:void(0)">Trả lời</a>
-                                {{-- <div class="reply-content">
-                                    <div class="element-reply">
-                                        <img src="{{ asset($comment->user->avatar) }}" class="img-comment">
-                                        <p>dhsalkhlfkshalfk</p>
-                                        <a href="javascript:void(0)" class="reply-to-reply">@lang('lang.reply')</a>
-                                    </div>
-                                </div> --}}
+                                <input type="hidden" name="parent-comment-post" value="{{ $comment->id }}">
+                                @guest
+                                @else
+                                    <a href="javascript:void(0)" class="reply">@lang('lang.reply')</a>
+                                @endguest
+
+                                <div class="reply-content">
+                                    @if ( $comment->replysComment && count($comment->replysComment))
+                                        <p>
+                                            <a href="javascript:void(0)" class="load-reply-post">
+                                                <span><i class="ti-back-right"></i></span>
+                                                {{ count($comment->replysComment) }} @lang('post.reply')
+                                            </a>
+                                        </p>
+                                        <div class="load-comment" style="display: none">
+                                            @foreach($comment->replysComment as $reply)
+                                                <div class="element-reply">
+                                                    <img src="{{ asset($reply->user->avatar) }}" class="img-comment">
+                                                    <p><a href="">{{ $reply->user->name  }}</a></p>
+                                                    <p>{{ $reply->content }}</p>
+                                                    @guest
+                                                    @else
+                                                        <a href="javascript:void(0)" class="reply-to-reply">@lang('lang.reply')</a>
+                                                    @endguest
+                                                </div>
+                                            @endforeach
+                                        </div>
+                                   @endif
+                                </div>
                             </div>
                             <div class="clearfix"></div>
                             <hr>
@@ -72,7 +96,7 @@
                 </div>
                 @guest
                     <div>
-                        <p>@lang('post.checkLogin')</p>
+                        <p><span>@lang('post.checkLogin')</span> <a href="javascript:void(0)" data-toggle="modal" data-target="#modalLogin">@lang('lang.login')</a></p>
                     </div>
                 @else
                     {{ Form::open(['id' => 'formCommentPost', 'route' => 'add-comment']) }}

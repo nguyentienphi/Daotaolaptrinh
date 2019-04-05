@@ -23,4 +23,9 @@ class Comment extends Model
     {
         return $this->morphTo();
     }
+
+    public function replysComment()
+    {
+        return $this->hasMany(Comment::class, 'parent_id');
+    }
 }

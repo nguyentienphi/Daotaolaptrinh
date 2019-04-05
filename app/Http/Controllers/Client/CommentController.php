@@ -28,12 +28,34 @@ class CommentController extends Controller
 
         $post = $this->postService->findOrFail($request->post);
         $input = $request->content;
-        $this->commentService->addCommentPost($post, $input);
+        $comment = $this->commentService->addCommentPost($post, $input);
 
         return response()->json([
             'image' => asset(Auth::user()->avatar),
             'name' => Auth::user()->name,
-            'success' => true
+            'success' => true,
+            'id' => $comment->id
+        ]);
+    }
+
+    public function replyCommentPost(Request $request)
+    {
+        if (!$request->ajax()) {
+            return response()->json([
+                'success' => false
+            ]);
+        }
+
+        $post = $this->postService->findOrFail($request->post);
+        $content = $request->content;
+        $parentId = $request->parent_id;
+
+        $this->commentService->replyCommentPost($post, $content, $parentId);
+
+        return response()->json([
+            'success' => true,
+            'avatar' => asset(Auth::user()->avatar),
+            'name' => Auth::user()->name,
         ]);
     }
 }
