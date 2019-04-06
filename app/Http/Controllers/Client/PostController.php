@@ -89,7 +89,9 @@ class PostController extends Controller
                 $morePosts = $morePosts->random(3);
             }
 
-            return view('clients.posts.detail', compact('post', 'morePosts'));
+            $comments = $post->comments()->get();
+
+            return view('clients.posts.detail', compact('post', 'morePosts', 'comments'));
         } catch (Exception $e) {
             return view('clients.errors.404');
         }

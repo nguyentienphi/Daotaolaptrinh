@@ -47,5 +47,8 @@ Route::group(['namespace' => 'Client'], function () {
     Route::get('list-course-register', 'CourseController@listCourse')->name('list-course-register');
     Route::get('course-detail/{id}', 'CourseController@getDetailCourseRegister')->name('course-detail');
     Route::get('show-video-ajax', 'CourseController@showVideoAjax')->name('show-video-ajax');
+
+    //comment
+    Route::post('add-comment', 'CommentController@addCommentPost')->name('add-comment');
 });
 

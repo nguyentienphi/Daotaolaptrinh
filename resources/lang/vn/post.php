@@ -24,5 +24,6 @@
         'delete_success' => 'Xóa bài viết thành công',
         'delete_error' => 'Xóa bài viết thất bại',
         'update_success' => 'Cập nhật bài viết thành công',
-        'update_failed' => 'Cập nhật bài viết thất bại'
+        'update_failed' => 'Cập nhật bài viết thất bại',
+        'checkLogin' => 'Bạn cần đăng nhập để tiến hành bình luận'
     ];
