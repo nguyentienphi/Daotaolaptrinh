@@ -54,8 +54,18 @@ class UserService extends BaseService
      */
     public function getAll()
     {
-        $users = User::paginate();
+        $users = User::orderBy('id', 'desc')
+            ->paginate();
 
         return $users;
+    }
+
+    /**
+     * @param array $dataUser
+     * @return mixed
+     */
+    public function createUser(array $data)
+    {
+        return $this->create($data);
     }
 }

@@ -21,6 +21,7 @@ class User extends Authenticatable
     CONST ROLE_USER = 2;
     CONST ROLE_TEACHER =3;
 
+
     /**
      * The attributes that are mass assignable.
      *
