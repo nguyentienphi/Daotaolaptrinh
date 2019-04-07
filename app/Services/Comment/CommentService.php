@@ -11,10 +11,19 @@ class CommentService extends BaseService
     }
 
     public function addCommentPost($post, $data) {
-        $post->comments()->create([
+        return $post->comments()->create([
             'user_id' => Auth::user()->id,
             'content' => $data,
             'parent_id' => config('settings.comment')
+        ]);
+    }
+
+    public function replyCommentPost($post, $content, $parentId)
+    {
+        $post->comments()->create([
+            'user_id' => Auth::user()->id,
+            'content' => $content,
+            'parent_id' => $parentId
         ]);
     }
 }

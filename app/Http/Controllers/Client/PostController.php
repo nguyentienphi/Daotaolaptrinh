@@ -89,7 +89,7 @@ class PostController extends Controller
                 $morePosts = $morePosts->random(3);
             }
 
-            $comments = $post->comments()->get();
+            $comments = $post->comments()->where('parent_id', config('settings.comment'))->get();
 
             return view('clients.posts.detail', compact('post', 'morePosts', 'comments'));
         } catch (Exception $e) {

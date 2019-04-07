@@ -137,7 +137,9 @@ $(document).ready(function() {
                         <div class="content_comment">
                             <a href="">` + data.name +`</a>
                             <p>` + content +`</p>
+                            <input type="hidden" name="parent-comment-post" value="`+ data.id +`">
                             <a class="reply" href="javascript:void(0)">`+ Lang.get('lang.reply') +`</a>
+                            <div class="reply-content"></div>
                         </div>
                         <div class="clearfix"></div>
                         <hr>
@@ -147,4 +149,41 @@ $(document).ready(function() {
             }
         });
     });
+
+    //reply comment
+    $(document).on('submit', '#formReplyCommentPost', function (e) {
+        e.preventDefault();
+        var post = $('#post').val();
+        var element = $(this).closest('div.content_comment');
+        var parent_id = element.find('input[name="parent-comment-post"]').val();
+        var content = element.find('.content-form-comment .content-reply-post').val();
+
+        $.ajax({
+            url : '/reply-comment-post',
+            method : $(this).attr('method'),
+            dataType : 'json',
+            data : {
+                'post' : post,
+                'parent_id' : parent_id,
+                'content' : content
+            },
+            success : function (data) {
+                element.find('.reply-content').append(`
+                    <div class="element-reply">
+                        <img src="`+ data.avatar +`" class="img-comment">
+                        <p><a href="">`+ data.name +`</a></p>
+                        <p>`+ content +`</p>
+                        <a href="javascript:void(0)" class="reply-to-reply">`+ Lang.get('lang.reply') +`</a>
+                    </div>
+                `);
+                element.find('.content-form-comment .content-reply-post').val('');
+            }
+        });
+    });
+
+    //load reply post
+    $(document).on('click', '.load-reply-post', function (e) {
+        e.preventDefault();
+        $(this).closest('div').find('.load-comment').toggle();
+    })
 });
