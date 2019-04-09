@@ -28,17 +28,23 @@ Route::group([
     Route::group([
         'prefix' => 'users'
     ], function () {
-        Route::get('/', 'UserController@index')->name('admin.users.index');
+        Route::get('/', 'UserController@index')
+            ->name('admin.users.index');
 
-        Route::get('/create', 'UserController@create')->name('admin.users.add');
+        Route::get('/create', 'UserController@create')
+            ->name('admin.users.add');
 
-        Route::post('/', 'UserController@store')->name('admin.users.store');
+        Route::post('/', 'UserController@store')
+        ->name('admin.users.store');
 
-        Route::get('/{user}/edit', 'UserController@edit')->name('admin.users.edit');
+        Route::get('/{user}/edit', 'UserController@edit')
+        ->name('admin.users.edit');
 
-        Route::post('/{user}', 'UserController@update')->name('admin.users.update');
+        Route::post('/{user}', 'UserController@update')
+        ->name('admin.users.update');
 
-        Route::get('/{user}', 'UserController@destroy')->name('admin.users.destroy');
+        Route::get('/{user}', 'UserController@destroy')
+        ->name('admin.users.destroy');
     });
 });
 
@@ -47,19 +53,38 @@ Route::get('logout', 'Auth\LoginController@logout');
 
 Route::group(['namespace' => 'Client'], function () {
     Route::resource('post', 'PostController');
-    Route::get('delete-post/{id}', 'PostController@destroy')->name('delete-post');
-    Route::get('list-post-user', 'PostController@showPostUser')->name('list-post-user')->middleware('profile');
-    Route::get('list-post-category/{id}', 'PostController@showPostCategory')->name('list-post-category');
+    Route::get('delete-post/{id}', 'PostController@destroy')
+        ->name('delete-post');
+    Route::get('list-post-user', 'PostController@showPostUser')
+        ->name('list-post-user')->middleware('profile');
+    Route::get('list-post-category/{id}', 'PostController@showPostCategory')
+        ->name('list-post-category');
 
-    Route::get('list-course-category/{id}', 'CourseController@showCourseCategory')->name('list-course-category');
+    Route::get('list-course-category/{id}', 'CourseController@showCourseCategory')
+        ->name('list-course-category');
+
     Route::get('show-course/{id}', 'CourseController@show')->name('show-course');
-    Route::post('register-course', 'CourseController@registerCourse')->name('register-course');
-    Route::get('list-course-register', 'CourseController@listCourse')->name('list-course-register');
-    Route::get('course-detail/{id}', 'CourseController@getDetailCourseRegister')->name('course-detail');
-    Route::get('show-video-ajax', 'CourseController@showVideoAjax')->name('show-video-ajax');
+
+    Route::post('register-course', 'CourseController@registerCourse')
+        ->name('register-course');
+
+    Route::get('list-course-register', 'CourseController@listCourse')
+        ->name('list-course-register');
+
+    Route::get('course-detail/{id}', 'CourseController@getDetailCourseRegister')
+        ->name('course-detail');
+
+    Route::get('show-video-ajax', 'CourseController@showVideoAjax')
+        ->name('show-video-ajax');
 
     //comment post
-    Route::post('add-comment', 'CommentController@addCommentPost')->name('add-comment');
-    Route::post('reply-comment-post', 'CommentController@replyCommentPost')->name('reply-comment-post');
-});
+    Route::post('add-comment', 'CommentController@addCommentPost')
+        ->name('add-comment');
 
+    Route::post('reply-comment-post', 'CommentController@replyCommentPost')->name('reply-comment-post');
+
+    Route::get('list-comment', 'CommentController@listCommentUser')->name('list-comment');
+
+    Route::get('update-notification/{id}', 'CommentController@updateNotification')
+        ->name('update-notification');
+});

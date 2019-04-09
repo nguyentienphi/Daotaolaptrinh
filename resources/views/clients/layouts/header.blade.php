@@ -78,6 +78,39 @@
                                     <li class="nav-item">
                                         <a class="nav-link" href="{{ route('post.create') }}">@lang('lang.create_post')</a>
                                     </li>
+                                    <li class="nav-item">
+                                        <input type="hidden" id="user-id" value="{{auth()->user()->id}}">
+                                        <a class="nav-link dropdown-toggle user-nav-show relative" href="javascript:void(0)" id="navbarDropdownProfile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                            <span class="noti-tibell"><i class="ti-bell"></i></span>
+                                            @if (count(auth()->user()->unreadNotifications))
+                                                <span class="num" id = "count">{{ count(auth()->user()->unreadNotifications) }}
+                                                </span>
+                                            @else
+                                                <span class="" id = "count">
+                                                </span>
+                                            @endif
+                                        </a>
+                                        <ul class="dropdown-menu dropdown-menu-right header-menu show-box-notification" aria-labelledby="navbarDropdownProfile">
+                                            <div class="show-notifications">
+                                                @if (count(auth()->user()->notifications))
+                                                    @foreach (auth()->user()->notifications->take(config('settings.notification')) as $notification)
+                                                        <li>
+                                                            @if ($notification->read_at == null)
+                                                                <a href="{{ route('update-notification', $notification) }}" class="notification-unread "><span class="user-notification">{{ $notification->data['user']['name'] }}</span> @lang('comment.comment')</a>
+                                                            @else
+                                                                <a href="{{ route('update-notification', $notification) }}"><span class="user-notification">{{ $notification->data['user']['name'] }}</span> @lang('comment.comment')</a>
+                                                            @endif
+                                                        </li>
+                                                    @endforeach
+                                                @else
+                                                    <div class="notifications-empty">@lang('lang.no_notification')</div>
+                                                @endif
+                                            </div>
+                                            <div class="see-more-noti"><a href="" style="float: right">@lang('lang.see_more_notifications')</a>
+                                            </div>
+                                        </ul>
+                                    </li>
+
                                     <li class="nav-item user-dropdown last show">
                                         <a class="nav-link dropdown-toggle user-nav-show" href="javascript:void(0)" id="navbarDropdownProfile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                                             <span class="user-profile">
@@ -101,7 +134,7 @@
                                                 <a href="">@lang('lang.add_coin')</a>
                                             </li>
                                             <li>
-                                                <a href="">@lang('lang.comment')</a>
+                                                <a href="{{route('list-comment')}}">@lang('lang.comment')</a>
                                             </li>
                                             <li>
                                                 <a href="{{ route('logout') }}">@lang('lang.logout')</a>
