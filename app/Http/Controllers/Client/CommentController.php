@@ -39,8 +39,8 @@ class CommentController extends Controller
         $post = $this->postService->findOrFail($request->post);
         $input = $request->content;
         $comment = $this->commentService->addCommentPost($post, $input);
-
-        $this->notification($post, $comment);
+        $user = $post->user()->first();
+        $this->notification($post, $comment, $user);
 
         return response()->json([
             'image' => asset(Auth::user()->avatar),
@@ -62,12 +62,15 @@ class CommentController extends Controller
         $content = $request->content;
         $parentId = $request->parent_id;
 
-        $this->commentService->replyCommentPost($post, $content, $parentId);
+        $comment = $this->commentService->replyCommentPost($post, $content, $parentId);
+        $user = $this->commentService->findOrFail($request->parentCommentReply)->user;
+        $this->notification($post, $comment, $user);
 
         return response()->json([
             'success' => true,
             'avatar' => asset(Auth::user()->avatar),
             'name' => Auth::user()->name,
+            'userId' => $user->id
         ]);
     }
 
@@ -86,10 +89,8 @@ class CommentController extends Controller
         return redirect()->route('post.show', $idPost);
     }
 
-    public function notification($post, $comment)
+    public function notification($post, $comment, $user)
     {
-        $user = $post->user()->first();
-
         if ($user->id != Auth::user()->id) {
             $user->notify(new CommentNotification($comment, $post, Auth::user()));
         }
@@ -114,10 +115,12 @@ class CommentController extends Controller
             'content' => Auth::user()->name,
             'count' => $count++,
             'userId' => $user->id,
-            'notificationId' => $notification->id
+            'notificationId' => $notification->id,
+            'parentId' => $comment->parent_id
         ];
 
         $pusher->trigger('send-comment', 'NotifyComment', $data);
 
     }
+
 }

@@ -51,14 +51,20 @@
             forceTLS: true
         });
         var channel = pusher.subscribe('send-comment');
-
         channel.bind('NotifyComment', function(data) {
+
             if (user == data.userId) {
+                var text = '@lang('comment.comment')';
+
+                if (data.parentId != 0) {
+                    text = '@lang('comment.reply_comment')'
+                }
+
                 $('#count').text(data.count);
                 $('#count').addClass('num');
                 $('.show-notifications').prepend(`
                     <li>
-                         <a href="/update-notification/` + data.notificationId + `" style="background-color: #cceb514a"><span style="color: blue">` + data.content + `</span> @lang("comment.comment")
+                         <a href="/update-notification/` + data.notificationId + `" style="background-color: #cceb514a"><span style="color: blue">` + data.content + `</span> ` + text +`
                          </a>
                     </li>
                 `);

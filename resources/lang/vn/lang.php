@@ -77,5 +77,7 @@ return [
     'video' => 'Video',
     'update' => 'Tiến hành cập nhật',
     'see_more_notifications' => 'Xem tất cả!',
-    'no_notification' => 'Không có thông báo nào!'
+    'no_notification' => 'Không có thông báo nào!',
+    'all_notification' => 'Tất cả thông báo!',
+    'notification' => 'Thông báo của bạn'
 ];

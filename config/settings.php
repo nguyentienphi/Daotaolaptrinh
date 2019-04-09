@@ -19,5 +19,6 @@
         ],
         'comment' => 0,
         'page' => 1,
-        'notification' => 15
+        'notification' => 15,
+        'get_notification' => 7
     ];

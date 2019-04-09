@@ -23,7 +23,7 @@
                     </div>
                 </div>
                 <hr>
-                <div class="col-lg-10">
+                <div class="col-lg-12">
                     <h2>{{ $post->title }}</h2>
                     {!! $post->content !!}
                 </div>
@@ -60,11 +60,11 @@
                                 <a href="">{{ $comment->user->name }}</a>
                                 <p>{{ $comment->content }}</p>
                                 <input type="hidden" name="parent-comment-post" value="{{ $comment->id }}">
+                                <input type="hidden" name="parent-comment-reply" value="{{ count($comment->replysComment) ? $comment->replysComment->last()->id : $comment->id }}">
                                 @guest
                                 @else
                                     <a href="javascript:void(0)" class="reply">@lang('lang.reply')</a>
                                 @endguest
-
                                 <div class="reply-content">
                                     @if ( $comment->replysComment && count($comment->replysComment))
                                         <p>

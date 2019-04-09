@@ -3,6 +3,7 @@ namespace App\Services\Post;
 use App\Services\BaseService;
 use App\Models\Post;
 use App\Models\Comment;
+use App\Models\User;
 use Auth;
 
 class PostService extends BaseService
@@ -20,7 +21,7 @@ class PostService extends BaseService
         }
 
         $comments = Comment::whereIn('commentable_id', $postId)
-            ->paginate(config('settings.paginate.comment'));
+        ->paginate(config('settings.paginate.comment'));
 
         return $comments;
     }

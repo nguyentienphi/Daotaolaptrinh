@@ -86,7 +86,7 @@
                                                 <span class="num" id = "count">{{ count(auth()->user()->unreadNotifications) }}
                                                 </span>
                                             @else
-                                                <span class="" id = "count">
+                                                <span id = "count">
                                                 </span>
                                             @endif
                                         </a>
@@ -95,18 +95,20 @@
                                                 @if (count(auth()->user()->notifications))
                                                     @foreach (auth()->user()->notifications->take(config('settings.notification')) as $notification)
                                                         <li>
-                                                            @if ($notification->read_at == null)
-                                                                <a href="{{ route('update-notification', $notification) }}" class="notification-unread "><span class="user-notification">{{ $notification->data['user']['name'] }}</span> @lang('comment.comment')</a>
+                                                            <a href="{{ route('update-notification', $notification) }}" class="{{ $notification->read_at == null ? 'notification-unread' : 'user-notification' }}"><span class="user-notification">{{ $notification->data['user']['name'] }}</span>
+                                                            @if ($notification->data['comment']['parent_id'] == config('settings.comment'))
+                                                                @lang('comment.comment')
                                                             @else
-                                                                <a href="{{ route('update-notification', $notification) }}"><span class="user-notification">{{ $notification->data['user']['name'] }}</span> @lang('comment.comment')</a>
+                                                                @lang('comment.reply_comment')
                                                             @endif
+                                                            </a>
                                                         </li>
                                                     @endforeach
                                                 @else
                                                     <div class="notifications-empty">@lang('lang.no_notification')</div>
                                                 @endif
                                             </div>
-                                            <div class="see-more-noti"><a href="" style="float: right">@lang('lang.see_more_notifications')</a>
+                                            <div class="see-more-noti"><a href="{{ route('list-notification') }}" style="float: right">@lang('lang.see_more_notifications')</a>
                                             </div>
                                         </ul>
                                     </li>

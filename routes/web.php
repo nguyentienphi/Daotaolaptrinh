@@ -35,16 +35,16 @@ Route::group([
             ->name('admin.users.add');
 
         Route::post('/', 'UserController@store')
-        ->name('admin.users.store');
+            ->name('admin.users.store');
 
         Route::get('/{user}/edit', 'UserController@edit')
-        ->name('admin.users.edit');
+            ->name('admin.users.edit');
 
         Route::post('/{user}', 'UserController@update')
-        ->name('admin.users.update');
+            ->name('admin.users.update');
 
         Route::get('/{user}', 'UserController@destroy')
-        ->name('admin.users.destroy');
+            ->name('admin.users.destroy');
     });
 
     Route::group([
@@ -94,3 +94,7 @@ Route::group(['namespace' => 'Client'], function () {
     Route::get('update-notification/{id}', 'CommentController@updateNotification')
         ->name('update-notification');
 });
+
+Route::get('list-notification', 'HomeController@listNotification')
+    ->name('list-notification')
+    ->middleware('profile');

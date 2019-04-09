@@ -23,7 +23,7 @@ class CommentService extends BaseService
 
     public function replyCommentPost($post, $content, $parentId)
     {
-        $post->comments()->create([
+        return $post->comments()->create([
             'user_id' => Auth::user()->id,
             'content' => $content,
             'parent_id' => $parentId

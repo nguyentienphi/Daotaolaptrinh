@@ -4001,3 +4001,35 @@ input[placeholder] {
     margin-top: 29px;
     float: right;
 }
+
+.item-notification {
+    cursor: pointer;
+}
+
+.notification-read {
+    background: #fff;
+    margin-bottom: 10px;
+    box-shadow: 3px 3px #9ca4a74f;
+    padding: 7px;
+}
+
+.notification_unread {
+    background: #00ff341f;
+    margin-bottom: 10px;
+    box-shadow: 3px 3px #9ca4a74f;
+    padding: 7px
+}
+
+.user-all-notification {
+    color: #070707c7;
+    font-weight: 700;
+}
+
+.post-all-notification {
+  color: black;
+}
+
+.box-show-notification {
+    margin-bottom: 20px;
+     margin-top: 10px
+}
