@@ -37,9 +37,33 @@
         <script src="{{ asset('js/clients/gmaps.min.js')}}"></script>
         <script src="{{ asset('js/clients/theme.js')}}"></script>
         <script src="{{ asset('js/clients/jquery.sticky-kit.min.js')}}"></script>
-        {{ Html::script('messages.js') }}
+        <script src="{{ asset('messages.js')}}"></script>
         <script src="{{ asset('js/clients/auth.js')}}"></script>
         <script src="{{ asset('js/clients/main.js')}}"></script>
         <script src="{{ asset('js/clients/dataTable.js')}}"></script>
+        <script src="{{ asset('js/clients/pusher.min.js')}}"></script>
     </body>
+    <script type="text/javascript">
+        var user = $('#user-id').val();
+        Pusher.logToConsole = true;
+        var pusher = new Pusher('{{env('PUSHER_APP_KEY')}}', {
+            cluster: 'ap1',
+            forceTLS: true
+        });
+        var channel = pusher.subscribe('send-comment');
+
+        channel.bind('NotifyComment', function(data) {
+            if (user == data.userId) {
+                $('#count').text(data.count);
+                $('#count').addClass('num');
+                $('.show-notifications').prepend(`
+                    <li>
+                         <a href="/update-notification/` + data.notificationId + `" style="background-color: #cceb514a"><span style="color: blue">` + data.content + `</span> @lang("comment.comment")
+                         </a>
+                    </li>
+                `);
+                $('.notifications-empty').css('display', 'none');
+            }
+        });
+    </script>
 </html>

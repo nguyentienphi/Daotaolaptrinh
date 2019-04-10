@@ -3,6 +3,9 @@ namespace App\Services\Comment;
 use App\Services\BaseService;
 use App\Models\Comment;
 use Auth;
+use DB;
+use Carbon\Carbon;
+
 class CommentService extends BaseService
 {
     public function getModel()
@@ -25,5 +28,24 @@ class CommentService extends BaseService
             'content' => $content,
             'parent_id' => $parentId
         ]);
+    }
+
+    public function getNotification($user)
+    {
+        $notification = DB::table('notifications')
+            ->where('notifiable_id', $user)
+            ->orderBy('created_at', 'desc')->first();
+
+        return $notification;
+    }
+
+    public function updateNotification($id)
+    {
+        DB::table('notifications')->where('id', $id)->update([
+            'read_at' => Carbon::now()
+        ]);
+        $notification = DB::table('notifications')->where('id', $id)->first();
+
+        return $notification;
     }
 }

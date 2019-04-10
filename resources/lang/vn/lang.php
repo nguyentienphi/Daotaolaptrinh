@@ -75,5 +75,7 @@ return [
     '404' => 'Không tìm thấy trang phù hợp',
     'back' => 'Trở về',
     'video' => 'Video',
-    'update' => 'Tiến hành cập nhật'
+    'update' => 'Tiến hành cập nhật',
+    'see_more_notifications' => 'Xem tất cả!',
+    'no_notification' => 'Không có thông báo nào!'
 ];

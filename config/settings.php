@@ -14,7 +14,10 @@
             'post_user' => 10,
             'post_category' => 10,
             'course' => 10,
-            'register_course' => 10
+            'register_course' => 10,
+            'comment' => 10
         ],
-        'comment' => 0
+        'comment' => 0,
+        'page' => 1,
+        'notification' => 15
     ];
