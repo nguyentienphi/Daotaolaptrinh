@@ -2,13 +2,14 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
-    use Notifiable;
+    use Notifiable, SoftDeletes;
 
     /**
      * Number perPage
@@ -36,7 +37,8 @@ class User extends Authenticatable
         'phone',
         'gender',
         'role',
-        'avatar'
+        'avatar',
+        'deleted_at'
     ];
 
     /**
@@ -56,6 +58,24 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * Delete all record of relation model
+     *
+     * @return void
+     */
+    public static function boot()
+    {
+        parent::boot();
+
+        static::deleting(function ($user) {
+            $user->courses()->get()->each->delete();
+            $user->results()->get()->each->delete();
+            $user->tests()->get()->each->delete();
+            $user->comments()->get()->each->delete();
+            $user->posts()->get()->each->delete();
+        });
+    }
 
     public function courses()
     {

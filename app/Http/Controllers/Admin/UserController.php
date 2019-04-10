@@ -4,8 +4,11 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AddUserRequest;
+use App\Http\Requests\EditUserRequest;
 use App\Models\User;
 use App\Services\User\UserService;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Support\Facades\DB;
 use Zend\Diactoros\Request;
 
 class UserController extends Controller
@@ -38,6 +41,8 @@ class UserController extends Controller
             }
         }
 
+        $data['activeMenu'] = ['menu' => 'users', 'item' => 'list_user'];
+
         return view('admin.users.index', $data);
     }
 
@@ -49,6 +54,8 @@ class UserController extends Controller
     public function create()
     {
         $data['roles'] = [User::ROLE_ADMIN,User::ROLE_USER,User::ROLE_TEACHER];
+
+        $data['activeMenu'] = ['menu' => 'users', 'item' => 'add_user'];
 
         return view('admin.users.add', $data);
     }
@@ -69,6 +76,67 @@ class UserController extends Controller
 
         if ($this->userService->createUser($data)) {
             return redirect()->route('admin.users.index');
+        }
+    }
+
+    /**
+     * Function edit user
+     *
+     * @param User $user
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function edit(User $user){
+        $data['user'] = $user;
+
+        $data['roles'] = [User::ROLE_ADMIN,User::ROLE_USER,User::ROLE_TEACHER];
+
+        $data['activeMenu'] = ['menu' => 'users', 'item' => 'edit_user'];
+
+        return view('admin.users.edit', $data);
+    }
+
+    /**
+     * Function update user
+     *
+     * @param EditUserRequest $request
+     * @param User $user
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function update(EditUserRequest $request, User $user)
+    {
+        $data = [
+            'name' => $request->name,
+            'email' => $request->email,
+            'role' => $request->role
+        ];
+
+        $this->userService->updateUser($data, $user);
+
+        return back()->withInput();
+    }
+
+    /**
+     * Function delete user and relation
+     *
+     * @param User $user
+     * @return array
+     *
+     * @throws \Exception
+     */
+    public function destroy(User $user)
+    {
+        DB::beginTransaction();
+        try {
+            $user->delete();
+
+            DB::commit();
+
+            return redirect()->route('admin.users.index');
+
+        } catch (ModelNotFoundException $e) {
+            DB::rollback();
         }
     }
 }

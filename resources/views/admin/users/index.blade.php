@@ -22,6 +22,7 @@
                                 <th>{{ trans('list_user.table.email') }}</th>
                                 <th>{{ trans('list_user.table.coin_number') }}</th>
                                 <th>{{ trans('list_user.table.role') }}</th>
+                                <th>Chức năng</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -31,7 +32,10 @@
                                         <td>{{ isset($user->email) ? $user->email : '' }}</td>
                                         <td>{{ isset($user->coin_number) ? $user->coin_number : '' }}</td>
                                         <td>{{ isset($user->role) ? $user->role : '' }}</td>
-                                </tr>
+                                        <td>
+                                            <a href="{{ route('admin.users.edit', $user->id) }}" class="btn btn-primary">Sửa</a>
+                                            <a href="{{ route('admin.users.destroy', $user->id) }}" class="btn btn-danger">Xoá</a>
+                                         </tr>
                             @endforeach
                         </table>
                         {{ $users->links() }}

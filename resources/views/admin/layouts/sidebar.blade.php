@@ -7,14 +7,20 @@
                         Menu
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="true" data-target="#submenu-2" aria-controls="submenu-2"><i class="fa fa-fw fa-rocket"></i>{{ trans('siderbar.user.title') }}</a>
-                        <div id="submenu-2" class="collapse submenu show">
+                        <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="{{ ($activeMenu['menu'] == 'users') ? 'true' : ''}}"
+                           data-target="#submenu-2" aria-controls="submenu-2"><i
+                                class="fa fa-fw fa-rocket"></i>{{ trans('siderbar.user.title') }}</a>
+                        <div id="submenu-2" class="collapse submenu {{ ($activeMenu['menu'] == 'users') ? 'show' : ''}}">
                             <ul class="nav flex-column">
                                 <li class="nav-item">
-                                    <a class="nav-link active" href="{{ route('admin.users.add') }}">{{ trans('siderbar.user.add') }}<span class="badge badge-secondary"></span></a>
+                                    <a class="nav-link {{ ($activeMenu['item'] == 'add_user') ? 'active' : '' }}"
+                                       href="{{ route('admin.users.add') }}">{{ trans('siderbar.user.add') }}<span
+                                            class="badge badge-secondary"></span></a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('admin.users.index') }}">{{ trans('siderbar.user.list') }}<span class="badge badge-secondary"></span></a>
+                                    <a class="nav-link {{ ($activeMenu['item'] == 'list_user') ? 'active' : '' }}"
+                                       href="{{ route('admin.users.index') }}">{{ trans('siderbar.user.list') }}<span
+                                            class="badge badge-secondary"></span></a>
                                 </li>
                             </ul>
                         </div>
