@@ -33,6 +33,12 @@ Route::group([
         Route::get('/create', 'UserController@create')->name('admin.users.add');
 
         Route::post('/', 'UserController@store')->name('admin.users.store');
+
+        Route::get('/{user}/edit', 'UserController@edit')->name('admin.users.edit');
+
+        Route::post('/{user}', 'UserController@update')->name('admin.users.update');
+
+        Route::get('/{user}', 'UserController@destroy')->name('admin.users.destroy');
     });
 });
 

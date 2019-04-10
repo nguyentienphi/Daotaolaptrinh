@@ -68,4 +68,9 @@ class UserService extends BaseService
     {
         return $this->create($data);
     }
+
+    public function updateUser(array $data, $user)
+    {
+        return $user->fill($data)->save();
+    }
 }
