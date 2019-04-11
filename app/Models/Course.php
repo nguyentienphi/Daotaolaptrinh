@@ -22,6 +22,12 @@ class Course extends Model
         'date_register'
     ];
 
+    /**
+     * Number perPage
+     *
+     * @var int
+     */
+    protected $perPage = 7;
 
     public function users()
     {
@@ -51,5 +57,17 @@ class Course extends Model
     public function getDateRegisterAttribute()
     {
         return Carbon::parse($this->pivot->attributes['created_at'])->format('d-m-Y');
+    }
+
+    /**
+     * @return string
+     */
+    public function getNameCategoryAttribute()
+    {
+        if (empty($this->category)) {
+            return '';
+        }
+
+        return $this->category->name;
     }
 }

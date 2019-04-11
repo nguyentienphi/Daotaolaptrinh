@@ -11,4 +11,9 @@ class CourseService extends BaseService
     {
         return Course::class;
     }
+
+    public function getAll()
+    {
+        return $this->orderBy('id', 'desc')->paginate();
+    }
 }
