@@ -46,6 +46,12 @@ Route::group([
         Route::get('/{user}', 'UserController@destroy')
         ->name('admin.users.destroy');
     });
+
+    Route::group([
+        'prefix' => 'courses'
+    ], function (){
+        Route::get('/', 'CourseController@index')->name('admin.courses.index');
+    });
 });
 
 
