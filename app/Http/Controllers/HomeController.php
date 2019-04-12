@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Services\Post\PostService;
 use App\Services\Course\CourseService;
+use Auth;
+use Carbon\Carbon;
 
 class HomeController extends Controller
 {
@@ -33,5 +35,14 @@ class HomeController extends Controller
         $course = $this->courseService->count();
 
         return view('home', compact('post', 'course'));
+    }
+
+    public function listNotification()
+    {
+        $date = Carbon::now()->subDays(config('settings.get_notification'));
+        $notifications = Auth::user()->notifications()
+            ->where('created_at', '>=', $date)->get();
+
+        return view('clients.notifications.index', compact('notifications'));
     }
 }

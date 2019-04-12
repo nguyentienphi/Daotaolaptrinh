@@ -157,6 +157,7 @@ $(document).ready(function() {
         var element = $(this).closest('div.content_comment');
         var parent_id = element.find('input[name="parent-comment-post"]').val();
         var content = element.find('.content-form-comment .content-reply-post').val();
+        var parentCommentReply =  $(element).find('input[name="parent-comment-reply"]').val();
 
         $.ajax({
             url : '/reply-comment-post',
@@ -165,7 +166,8 @@ $(document).ready(function() {
             data : {
                 'post' : post,
                 'parent_id' : parent_id,
-                'content' : content
+                'content' : content,
+                'parentCommentReply' : parentCommentReply
             },
             success : function (data) {
                 element.find('.reply-content').append(`
@@ -177,6 +179,7 @@ $(document).ready(function() {
                     </div>
                 `);
                 element.find('.content-form-comment .content-reply-post').val('');
+                element.find('input[name="parent-comment-reply"]').val(data.userId);
             }
         });
     });
@@ -186,4 +189,9 @@ $(document).ready(function() {
         e.preventDefault();
         $(this).closest('div').find('.load-comment').toggle();
     })
+
+    //load url notification
+    $(document).on('click', '.item-notification', function () {
+        window.location.href = $(this).attr('data-url');
+    });
 });
