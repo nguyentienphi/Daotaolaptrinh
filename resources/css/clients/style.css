@@ -4031,5 +4031,35 @@ input[placeholder] {
 
 .box-show-notification {
     margin-bottom: 20px;
-     margin-top: 10px
+    margin-top: 10px
+}
+.user-name-video {
+  position:absolute;
+  right: 20px;
+  top: 5px;
+  color: white;
+  font-weight: 900;
+}
+
+.media {
+  margin-bottom: 20px;
+}
+
+.room-name {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.title-chat-room {
+    text-align: center;
+    margin-bottom: 20px
+}
+
+.btn-create-room {
+    float: right;
+    margin-top: 10px;
+}
+
+.error {
+    color: red;
 }

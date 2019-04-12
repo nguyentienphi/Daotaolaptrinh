@@ -79,5 +79,9 @@ return [
     'see_more_notifications' => 'Xem tất cả!',
     'no_notification' => 'Không có thông báo nào!',
     'all_notification' => 'Tất cả thông báo!',
-    'notification' => 'Thông báo của bạn'
+    'notification' => 'Thông báo của bạn',
+    'room_name' => 'Phòng chat : ',
+    'title_chat_room' => 'Tạo phòng chát để trao đổi trực tiếp và cùng học tập với nhau',
+    'create_room' => 'Tạo mới hoặc gõ tên phòng',
+    'live' => 'Live'
 ];
