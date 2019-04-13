@@ -18,7 +18,11 @@
                         <a href="{{ route('list-post-user') }}" class="title-profile">@lang('lang.list_post')</a>
                     </div>
                     <div class="col-md-6 text-center">
-                        <a href="{{ route('list-course-register') }}" class="title-profile">@lang('lang.list_course')</a>
+                        @if (Auth::user()->role == config('settings.user'))
+                            <a href="{{ route('list-course-register') }}" class="title-profile">@lang('lang.list_course')</a>
+                        @else
+                            <a href="{{ route('management-course') }}" class="title-profile">@lang('lang.list_course')</a>
+                        @endif
                     </div>
                 </div>
         </div>

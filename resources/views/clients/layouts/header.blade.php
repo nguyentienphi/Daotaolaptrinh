@@ -42,17 +42,33 @@
                                         @endforeach
                                     </ul>
                                 </li>
-                                <li class="nav-item submenu dropdown">
-                                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button"
-                                        aria-haspopup="true" aria-expanded="false">@lang('lang.course')</a>
-                                    <ul class="dropdown-menu">
-                                        @foreach ($categories as $category)
-                                            <li class="nav-item">
-                                                <a class="nav-link" href="{{ route('list-course-category', $category->id) }}">{{ $category->name }}</a>
-                                            </li>
-                                        @endforeach
-                                    </ul>
-                                </li>
+                                @guest
+                                    <li class="nav-item submenu dropdown">
+                                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button"
+                                            aria-haspopup="true" aria-expanded="false">@lang('lang.course')</a>
+                                        <ul class="dropdown-menu">
+                                            @foreach ($categories as $category)
+                                                <li class="nav-item">
+                                                    <a class="nav-link" href="{{ route('list-course-category', $category->id) }}">{{ $category->name }}</a>
+                                                </li>
+                                            @endforeach
+                                        </ul>
+                                    </li>
+                                @else
+                                    @if (Auth::user()->role != 3)
+                                        <li class="nav-item submenu dropdown">
+                                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button"
+                                                aria-haspopup="true" aria-expanded="false">@lang('lang.course')</a>
+                                            <ul class="dropdown-menu">
+                                                @foreach ($categories as $category)
+                                                    <li class="nav-item">
+                                                        <a class="nav-link" href="{{ route('list-course-category', $category->id) }}">{{ $category->name }}</a>
+                                                    </li>
+                                                @endforeach
+                                            </ul>
+                                        </li>
+                                    @endif
+                                @endguest
                                 <li class="nav-item">
                                     <a class="nav-link" href="#">@lang('lang.help')</a>
                                 </li>
@@ -122,7 +138,11 @@
                                                 <a href="{{ route('list-post-user') }}">@lang('lang.list_post')</a>
                                             </li>
                                             <li>
-                                                <a href="{{ route('list-course-register') }}">@lang('lang.list_course')</a>
+                                                @if (Auth::user()->role == config('settings.user'))
+                                                    <a href="{{ route('list-course-register') }}">@lang('lang.list_course')</a>
+                                                @else
+                                                    <a href="{{ route('management-course') }}">@lang('lang.list_course')</a>
+                                                @endif
                                             </li>
                                             <li>
                                                 <a href="">@lang('lang.add_coin')</a>

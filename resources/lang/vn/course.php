@@ -26,5 +26,10 @@
         'overview' => 'Tổng quan về khóa học',
         'lastexercise' => 'Bài tập cuối khóa',
         'rate' => 'Đánh gía khóa học',
-        'view' => 'Xem'
+        'view' => 'Xem',
+        'date_submit' => 'Ngày đăng',
+        'number_user' => 'Số lượng đăng ký',
+        'image' => 'Hình ảnh',
+        'list_comment' => 'Danh sách bình luận',
+        'list_user' => 'Danh sách học viên'
     ];
