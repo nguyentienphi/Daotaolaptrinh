@@ -50,6 +50,10 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    protected $appends = [
+        'gender_custom'
+    ];
+
     /**
      * The attributes that should be cast to native types.
      *
@@ -105,5 +109,16 @@ class User extends Authenticatable
     public function posts()
     {
         return $this->hasMany(Post::class);
+    }
+
+    public function getGenderCustomAttribute()
+    {
+        if ($this->gender == config('settings.profile.gender.male')) {
+            return trans('profile.male');
+        }
+
+        if ($this->gender == config('settings.profile.gender.female')){
+            return trans('profile.female');
+        }
     }
 }
