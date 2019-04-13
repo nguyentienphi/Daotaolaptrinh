@@ -128,9 +128,6 @@
                                                 <a href="">@lang('lang.add_coin')</a>
                                             </li>
                                             <li>
-                                                <a href="{{route('list-comment')}}">@lang('lang.comment')</a>
-                                            </li>
-                                            <li>
                                                 <a href="{{ route('logout') }}">@lang('lang.logout')</a>
                                             </li>
                                         </ul>

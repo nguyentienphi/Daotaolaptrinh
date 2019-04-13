@@ -89,8 +89,6 @@ Route::group(['namespace' => 'Client'], function () {
 
     Route::post('reply-comment-post', 'CommentController@replyCommentPost')->name('reply-comment-post');
 
-    Route::get('list-comment', 'CommentController@listCommentUser')->name('list-comment');
-
     Route::get('update-notification/{id}', 'CommentController@updateNotification')
         ->name('update-notification');
 
@@ -99,6 +97,12 @@ Route::group(['namespace' => 'Client'], function () {
        Route::get('join/{roomName}', 'GroupVideoCallController@joinRoom');
        Route::post('create', 'GroupVideoCallController@createRoom')->name('live-create');
     });
+
+    Route::get('detail-post-user/{id}', 'PostController@posrUserDetail')
+        ->name('detail-post-user');
+
+    Route::get('update-view-number', 'PostController@updateViewNumber')
+        ->name('update-view-number');
 
 });
 

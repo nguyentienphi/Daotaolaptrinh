@@ -194,4 +194,26 @@ $(document).ready(function() {
     $(document).on('click', '.item-notification', function () {
         window.location.href = $(this).attr('data-url');
     });
+
+    //load post detail
+    $(document).on('click', '.view-post', function (e) {
+        e.preventDefault();
+        var postId = $(this).parent().parent().find('input[name="postId"]').val();
+
+        $.ajax({
+            url : '/update-view-number',
+            method : 'get',
+            dataType : 'json',
+            data : {
+                'postId' : postId
+            },
+            success : function (data) {
+                if (data.success) {
+                    window.location.href = data.redirect;
+                } else {
+                    alert(data.message);
+                }
+            }
+        });
+    });
 });

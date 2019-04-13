@@ -36,7 +36,8 @@
                     <div class="row">
                         @foreach ($morePosts as $morePost)
                             <div class="box-show-related-post">
-                                <h3><a href="{{ route('post.show', $morePost) }}" class="color-title-post">{{$morePost->title}}</a></h3>
+                                <input type="hidden" name="postId" value="{{ $morePost->id }}">
+                                <h3><a href="javascript:void(0)" class="color-title-post view-post">{{$morePost->title}}</a></h3>
                                 <a href="">{{ $morePost->user->name }}</a>
                                 <p style="padding-top: 15px;">
                                     <span title="{{ trans('post.view') }}"><i class="ti-eye icons-post-items"></i>{{ $morePost->view_number }}</span>
