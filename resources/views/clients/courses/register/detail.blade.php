@@ -1,42 +1,42 @@
-@section('title', $course->name)
+@section('title', $video->title)
 @section('content')
     <section class="section-detail-course-video">
     </section>
-    <div class="box-show-content-video">
-        <div class="container">
-            <div class="row">
-                @if (!$videos->isEmpty())
-                    <div class="col-md-4 show-detail-course">
-                        <h4 class="text-center title-course-detail">@lang('course.content')</h4>
-                        <div class="show-content-course">
-                            <ul style="list-style-type:none" class="show-title-video">
-                                @foreach ($videos as $video)
-                                    <li><a href="{{ route('show-video-ajax') }}" class="video" id="{{$video->id}}">{{ $video->title }}</a></li>
-                                @endforeach
-                                <li><a href="" class="rate">@lang('course.rate_course')</a></li>
-                            </ul>
+    <div class="container show-detail-course-video">
+        <div class="row">
+            <div class="col-md-4">
+                <h4>{{ $video->title }}</h4>
+            <p>{{ $video->description }}</p>
+            </div>
+            <div class="col-md-8">
+                <video width="100%" height="100%" controls>
+                    <source src="{{ asset($video->url) }}" type="video/mp4">
+                </video>
+            </div>
+        </div>
+        <div class="row box-comment-video">
+            <div class="col-md-4"></div>
+            <div class="col-md-7">
+                <h4>@lang('lang.comment')</h4>
+                <div class="content-comment-video">
+                </div>
+                {{ Form::open() }}
+                    {{ Form::hidden('avatar', asset(Auth::user()->avatar), ['class' => 'avatar']) }}
+                    <div class="form-comment-video">
+                        <div class="box-img-comment">
+                            {{ Html::image(asset(Auth::user()->avatar), '', ['class' => 'img-form-comment']) }}
                         </div>
-                    </div>
-                    <div class="col-md-8">
-                        <div class="show-video">
-                            <video width="100%" height="auto" controls autoplay>
-                                <source src="{{ asset($videos->first()->url) }}" type="video/mp4" class="video">
-                            </video>
+                        <div class="content-form-comment">
+                            {{ Form::textarea('comment', '', ['class' => 'form-control comment-post auto-resize', 'rows' => 1, 'placeholder' => trans('lang.placeholder_comment')]) }}
                         </div>
+                        <div class="btn-comment">
+                            {{ Form::submit(trans('lang.comment'), ['class' => 'btn btn-primary btn-sm']) }}
+                        </div>
+                        <div class="clearfix"></div>
                     </div>
-                @else
-                    <div class="col-md-12">
-                        @include('clients.layouts.empty')
-                    </div>
-                @endif
+                {{ Form::close() }}
             </div>
         </div>
     </div>
-        <div class="row overview">
-            <div class="col-md-12">
-                <h4>@lang('course.overview')</h4>
-                <p>{{ $course->description }}</p>
-            </div>
-        </div>
 @endsection
 @extends('clients.layouts.master')

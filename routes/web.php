@@ -104,6 +104,10 @@ Route::group(['namespace' => 'Client'], function () {
     Route::get('update-view-number', 'PostController@updateViewNumber')
         ->name('update-view-number');
 
+    Route::get('video-course/{id}', 'CourseController@showVideoCourse')
+        ->name('video-course')
+        ->middleware('profile');
+
 });
 
 Route::get('list-notification', 'HomeController@listNotification')

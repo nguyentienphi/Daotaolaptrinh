@@ -4075,3 +4075,36 @@ input[placeholder] {
   background: #fff;
   padding: 20px
 }
+
+.form-comment-video {
+    width: 590px;
+    margin-left: 50px;
+    padding: 10px;
+    background-color: #DDDDDD;
+    margin-top: 20px;
+}
+
+.show-content-video {
+    margin-bottom: 10px;
+    font-size: 15px;
+}
+
+.content-comment-video {
+  margin-left: 50px;
+}
+
+.box-comment-video {
+  margin-top: 30px;
+  margin-bottom: 30px
+}
+
+.show-detail-course-video {
+    background: #ffffff;
+   padding: 20px;
+   margin-bottom: 30px
+}
+
+.content-course-detail {
+  background: #e5e5df9c;
+  padding: 15px
+}

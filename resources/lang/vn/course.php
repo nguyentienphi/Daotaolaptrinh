@@ -23,5 +23,8 @@
         'error_video' => 'Load không thành công',
         'content' => 'Nội dung',
         'rate_course' => 'Đánh gía khóa học',
-        'overview' => 'Tổng quan về khóa học'
+        'overview' => 'Tổng quan về khóa học',
+        'lastexercise' => 'Bài tập cuối khóa',
+        'rate' => 'Đánh gía khóa học',
+        'view' => 'Xem'
     ];
