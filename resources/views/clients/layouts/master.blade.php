@@ -7,4 +7,3 @@
 @include('auth.login')
 @include('auth.register')
 @include('clients.layouts.footer')
-@yield('js')

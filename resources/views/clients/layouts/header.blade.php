@@ -44,17 +44,6 @@
                                 </li>
                                 <li class="nav-item submenu dropdown">
                                     <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button"
-                                        aria-haspopup="true" aria-expanded="false">@lang('lang.video')</a>
-                                    <ul class="dropdown-menu">
-                                        @foreach ($categories as $category)
-                                            <li class="nav-item">
-                                                <a class="nav-link" href="">{{ $category->name }}</a>
-                                            </li>
-                                        @endforeach
-                                    </ul>
-                                </li>
-                                <li class="nav-item submenu dropdown">
-                                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button"
                                         aria-haspopup="true" aria-expanded="false">@lang('lang.course')</a>
                                     <ul class="dropdown-menu">
                                         @foreach ($categories as $category)
@@ -77,6 +66,9 @@
                                 @else
                                     <li class="nav-item">
                                         <a class="nav-link" href="{{ route('post.create') }}">@lang('lang.create_post')</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{ route('live') }}">@lang('lang.live')</a>
                                     </li>
                                     <li class="nav-item">
                                         <input type="hidden" id="user-id" value="{{auth()->user()->id}}">

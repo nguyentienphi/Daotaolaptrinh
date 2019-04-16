@@ -42,6 +42,7 @@
         <script src="{{ asset('js/clients/main.js')}}"></script>
         <script src="{{ asset('js/clients/dataTable.js')}}"></script>
         <script src="{{ asset('js/clients/pusher.min.js')}}"></script>
+        @yield('js')
     </body>
     <script type="text/javascript">
         var user = $('#user-id').val();
