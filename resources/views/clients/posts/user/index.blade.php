@@ -40,7 +40,7 @@
                                         @endif
                                     </td>
                                     <td class="text-center">
-                                        <a href="{{ route('post.show', $postUser->id) }}" title={{trans('lang.view')}}><i class="ti-eye action-post view"></i></a>
+                                        <a href="{{ route('detail-post-user', $postUser->id) }}" title={{trans('lang.view')}}><i class="ti-eye action-post view"></i></a>
                                         <a href="{{ route('post.edit', $postUser->id) }}" title={{trans('lang.edit')}}><i class="ti-pencil action-post edit"></i></a>
                                         <a href="{{ route('delete-post', $postUser->id) }}" title={{trans('lang.delete')}} class="confirm-delete"><i class="ti-trash action-post delete"></i></a>
                                     </td>

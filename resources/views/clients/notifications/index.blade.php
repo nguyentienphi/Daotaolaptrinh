@@ -14,6 +14,7 @@
                         <div class="col-md-8 {{ $notification->read_at == null ? 'notification_unread' : 'notification-read' }}">
                             @if ($notification->data['comment'])
                                 <div class="item-notification" data-url="{{ route('update-notification', $notification->id) }}">
+                                    <input type="hidden" name="postId" value="{{ $notification->data['post']['id'] }}">
                                     <a href="" class="user-all-notification">{{ $notification->data['user']['name'] }}</a>
                                     <a href="{{ route('update-notification', $notification->id) }}">
                                         @if ($notification->data['comment']['parent_id'] == config('settings.comment'))
@@ -22,7 +23,7 @@
                                             @lang('comment.reply_post')
                                         @endif
                                     </a>
-                                    <a href="{{ route('post.show', $notification->data['post']['id']) }}" class="post-all-notification">{{ $notification->data['post']['title'] }}</a>
+                                    <a href="javascript:void(0)" class="post-all-notification view-post">{{ $notification->data['post']['title'] }}</a>
                                 </div>
                             @else
                             @endif

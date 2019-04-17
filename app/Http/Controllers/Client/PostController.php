@@ -8,6 +8,7 @@ use App\Models\Category;
 use App\Services\Post\PostService;
 use Auth;
 use App\Http\Requests\PostRequest;
+use Session;
 
 class PostController extends Controller
 {
@@ -76,14 +77,12 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id, Request $request)
     {
         try {
             $post = $this->postService->findOrFail($id);
             $user = $post->user->id;
-            $morePosts = $this->postService->where('user_id', $user)
-                ->where('status', config('settings.status.approved'))
-                ->where('id', '!=', $post->id)->get();
+            $morePosts = $this->postService->getMorePost($user, $id);
 
             if (count($morePosts) > 3) {
                 $morePosts = $morePosts->random(3);
@@ -184,5 +183,37 @@ class PostController extends Controller
         } catch (Exception $e) {
             return view('errors.404');
         }
+    }
+
+    public function posrUserDetail($id)
+    {
+        $post = $this->postService->findOrFail($id);
+        $comments = $this->postService->getAllComment($id);
+
+        return view('clients.posts.user.detail', compact('post', 'comments'));
+    }
+
+    public function updateViewNumber(Request $request)
+    {
+        if (!$request->ajax()) {
+            return response()->json([
+                'success' => false
+            ]);
+        }
+
+       try {
+            $postId = $request->postId;
+
+            $this->postService->updateViewNumber($postId);
+
+            return response()->json([
+                'success' => true,
+                'redirect' => route('post.show', $postId)
+            ]);
+       } catch (Exception $e) {
+            return response()->json([
+                'message' => trans('lang.error')
+            ]);
+       }
     }
 }

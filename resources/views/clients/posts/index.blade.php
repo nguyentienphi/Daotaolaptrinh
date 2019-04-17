@@ -22,12 +22,13 @@
                                 {{ Html::image(asset($post->user->avatar), '', ['class' => 'img-user-post']) }}
                             </div>
                             <div class="content title-post">
+                                <input type="hidden" name="postId" value="{{ $post->id }}">
                                 <a class="title author-post" href="">{{ $post->user->name }}</a>
                                 <p>
-                                    <a href="{{ route('post.show', $post->id) }}" class="color-title-post">{{ $post->title }}</a>
+                                    <a href="javascript:void(0)" class="color-title-post view-post">{{ $post->title }}</a>
                                 </p>
                                 <p>
-                                    <span title="{{ trans('post.view') }}"><i class="ti-eye icons-post-items""></i>{{ $post->view_number }}</span>
+                                    <span title="{{ trans('post.view') }}"><i class="ti-eye icons-post-items"></i>{{ $post->view_number }}</span>
                                     <span class="icons-post" title="{{ trans('post.comment') }}"><i class="ti-comment icons-post-items"></i>{{ count($post->comments) }}</span>
                                 </p>
                             </div>
@@ -46,8 +47,9 @@
                 <h3>@lang('lang.new_post')</h3>
                 <hr>
                     @foreach ($postNews as $postNew)
-                         <div>
-                            <h4><a href="{{ route('post.show', $postNew->id) }}" class="color-title-post">{{ $postNew->title }}</a></h4>
+                        <div>
+                            <input type="hidden" name="postId" value="{{ $postNew->id }}">
+                            <h4><a href="javascript::void(0)" class="color-title-post view-post">{{ $postNew->title }}</a></h4>
                             <span title="{{ trans('post.view') }}"><i class="ti-eye icons-post-items"></i>{{ $postNew->view_number }}</span>
                             <span class="icons-post" title="{{ trans('post.comment') }}"><i class="ti-comment icons-post-items"></i>{{ count($postNew->comments) }}</span>
                             <p><a href="#">{{ $postNew->user->name }}</a></p>

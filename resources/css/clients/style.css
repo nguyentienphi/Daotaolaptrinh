@@ -3998,7 +3998,6 @@ input[placeholder] {
 }
 
 .paginate {
-    margin-top: 29px;
     float: right;
 }
 
@@ -4062,4 +4061,17 @@ input[placeholder] {
 
 .error {
     color: red;
+}
+
+.statistical {
+  float: right;
+}
+
+.show-comment-post {
+  margin-top:20px;
+}
+
+.box-content-comment-post {
+  background: #fff;
+  padding: 20px
 }

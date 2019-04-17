@@ -9,5 +9,5 @@
         'user' => 'Người đăng',
         'reply_comment' => 'đã trả lời bình luận của bạn',
         'two_dots' => ':',
-        'reply_post' => 'đã trả lời bình luận của bạn trong bài viết : '
+        'reply_post' => 'đã trả lời bình luận của bạn trong bài viết : ',
     ];
