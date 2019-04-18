@@ -90,27 +90,13 @@ class CourseController extends Controller
         $course = $this->courseService->findOrFail($id);
         $videos = $course->videos()->get();
 
-        return view('clients.courses.register.detail', compact('course', 'videos'));
+        return view('clients.courses.register.show', compact('course', 'videos'));
     }
-    public function showVideoAjax(Request $request)
+
+    public function showVideoCourse($id)
     {
-        if (!$request->ajax()) {
-            return response()->json([
-                'success' => false
-            ]);
-        }
-        try {
-            $id_video = $request->id_video;
-            $video = $this->videoService->getVideoId($id_video);
-            $url = asset($video->url);
-            return response()->json([
-                'url' => $url,
-                'success' => true
-            ]);
-        } catch (Exception $e) {
-            return response()->json([
-                'errors' => trans('course.error_video')
-            ]);
-        }
+        $video = $this->videoService->findOrFail($id);
+
+        return view('clients.courses.register.detail', compact('video'));
     }
 }
