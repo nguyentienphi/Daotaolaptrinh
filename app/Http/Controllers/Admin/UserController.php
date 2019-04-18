@@ -5,10 +5,13 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AddUserRequest;
 use App\Http\Requests\EditUserRequest;
+use App\Mail\NotifyUser;
+use App\Mail\SendUser;
 use App\Models\User;
 use App\Services\User\UserService;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 use Zend\Diactoros\Request;
 
 class UserController extends Controller
@@ -75,6 +78,8 @@ class UserController extends Controller
         ];
 
         if ($this->userService->createUser($data)) {
+            #send mail
+            Mail::to($data['email'])->queue(new NotifyUser($data, $request->get('password')));
             return redirect()->route('admin.users.index');
         }
     }
