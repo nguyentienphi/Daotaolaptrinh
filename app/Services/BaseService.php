@@ -5,6 +5,7 @@ namespace App\Services;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Container\Container as App;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Support\Facades\Storage;
 
 abstract class BaseService
 {
@@ -319,5 +320,10 @@ abstract class BaseService
     public function findOrFail($id, $columns = ['*'])
     {
         return $this->model->findOrFail($id, $columns);
+    }
+
+    public function uploadImage($image, $nameImage)
+    {
+        return Storage::put($nameImage, $image);
     }
 }

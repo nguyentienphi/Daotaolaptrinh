@@ -51,6 +51,12 @@ Route::group([
         'prefix' => 'courses'
     ], function (){
         Route::get('/', 'CourseController@index')->name('admin.courses.index');
+
+        Route::get('/create', 'CourseController@create')
+            ->name('admin.courses.create');
+
+        Route::post('/', 'CourseController@store')
+            ->name('admin.courses.store');
     });
 });
 

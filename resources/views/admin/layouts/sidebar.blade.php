@@ -37,7 +37,7 @@
                             <ul class="nav flex-column">
                                 <li class="nav-item">
                                     <a class="nav-link {{ isset($activeMenu) ? (($activeMenu['item'] == 'add_course') ? 'active' : '') : '' }}"
-                                       href="">{{ trans('siderbar.courses.add') }}<span
+                                       href="{{ route('admin.courses.create') }}">{{ trans('siderbar.courses.add') }}<span
                                             class="badge badge-secondary"></span></a>
                                 </li>
                                 <li class="nav-item">
