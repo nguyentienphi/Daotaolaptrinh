@@ -133,11 +133,12 @@ button:focus {
     .header_area .navbar .nav .nav-item {
       margin-right: 45px; }
       .header_area .navbar .nav .nav-item .nav-link {
-        font: 500 14px/80px "Rubik", sans-serif;
-        text-transform: capitalize;
+        font: 500 14px/75px "Helvetica", sans-serif;
+        text-transform: uppercase;
         color: #002347;
         padding: 0px;
-        display: inline-block; }
+        display: inline-block;
+        font-weight: bold; }
         @media (max-width: 991px) {
           .header_area .navbar .nav .nav-item .nav-link {
             color: #ffffff; } }
@@ -4107,4 +4108,18 @@ input[placeholder] {
 .content-course-detail {
   background: #e5e5df9c;
   padding: 15px
+}
+
+.image-course {
+    width: 130px;
+    height: 65px;
+}
+
+.show-list-user {
+  background: #f0f0f0f0;
+  padding: 10px
+}
+
+.show-comment-video {
+  margin-top: 55px;
 }
