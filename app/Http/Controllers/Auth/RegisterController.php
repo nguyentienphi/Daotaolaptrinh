@@ -61,7 +61,7 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => $data['password'],
-            'role' => config('settings.member'),
+            'role' => config('settings.user'),
             'avatar' => config('settings.avatar'),
             'gender' => null,
             'address' => null,

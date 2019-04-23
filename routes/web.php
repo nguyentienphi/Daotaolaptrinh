@@ -110,10 +110,19 @@ Route::group(['namespace' => 'Client'], function () {
     Route::get('update-view-number', 'PostController@updateViewNumber')
         ->name('update-view-number');
 
-    Route::get('video-course/{id}', 'CourseController@showVideoCourse')
-        ->name('video-course')
-        ->middleware('profile');
+    Route::group(['middleware' => 'profile'], function () {
+        Route::get('video-course/{id}', 'CourseController@showVideoCourse')
+        ->name('video-course');
 
+        Route::get('management-course', 'ManagementCourseController@index')
+        ->name('management-course');
+
+        Route::get('show-course-managenent/{id}', 'ManagementCourseController@show')
+        ->name('show-course-managenent');
+
+        Route::get('show-course-video-detail/{id}', 'ManagementCourseController@showDetail')
+            ->name('show-course-video-detail');
+    });
 });
 
 Route::get('list-notification', 'HomeController@listNotification')
