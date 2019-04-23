@@ -50,10 +50,10 @@
 <!-- ============================================================== -->
 <!-- end main wrapper  -->
 <!-- ============================================================== -->
-<!-- jquery 3.3.1  -->
-<script src="{{ asset('assets/vendor/jquery/jquery-3.3.1.min.js') }}"></script>
-<!-- bootstap bundle js -->
-<script src="{{ asset('assets/vendor/bootstrap/js/bootstrap.bundle.js') }}"></script>
+<script src="{{ asset('js/clients/jquery-3.2.1.min.js') }}"></script>
+<script src="{{ asset('js/clients/popper.js') }}"></script>
+<script src="{{ asset('js/clients/bootstrap.min.js')}}"></script>
+@yield('js')
 <script>
     $(function() {
         $('input[name="daterange"]').daterangepicker({

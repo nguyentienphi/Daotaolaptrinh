@@ -6,6 +6,7 @@ return [
         'name' => 'Tên Khoá Học',
         'description' => 'Nội Dung',
         'category' => 'Danh Mục',
-        'price' => 'Giá'
+        'price' => 'Giá',
+        'function' => 'Chức Năng'
     ]
 ];

@@ -22,6 +22,7 @@
                                 <th>{{ trans('list_courses.table.description') }}</th>
                                 <th>{{ trans('list_courses.table.category') }}</th>
                                 <th>{{ trans('list_courses.table.price') }}</th>
+                                <th>{{ trans('list_courses.table.function') }}</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -31,8 +32,13 @@
                                     <td>{{ isset($course->description) ? $course->description : '' }}</td>
                                     <td>{{  $course->nameCategory }}</td>
                                     <td>{{ isset($course->price) ? $course->price : '' }}</td>
+                                    <td>
+                                        <a href="" class="btn btn-primary">Sửa</a>
+                                        <a href="" class="btn btn-danger">Xoá</a>
+                                </tr>
                                 </tr>
                             @endforeach
+                            </tbody>
                         </table>
                         {{ $courses->links() }}
                     </div>

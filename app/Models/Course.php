@@ -70,4 +70,12 @@ class Course extends Model
 
         return $this->category->name;
     }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function userCourse()
+    {
+        return $this->hasMany(UserCourse::class);
+    }
 }
