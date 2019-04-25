@@ -18,6 +18,7 @@
             'comment' => 10,
             'management_course' => 10,
             'list_user' => 15,
+            'list_test' => 10
         ],
         'comment' => 0,
         'page' => 1,
@@ -25,5 +26,9 @@
         'get_notification' => 7,
         'user' => 2,
         'admin' => 1,
-        'teacher' => 3
+        'teacher' => 3,
+        'answer' => [
+            'correct' => 1,
+            'incorrect' => 0
+        ]
     ];

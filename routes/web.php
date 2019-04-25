@@ -122,6 +122,18 @@ Route::group(['namespace' => 'Client'], function () {
 
         Route::get('show-course-video-detail/{id}', 'ManagementCourseController@showDetail')
             ->name('show-course-video-detail');
+
+        Route::get('test/list/{id}', 'TestController@listTest')
+            ->name('list-test');
+
+        Route::get('test/create/{id}', 'TestController@create')
+            ->name('create-test');
+
+        Route::post('test/store', 'TestController@store')
+            ->name('store-test');
+
+        Route::get('test/show/{id}', 'TestController@show')
+            ->name('show-test');
     });
 });
 
