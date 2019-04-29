@@ -37,4 +37,9 @@ class Test extends Model
     {
         return Carbon::parse($this->attributes['created_at'])->format('d-m-Y');
     }
+
+    public function points()
+    {
+        return $this->hasMany(Point::class);
+    }
 }

@@ -4,25 +4,23 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Question extends Model
+class Point extends Model
 {
     protected $fillable = [
+        'user_id',
         'test_id',
-        'content'
+        'point'
     ];
 
-    public function answers()
+    protected $table = 'point';
+
+    public function user()
     {
-        return $this->hasMany(Answer::class);
+        return $this->belongsTo(User::class);
     }
 
     public function test()
     {
         return $this->belongsTo(Test::class);
-    }
-
-    public function result()
-    {
-        return $this->hasMany(Result::class);
     }
 }

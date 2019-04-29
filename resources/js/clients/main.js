@@ -216,4 +216,9 @@ $(document).ready(function() {
             }
         });
     });
+
+    //view detail test
+    $('.view-detail').click(function () {
+        $('.show-detail').toggle();
+    })
 });

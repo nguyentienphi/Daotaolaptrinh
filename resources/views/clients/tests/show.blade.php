@@ -26,7 +26,7 @@
                                 <div class="row">
                                     <label>
                                         <input type="radio" name="answer_question_{{$question->id}}" {{ $answer->is_right == 1 ? 'checked' : ''}} disabled>
-                                        <span class="{{ $answer->is_right == 1 ? 'answer-correct' : ''}}">
+                                        <span class="{{ $answer->is_right == config('settings.answer.correct') ? 'answer-correct' : ''}}">
                                             {{ $answer->content }}
                                         </span>
                                     </label>

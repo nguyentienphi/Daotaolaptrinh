@@ -84,5 +84,9 @@ return [
     'title_chat_room' => 'Tạo phòng chát để trao đổi trực tiếp và cùng học tập với nhau',
     'create_room' => 'Tạo mới hoặc gõ tên phòng',
     'live' => 'Live',
-    'error' => 'Lỗi khi tải trang'
+    'error' => 'Lỗi khi tải trang',
+    'fail' => 'Thất bại',
+    'ok' => 'Có',
+    'no' => 'Không',
+    'create_fail' => 'Tạo thất bại!'
 ];

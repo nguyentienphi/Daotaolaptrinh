@@ -121,4 +121,9 @@ class User extends Authenticatable
             return trans('profile.female');
         }
     }
+
+    public function points()
+    {
+        return $this->hasMany(Point::class);
+    }
 }
