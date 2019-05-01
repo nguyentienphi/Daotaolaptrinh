@@ -64,7 +64,6 @@ $(document).ready(function () {
             onfocusout: false,
             onkeyup: false,
             onclick: false,
-
             rules: {
                 "name": {
                     required: true,
@@ -75,10 +74,6 @@ $(document).ready(function () {
 
             }
         });
-
-        for (var i = 1; i <= num_question; i++) {
-            addValidationRuleForQuestion(i);
-        }
 
         $(document).on('submit', '#formCreateTest', function (e) {
             e.preventDefault();
@@ -104,6 +99,10 @@ $(document).ready(function () {
                 }
             });
         })
+
+        for (var i = 1; i <= num_question; i++) {
+            addValidationRuleForQuestion(i);
+        }
     });
 
     $.validator.addMethod('questionunique', function (value, element) {

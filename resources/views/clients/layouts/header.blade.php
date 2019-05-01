@@ -132,7 +132,7 @@
                                         </a>
                                         <ul class="dropdown-menu dropdown-menu-right header-menu show-box-user" aria-labelledby="navbarDropdownProfile">
                                             <li>
-                                                <a href="">@lang('lang.profile')</a>
+                                                <a href="{{ route('profile.index') }}">@lang('lang.profile')</a>
                                             </li>
                                             <li>
                                                 <a href="{{ route('list-post-user') }}">@lang('lang.list_post')</a>

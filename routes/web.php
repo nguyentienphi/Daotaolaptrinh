@@ -134,6 +134,22 @@ Route::group(['namespace' => 'Client'], function () {
 
         Route::get('test/show/{id}', 'TestController@show')
             ->name('show-test');
+
+        // profile
+        Route::get('profile', 'ProfileController@index')
+            ->name('profile.index');
+
+        Route::get('profile/edit', 'ProfileController@edit')
+            ->name('profile.edit');
+
+        Route::patch('profile/update', 'ProfileController@update')
+            ->name('profile.update');
+
+        Route::get('profile/chaneg-password', 'ProfileController@getChangePassword')
+            ->name('profile.change');
+
+        Route::patch('profile/chaneg-password', 'ProfileController@changePassword')
+            ->name('profile.changepassword');
     });
 });
 

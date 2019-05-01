@@ -30,5 +30,11 @@
         'answer' => [
             'correct' => 1,
             'incorrect' => 0
+        ],
+        'profile' => [
+            'gender' => [
+                'male' => 1,
+                'female' => 2
+            ]
         ]
     ];

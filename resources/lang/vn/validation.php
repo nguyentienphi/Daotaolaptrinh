@@ -121,7 +121,10 @@ return [
         'gender' => 'giới tính',
         'content' => 'nội dung bài viết',
         'title' => 'tiêu đề bài viết',
-        'password' => 'mật khẩu'
+        'password' => 'mật khẩu',
+        'oldpassword' => 'mật khẩu cũ',
+        'newpassword' => 'mật khẩu mới',
+        'retypepassword' => 'xác nhận mật khẩu'
     ],
     'msg' => [
         'required' => 'Thông tin bắt buộc',

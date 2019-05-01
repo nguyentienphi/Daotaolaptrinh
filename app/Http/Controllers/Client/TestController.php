@@ -73,7 +73,6 @@ class TestController extends Controller
                 }
             }
 
-
             $request->session()->flash('success', trans('test.success'));
 
             return response()->json([
