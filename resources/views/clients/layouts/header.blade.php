@@ -15,6 +15,8 @@
         <link rel="stylesheet" href="{{ asset('css/clients/owl.carousel.min.css') }}" />
         <link rel="stylesheet" href="{{ asset('css/clients/nice-select.css') }}" />
         <link rel="stylesheet" href="{{ asset('css/clients/style.css')}}" />
+        <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
     </head>
     <body>
         <header class="header_area">

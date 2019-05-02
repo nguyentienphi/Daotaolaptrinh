@@ -163,6 +163,10 @@ Route::group(['namespace' => 'Client'], function () {
         Route::get('test/doing/detail/{id}', 'DoingTestController@detail')
             ->name('test.doing.details');
     });
+
+    //create rating course
+    Route::post('rating', 'CourseController@rating')
+        ->name('rating.store');
 });
 
 Route::get('list-notification', 'HomeController@listNotification')

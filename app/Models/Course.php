@@ -78,4 +78,9 @@ class Course extends Model
     {
         return $this->hasMany(UserCourse::class);
     }
+
+    public function rates()
+    {
+        return $this->hasMany(Rating::class);
+    }
 }

@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Services\Course\CourseService;
 use App\Services\User\UserService;
 use App\Services\Video\VideoService;
+use App\Http\Requests\RatingRequest;
 use Auth;
 
 class CourseController extends Controller
@@ -39,9 +40,10 @@ class CourseController extends Controller
     public function show($id)
     {
         $course = $this->courseService->findOrFail($id);
+        $ratings = $this->courseService->getRating($id);
 
-        return view('clients.courses.show', compact('course','videos'));
-}
+        return view('clients.courses.show', compact('course','videos', 'ratings'));
+    }
 
     public function registerCourse(Request $request)
     {
@@ -98,5 +100,22 @@ class CourseController extends Controller
         $video = $this->videoService->findOrFail($id);
 
         return view('clients.courses.register.detail', compact('video'));
+    }
+
+    public function rating(RatingRequest $request)
+    {
+        $data = $request->all();
+        $input = [
+            'user_id' => Auth::user()->id,
+            'course_id' => $data['courseId'],
+            'rate' => $data['starRatingValue'],
+            'content' => $data['contentRating']
+        ];
+
+        $this->courseService->stoteRating($input);
+
+        return response()->json([
+            'success' => true
+        ]);
     }
 }

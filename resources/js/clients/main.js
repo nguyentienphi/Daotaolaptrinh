@@ -44,7 +44,7 @@ $(document).ready(function() {
     var coin = parseInt($('.coin').val());
     var price = parseInt($('.price').val());
     var remain = coin - price;
-    var course_id = parseInt($('.course_id').val());
+    var course_id = parseInt($('#course_id').val());
 
     function showResult() {
         $('.show-coin-user').text(coin);

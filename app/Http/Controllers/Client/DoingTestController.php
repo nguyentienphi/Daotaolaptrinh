@@ -63,64 +63,68 @@ class DoingTestController extends Controller
             $answers = $request->answer;
             $point = 0;
             $user = Auth::user()->id;
-                if($answers != null) {
-                    foreach ($questions as $keyQuestion => $question) {
-                        $point = 0;
-                        foreach ($answers as $keyAnswer => $answer) {
-                            $checkCorrect = $this->answerService->getOnly($answer);
 
-                            if ($checkCorrect) {
-                                $point = $point + 1;
-                            }
+            if ($answers != null) {
+                foreach ($questions as $keyQuestion => $question) {
+                    $point = 0;
+                    foreach ($answers as $keyAnswer => $answer) {
+                        $checkCorrect = $this->answerService->getOnly($answer);
 
-                            if ($keyQuestion == $keyAnswer) {
-                                $input = [
-                                    'user_id' => $user,
-                                    'question_id' => $question,
-                                    'answer_id' => $answer
-                                ];
+                        if ($checkCorrect) {
+                            $point = $point + 1;
+                        }
 
-                                $result = $this->resultService->createRsult($input, $question);
-                            }
+                        if ($keyQuestion == $keyAnswer) {
+                            $input = [
+                                'user_id' => $user,
+                                'question_id' => $question,
+                                'answer_id' => $answer
+                            ];
 
+                            $result = $this->resultService->createRsult($input, $question);
 
                             if (!$result) {
                                 throw new Exception(trans('lang.create_fail'), 1);
                             }
                         }
-                   }
-                } else {
-                    foreach ($questions as $question) {
-                        $point = 0;
-                            $input = [
-                                'user_id' => $user,
-                                'question_id' => $question,
-                                'answer_id' => config('settings.answer.incorrect')
-                            ];
-
-                        $result = $this->resultService->createRsult($input, $question);
                     }
                 }
+            } else {
+                foreach ($questions as $question) {
+                    $point = 0;
+                        $input = [
+                            'user_id' => $user,
+                            'question_id' => $question,
+                            'answer_id' => config('settings.answer.incorrect')
+                        ];
 
-                $points = [
-                    'user_id' => Auth::user()->id,
-                    'test_id' => $request->testId,
-                    'point' => $point
-                ];
+                    $result = $this->resultService->createRsult($input, $question);
 
-                $resultPoint = $this->pointService->createPoint($points);
-
-                if (!$resultPoint) {
-                    throw new Exception(trans('lang.create_fail'), 1);
+                    if (!$result) {
+                        throw new Exception(trans('lang.create_fail'), 1);
+                    }
                 }
+            }
 
-                DB::commit();
+            $points = [
+                'user_id' => Auth::user()->id,
+                'test_id' => $request->testId,
+                'point' => $point
+            ];
 
-                return response()->json([
-                    'success' => true,
-                    'redirect' => route('test.doing.details', $request->testId),
-                    'data' => $questions
-                ]);
+            $resultPoint = $this->pointService->createPoint($points);
+
+            if (!$resultPoint) {
+                throw new Exception(trans('lang.create_fail'), 1);
+            }
+
+            DB::commit();
+
+            return response()->json([
+                'success' => true,
+                'redirect' => route('test.doing.details', $request->testId),
+                'data' => $request->all()
+            ]);
         } catch (Exception $e) {
             DB::rollback();
 

@@ -4388,3 +4388,41 @@ input[placeholder] {
   margin-top: 200px;
 }
 
+.star li {
+  display: inline-block;
+  font-size: 20px;
+  color: #ccc;
+  cursor: pointer;
+}
+
+li.active, li.hover { color: orange; }
+
+ul.hover li.active:not(.hover) { color: #ccc }
+
+.user-name-rating {
+  margin: 0px;
+  font-weight: bold;
+  color: #65b630
+}
+
+.content-rating {
+  margin: 0px;
+}
+
+.create-rating {
+  font-size: 15px;
+}
+
+.form-rate {
+  background: #fff;
+}
+
+.form-rate h4 {
+  padding: 14px 0px 0px 25px;
+}
+
+.box-show-rate {
+    margin-top: 20px;
+    background: #e7eb9666;
+    padding: 30px;"
+}

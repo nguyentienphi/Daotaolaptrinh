@@ -33,6 +33,18 @@
                                         </div>
                                         <div class="col-md-2">
                                             <h5>{{ $course->price }} Xu</h5>
+                                            @if (count($course->rates))
+                                                @php
+                                                    $sumRate = 0;
+                                                @endphp
+                                                @foreach ($course->rates as $rate)
+                                                    @php
+                                                        $sumRate += $rate->rate;
+                                                    @endphp
+                                                @endforeach
+                                               <div class="jstars" data-value="{{ $sumRate / count($course->rates) }}"></div>
+                                            @endif
+
                                         </div>
                                     </div>
                                 </div>
@@ -50,4 +62,7 @@
             </div>
         </div>
     </div>
+@endsection
+@section('js')
+    {{ Html::script(asset('js/clients/jstars.min.js')) }}
 @endsection

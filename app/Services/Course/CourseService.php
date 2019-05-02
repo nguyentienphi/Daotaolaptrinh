@@ -4,7 +4,9 @@ namespace App\Services\Course;
 
 use App\Services\BaseService;
 use App\Models\Course;
+use App\Models\Rating;
 use Auth;
+use DB;
 
 class CourseService extends BaseService
 {
@@ -42,7 +44,7 @@ class CourseService extends BaseService
 
         return $course->userCourse()->create($userCourse);
     }
-    
+
     public function getNumberUserRegister($courses)
     {
         $count = [];
@@ -58,5 +60,18 @@ class CourseService extends BaseService
         $users = $course->users()->where('role', '!=', config('settings.teacher'))
             ->paginate(config('settings.list_user'));
         return $users;
+    }
+
+    public function stoteRating($input)
+    {
+        Rating::create($input);
+    }
+
+    public function getRating($id)
+    {
+        $ratings = Rating::where('course_id', $id)
+            ->orderBy('created_at', 'desc')->get();
+
+        return $ratings;
     }
 }

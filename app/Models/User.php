@@ -126,4 +126,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Point::class);
     }
+
+    public function rates()
+    {
+        return $this->hasMany(Rating::class);
+    }
 }
