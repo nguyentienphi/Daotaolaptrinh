@@ -4344,3 +4344,47 @@ input[placeholder] {
   margin-bottom: 30px;
 }
 
+.image-rank {
+    width: 50px;
+    border-radius: 50%;
+    height: 50px;
+}
+
+.box-result-detail {
+    padding: 10px;
+    border: 1px solid #0000ff5e;
+    background: #fff;
+    border-radius: 5px;
+}
+
+.status-test {
+    background: #2ae6ed;
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 13px;
+    color: #0d0d0d;
+}
+
+.box-list-test {
+  margin-bottom: 30px;
+  margin-top: 20px
+}
+
+.answer-incorrect {
+  color: red;
+}
+
+.show-detail {
+  margin-top: 20px;
+  display: none
+}
+
+.show-content-test {
+  margin-bottom: 30px;
+  margin-top: 20px
+}
+
+.display-modal {
+  margin-top: 200px;
+}
+

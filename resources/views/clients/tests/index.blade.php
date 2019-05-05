@@ -22,8 +22,8 @@
                         <tr>
                             <th class="text-center" width="5%">@lang('test.stt')</th>
                             <th width="25%" class="text-center">@lang('test.name')</th>
+                            <th width="10%" class="text-center">@lang('test.time')</th>
                             <th class="text-center" width="10%">@lang('test.number_question')</th>
-                            <th class="text-center" width="20%">@lang('test.date_created')</th>
                             <th class="text-center" width="20%">@lang('test.course')</th>
                             <th width="16%"></th>
                         </tr>
@@ -33,8 +33,8 @@
                             <tr>
                                 <td class="text-center">{{ $loop->iteration }}</td>
                                 <td title="{{$test->name}}" class="content-title">{{ $test->name }}</td>
+                                <td class="text-center">{{ $test->time }} @lang('test.minute')</td>
                                 <td  class="text-center">{{ count($test->questions) }}</td>
-                                <td class="text-center">{{ $test->created_at }}</td>
                                 <td class="text-center">{{ $test->course->name }}</td>
                                 <td class="text-center">
                                     <a href="{{ route('show-test', $test->id) }}" title={{trans('lang.view')}}><i class="ti-eye action-post view"></i></a>

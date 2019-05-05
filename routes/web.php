@@ -150,6 +150,18 @@ Route::group(['namespace' => 'Client'], function () {
 
         Route::patch('profile/chaneg-password', 'ProfileController@changePassword')
             ->name('profile.changepassword');
+        //doing test
+        Route::get('course/test/list/{id}', 'DoingTestController@listTest')
+            ->name('course.list_test');
+
+        Route::get('test/doing/{id}', 'DoingTestController@show')
+            ->name('test.doing');
+
+        Route::post('test/complete', 'DoingTestController@complete')
+            ->name('test.complete');
+
+        Route::get('test/doing/detail/{id}', 'DoingTestController@detail')
+            ->name('test.doing.details');
     });
 });
 

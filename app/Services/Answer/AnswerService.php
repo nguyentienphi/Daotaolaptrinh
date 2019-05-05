@@ -29,4 +29,13 @@ class AnswerService extends BaseService
             'is_right' => $isRight
         ]);
     }
+
+    public function getOnly($id)
+    {
+        $answer = Answer::where('id', $id)
+            ->where('is_right', config('settings.answer.correct'))
+            ->first();
+
+        return $answer;
+    }
 }
