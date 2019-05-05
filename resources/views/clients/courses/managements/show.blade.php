@@ -23,13 +23,28 @@
                         </div>
                     @endforeach
                     <div>
-                        <a href="{{route('list-test', $course->id)}}">@lang('course.lastexercise')</a> || <a href="">@lang('course.rate')</a>
+                        <a href="{{route('list-test', $course->id)}}">@lang('course.lastexercise')</a>
                     </div>
                 @else
                     <div class="col-md-12">
                         @include('clients.layouts.empty')
                     </div>
                 @endif
+            </div>
+            <div class="box-show-rate">
+                <h3>@lang('course.list_rate')</h3>
+                <hr>
+                @foreach($rates as $rate)
+                    <div style="padding: 10px">
+                        <div>
+                            <p class="user-name-rating">{{ $rate->user->name }}</p>
+                            <p class="content-rating">{{ $rate->content }}</p>
+                            <div class="jstars" data-value="{{ $rate->rate }}"></div>
+                            <p class="create-rating">{{ $rate->created_at }}</p>
+                        </div>
+                        <hr>
+                    </div>
+                @endforeach
             </div>
         </div>
         <div class="col-md-3">
@@ -49,3 +64,6 @@
     </div>
 @endsection
 @extends('clients.layouts.master')
+@section('js')
+    {{ Html::script(asset('js/clients/jstars.min.js')) }}
+@endsection

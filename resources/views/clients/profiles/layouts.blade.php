@@ -14,7 +14,7 @@
             <div class="col-md-2" style="position: relative;">
                 <div class="box-show-profile">
                     {{ Form::image(asset(Auth::user()->avatar), '', ['class' => 'image-profile img-circle']) }}
-                    <span class="text-center name-user" style="font-size: 20px">{{Auth::user()->name}}</span>
+                    <p class="text-center name-user" style="font-size: 20px; margin:0px">{{Auth::user()->name}}</p>
                     <span class="text-center" style="font-size: 15px;
     color: #742f2fab;">{{ Auth::user()->email }}</span>
                 </div>

@@ -1,5 +1,5 @@
 $(document).ready(function () {
-     window.onbeforeunload = function() {
+    window.onbeforeunload = function() {
         return 'Confirm reload';
     }
 

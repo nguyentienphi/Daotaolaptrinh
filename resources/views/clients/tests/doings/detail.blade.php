@@ -67,6 +67,7 @@
            <div class="col-md-3 box-result-detail" style="max-height: 700px">
                 <div>
                     <h4 class="text-center">@lang('test.rank')</h4>
+                    <hr>
                     @foreach ($ranks as $rank)
                         <p>
                             {{ Html::image(asset($rank->user->avatar), '', ['class' => 'image-rank']) }}

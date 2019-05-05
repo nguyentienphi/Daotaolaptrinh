@@ -32,8 +32,9 @@ class ManagementCourseController extends Controller
         $course = $this->courseService->findOrFail($id);
         $videos = $course->videos;
         $users = $this->courseService->getListUser($course);
+        $rates = $this->courseService->getRating($id);
 
-        return view('clients.courses.managements.show', compact('course', 'videos', 'users'));
+        return view('clients.courses.managements.show', compact('course', 'videos', 'users', 'rates'));
     }
 
     public function showDetail($id)

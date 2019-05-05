@@ -1,4 +1,8 @@
 $(document).ready(function () {
+    window.onbeforeunload = function() {
+        return 'Confirm reload';
+    }
+
     $(document).on('submit', '#doingTest', function (e) {
         e.preventDefault();
         var error = false;
@@ -33,6 +37,7 @@ $(document).ready(function () {
             data : data,
             success : function (data) {
                 if (data.success) {
+                    window.onbeforeunload = null;
                     $(window).attr('location', data.redirect);
                 } else {
                     alert(data.message);

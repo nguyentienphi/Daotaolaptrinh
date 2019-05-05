@@ -16,6 +16,19 @@
         {{ Html::image(asset('storage/image/bg/banner.jpg'), '', ['class' => 'img_banner_course_detail']) }}
     </section>
     <div class="container">
+        @guest
+        @else
+            @php
+                $check = false;
+            @endphp
+            @foreach($course->users as $user)
+                @if ($user->id == Auth::user()->id)
+                    @php
+                        $check = true;
+                    @endphp
+                @endif
+            @endforeach
+        @endguest
         <div class="row">
             <div class="col-lg-8 course-detail">
                 <div class="content_wrapper">
@@ -56,15 +69,76 @@
                         </div>
                     </li>
                 </ul>
+                {{ Form::hidden('course_id', $course->id, ['class' => 'course_id', 'id' => 'course_id']) }}
                 @guest
                     {{ Form::button(trans('course.register'), ['class' => 'btn-register-course form-control', 'data-toggle' => 'modal', 'data-target' => '#modalLogin']) }}
                 @else
-                    {{ Form::hidden('course_id', $course->id, ['class' => 'course_id']) }}
-                    {{ Form::button(trans('course.register'), ['class' => 'btn-register-course form-control', 'id' => 'btn-register-course']) }}
+                    @if ($check)
+                        <a href="{{ route('course-detail', $course->id) }}" class="btn btn-success form-control">@lang('course.get_course')</a>
+                    @else
+                        {{ Form::button(trans('course.register'), ['class' => 'btn-register-course form-control', 'id' => 'btn-register-course']) }}
+                    @endif
                 @endguest
             </div>
         </div>
+            <div class="row" style="margin-bottom: 20px" id="rating">
+                <div class="col-lg-8 course-detail" >
+                    <div>
+                        <h3>@lang('course.rate')({{count($course->rates)}})</h3>
+                        <hr>
+                        @foreach($ratings as $rating)
+                            <div style="padding: 10px">
+                                <div>
+                                    <p class="user-name-rating">{{ $rating->user->name }}</p>
+                                    <p class="content-rating">{{ $rating->content }}</p>
+                                    <div class="jstars" data-value="{{ $rating->rate }}"></div>
+                                    <p class="create-rating">{{ $rating->created_at }}</p>
+                                </div>
+                                <hr>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="right-contents form-rate">
+                        <h4> @lang('course.rate_number', ['rate_number' => count($course->rates)])</h4>
+                        <hr>
+                        @guest
+                            <div style="padding: 10px">
+                                <p>@lang('course.rate_not_login')</p>
+                            </div>
+                        @else
+                            @if ($check)
+                                <div style="padding: 10px">
+                                    <h5 class="text-center">@lang('course.rate_user')</h5>
+                                    <ul id="starRating"
+                                        data-stars="5" class="star">
+                                    </ul>
+                                    <span id="message-rating"></span>
+                                    {{ Form::open(['id' => 'formRating', 'route' => 'rating.store']) }}
+                                        <input type="hidden" name="starRatingValue" id="starRatingValue">
+                                        <input type="hidden" name="courseId" value="{{ $course->id }}">
+                                        <div class="form-group">
+                                            <label>@lang('course.content_rate')</label>
+                                            {{ Form::textarea('contentRating', '', ['class' => 'form-control', 'rows' => 3, 'id' => 'content-rating']) }}
+                                            <span id="message-content-rating"></span>
+                                        </div>
+                                        {{ Form::submit('Đánh gía', ['class' => 'btn btn-success', 'id' => 'send-rating']) }}
+                                    {{ Form::close() }}
+                                </div>
+                            @else
+                                <div style="padding: 10px">@lang('course.rate_not_member')</div>
+                            @endif
+                        @endguest
+                    </div>
+                </div>
+            </div>
     </div>
 @include('clients.elements.modal_coin')
 @include('clients.elements.modal_register_course')
+@endsection
+@section('js')
+    {{ Html::script(asset('js/clients/jstars.min.js')) }}
+    {{ Html::script(asset('js/clients/jquery.starrating.js')) }}
+    {{ Html::script(asset('js/clients/rating.js')) }}
 @endsection

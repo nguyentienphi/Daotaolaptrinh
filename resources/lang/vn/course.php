@@ -25,11 +25,18 @@
         'rate_course' => 'Đánh gía khóa học',
         'overview' => 'Tổng quan về khóa học',
         'lastexercise' => 'Bài tập cuối khóa',
-        'rate' => 'Đánh gía khóa học',
         'view' => 'Xem',
         'date_submit' => 'Ngày đăng',
         'number_user' => 'Số lượng đăng ký',
         'image' => 'Hình ảnh',
         'list_comment' => 'Danh sách bình luận',
-        'list_user' => 'Danh sách học viên'
+        'list_user' => 'Danh sách học viên',
+        'rate_not_login' => 'Để đánh gía khóa học bạn cần phải đăng nhập là là thành viên của khóa học',
+        'rate_number' => 'Có :rate_number đánh gía',
+        'rate_not_member' => 'Bạn phải là thành viên của khóa học mới có thể đánh gía khóa học',
+        'rate' => 'Đánh gía',
+        'rate_user' => 'Đánh gía của bạn',
+        'content_rate' => 'Nội dung đánh gía',
+        'get_course' => 'Vào lớp học',
+        'list_rate' => 'Danh sách đánh gía'
     ];

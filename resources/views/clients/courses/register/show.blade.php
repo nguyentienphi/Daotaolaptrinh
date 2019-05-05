@@ -24,7 +24,7 @@
                     </div>
                 @endforeach
                 <div>
-                    <a href="{{ route('course.list_test', $course->id) }}">@lang('course.lastexercise')</a> || <a href="">@lang('course.rate')</a>
+                    <a href="{{ route('course.list_test', $course->id) }}">@lang('course.lastexercise')</a> || <a href="{{ route('show-course', $course->id) }}/#rating">@lang('course.rate_course')</a>
                 </div>
             @else
                 <div class="col-md-12">
