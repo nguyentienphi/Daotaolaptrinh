@@ -17,7 +17,7 @@
                         <div class="col-md-3"></div>
                         <div class="col-xl-2 col-md-2 col-sm-2 col-5">
                             <div class="counter" data-count="300">
-                                300
+                                {{ $user }}
                             </div> <span class="digit">User</span>
                         </div>
                         <div class="col-xl-2 col-md-2 col-sm-2 col-5 ">

@@ -3,28 +3,39 @@ $(document).ready(function () {
         return 'Confirm reload';
     }
 
-    $(document).on('submit', '#doingTest', function (e) {
+     $(document).on('submit', '#doingTest', function (e) {
         e.preventDefault();
-        var error = false;
-        $.each($('input[name^="question[question"'), function () {
+        var error = [];
+        var dem = 0;
+
+        $.each($('input[name^="question[question"]'), function () {
+            error[dem] = false;
             var element = $(this).parent().parent().find('input:radio[name^="answer[question"]');
             $.each(element, function () {
                 if ($(this).is(':checked')) {
-                    error = true;
+                    error[dem] = true;
                 }
             })
-            if (!error) {
-                $('#checkEndTest').modal('show')
-            }
-            return false;
+
+            dem ++
         })
+
+        var submit = true
         $('.end-test').click(function () {
             $('#checkEndTest').modal('hide')
             submitForm();
         });
 
-        if (error) {
+        for (var i = 0; i < error.length ; i++) {
+            if (!error[i]) {
+                submit = false
+            }
+        }
+
+        if (submit) {
             submitForm()
+        } else {
+            $('#checkEndTest').modal('show')
         }
     });
 

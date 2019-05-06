@@ -1,5 +1,9 @@
 $(document).ready(function () {
-     $(function () {
+    window.onbeforeunload = function() {
+        return 'Confirm reload';
+    }
+
+    $(function () {
         $(document).on('focus', '.option-anwser', function () {
            $(this).select();
         });
@@ -86,6 +90,7 @@ $(document).ready(function () {
             })
             .done(function (data) {
                 if (data.success) {
+                    window.onbeforeunload = null;
                     $(window).attr('location', data.redirect);
                 }
             })
@@ -170,5 +175,10 @@ $(document).ready(function () {
         }
 
     })
+
+    $('input').click(function () {
+        $(this).parent().find('.error').text('');
+        $(this).parent().find('.error').css('margin', '0px');
+    });
 
 });

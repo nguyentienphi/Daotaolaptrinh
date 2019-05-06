@@ -74,4 +74,12 @@ class CourseService extends BaseService
 
         return $ratings;
     }
+
+    public function getTest($id)
+    {
+        $course = Course::findOrFail($id);
+        $tests = $course->tests;
+
+        return $tests;
+    }
 }

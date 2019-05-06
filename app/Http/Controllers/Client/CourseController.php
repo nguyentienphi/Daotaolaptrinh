@@ -40,9 +40,10 @@ class CourseController extends Controller
     public function show($id)
     {
         $course = $this->courseService->findOrFail($id);
+        $users = $this->courseService->getListUser($course);
         $ratings = $this->courseService->getRating($id);
 
-        return view('clients.courses.show', compact('course','videos', 'ratings'));
+        return view('clients.courses.show', compact('course','videos', 'ratings', 'users'));
     }
 
     public function registerCourse(Request $request)
@@ -91,8 +92,9 @@ class CourseController extends Controller
     {
         $course = $this->courseService->findOrFail($id);
         $videos = $course->videos()->get();
+        $tests = $this->courseService->getTest($id);
 
-        return view('clients.courses.register.show', compact('course', 'videos'));
+        return view('clients.courses.register.show', compact('course', 'videos', 'tests'));
     }
 
     public function showVideoCourse($id)

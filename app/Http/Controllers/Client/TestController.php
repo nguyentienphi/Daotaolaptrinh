@@ -34,7 +34,7 @@ class TestController extends Controller
     public function listTest($id)
     {
         $tests = $this->testService->listTest($id);
-        $course = $this->courseService->findOrFail($id)->first();
+        $course = $this->courseService->findOrFail($id);
 
         return view('clients.tests.index', compact('tests', 'course'));
     }

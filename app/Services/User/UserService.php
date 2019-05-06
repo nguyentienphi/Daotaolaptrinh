@@ -73,4 +73,11 @@ class UserService extends BaseService
     {
         return $user->fill($data)->save();
     }
+
+    public function countUser()
+    {
+        $count = $this->where('role', '!=', config('settings.teacher'))->count();
+
+        return $count;
+    }
 }
