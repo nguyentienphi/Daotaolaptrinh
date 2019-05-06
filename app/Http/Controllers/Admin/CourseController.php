@@ -3,11 +3,14 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\AddCourseRequest;
+use App\Models\Course;
 use App\Services\Category\CategoryService;
 use App\Services\Course\CourseService;
 use App\Http\Controllers\Controller;
 use App\Services\User\UserService;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class CourseController extends Controller
 {
@@ -86,6 +89,27 @@ class CourseController extends Controller
 
         if ($this->courseService->createCourse($course, $userCourse)) {
             return redirect()->route('admin.courses.index');
+        }
+    }
+
+    /**
+     * Function delete course and relation
+     *
+     * @param Course $course
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function destroy(Course $course)
+    {
+        DB::beginTransaction();
+        try {
+            $course->delete();
+
+            DB::commit();
+
+            return redirect()->route('admin.courses.index');
+
+        } catch (ModelNotFoundException $e) {
+            DB::rollback();
         }
     }
 }

@@ -57,6 +57,9 @@ Route::group([
 
         Route::post('/', 'CourseController@store')
             ->name('admin.courses.store');
+
+        Route::get('/{course}', 'CourseController@destroy')
+            ->name('admin.courses.destroy');
     });
 });
 
