@@ -29,6 +29,22 @@ class Course extends Model
      */
     protected $perPage = 7;
 
+    /**
+     * Delete all record of relation model course
+     *
+     * @return void
+     */
+    public static function boot()
+    {
+        parent::boot();
+
+        static::deleting(function ($user) {
+            $user->users()->get()->each->delete();
+            $user->tests()->get()->each->delete();
+            $user->videos()->get()->each->delete();
+        });
+    }
+
     public function users()
     {
         return $this->belongsToMany(User::class, 'user_course')->withTimestamps();

@@ -34,7 +34,7 @@
                                     <td>{{ isset($course->price) ? $course->price : '' }}</td>
                                     <td>
                                         <a href="" class="btn btn-primary">Sửa</a>
-                                        <a href="" class="btn btn-danger">Xoá</a>
+                                        <a href="{{ route('admin.courses.destroy', $course->id) }}" class="btn btn-danger">Xoá</a>
                                 </tr>
                                 </tr>
                             @endforeach
