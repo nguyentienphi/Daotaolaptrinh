@@ -88,5 +88,6 @@ return [
     'fail' => 'Thất bại',
     'ok' => 'Có',
     'no' => 'Không',
-    'create_fail' => 'Tạo thất bại!'
+    'create_fail' => 'Tạo thất bại!',
+    'next' => 'Tiếp',
 ];

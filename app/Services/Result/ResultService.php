@@ -19,7 +19,7 @@ class ResultService extends BaseService
     {
         $question = Question::findOrFail($question);
 
-        if ($question->result) {
+        if (count($question->result)) {
             foreach ($question->result as $result) {
                 if ($result->user_id == Auth::user()->id) {
                     $result->delete();

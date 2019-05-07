@@ -154,7 +154,7 @@ button:focus {
           border-radius: 0px;
           box-shadow: none;
           margin: 0px;
-          background: #fff; }
+          background: #89e786; }
           @media (min-width: 992px) {
             .header_area .navbar .nav .nav-item.submenu ul {
               position: absolute;
@@ -3903,9 +3903,14 @@ input[placeholder] {
 }
 
 .overview {
-  background: #fff;
-  padding: 35px 65px 25px 67px;
-  margin-bottom: 50px
+    position: relative;
+    background: #fff;
+    padding: 40px 36px;
+    /* margin-bottom: 30px; */
+    -webkit-transition: all 0.3s ease 0s;
+    -moz-transition: all 0.3s ease 0s;
+    -o-transition: all 0.3s ease 0s;
+    transition: all 0.3s ease 0s;
 }
 
 .show-title-video li {
@@ -4095,7 +4100,7 @@ input[placeholder] {
 }
 
 .box-comment-video {
-  margin-top: 30px;
+  margin-top: 10px;
   margin-bottom: 30px
 }
 
@@ -4360,7 +4365,7 @@ input[placeholder] {
 .status-test {
     background: #2ae6ed;
     border-radius: 5px;
-    padding: 5px;
+    padding: 8px;
     font-size: 13px;
     color: #0d0d0d;
 }
@@ -4425,4 +4430,28 @@ ul.hover li.active:not(.hover) { color: #ccc }
     margin-top: 20px;
     background: #e7eb9666;
     padding: 30px;"
+}
+
+.show-course-detail {
+    max-height: 400px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.item-test {
+    margin-bottom: 15px;
+}
+
+.box-show-test {
+  margin-top: 15px;
+}
+
+.comment-video {
+  background: #fff;
+  padding: 10px;
+}
+
+.box-title-video {
+  background: #fff;
+  padding: 15px;
 }

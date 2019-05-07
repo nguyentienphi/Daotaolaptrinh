@@ -22,7 +22,7 @@
                 $check = false;
             @endphp
             @foreach($course->users as $user)
-                @if ($user->id == Auth::user()->id)
+                @if ($user->id == Auth::user()->id && Auth::user()->role == config('settings.user'))
                     @php
                         $check = true;
                     @endphp
@@ -59,7 +59,7 @@
                     <li>
                         <div class="justify-content-between d-flex">
                             <p>@lang('course.count_register')</p>
-                            <span>{{ count($course->users) }}</span>
+                            <span>{{ count($users) }}</span>
                         </div>
                     </li>
                     <li>
@@ -142,3 +142,4 @@
     {{ Html::script(asset('js/clients/jquery.starrating.js')) }}
     {{ Html::script(asset('js/clients/rating.js')) }}
 @endsection
+

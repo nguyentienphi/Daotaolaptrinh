@@ -16,7 +16,7 @@ class PointService extends BaseService
         $point = Point::where('test_id', $input['test_id'])
             ->where('user_id', Auth::user()->id)->first();
 
-        if (count($point)) {
+        if ($point) {
             $point->delete();
         }
 

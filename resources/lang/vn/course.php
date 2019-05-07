@@ -36,7 +36,8 @@
         'rate_not_member' => 'Bạn phải là thành viên của khóa học mới có thể đánh gía khóa học',
         'rate' => 'Đánh gía',
         'rate_user' => 'Đánh gía của bạn',
-        'content_rate' => 'Nội dung đánh gía',
+        'content_rate' => 'Nội dung đánh giá',
         'get_course' => 'Vào lớp học',
-        'list_rate' => 'Danh sách đánh gía'
+        'list_rate' => 'Danh sách đánh gía',
+        'test_list' => 'Trắc nghiệm cuối khóa'
     ];
