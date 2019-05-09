@@ -131,6 +131,9 @@
                                                 @endif
                                             </li>
                                             <li>
+                                                <a href="{{ route('follow.post') }}">Theo dõi</a>
+                                            </li>
+                                            <li>
                                                 <a href="">@lang('lang.add_coin')</a>
                                             </li>
                                             <li>

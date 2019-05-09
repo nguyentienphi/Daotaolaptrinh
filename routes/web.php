@@ -165,6 +165,17 @@ Route::group(['namespace' => 'Client'], function () {
 
         Route::get('test/doing/detail/{id}', 'DoingTestController@detail')
             ->name('test.doing.details');
+
+        //follow
+        Route::get('follow', 'PostController@follow')
+        ->name('follow');
+
+        //unfollow
+        Route::get('un-follow', 'PostController@unFollow')
+        ->name('un-follow');
+
+         Route::get('follow/post', 'PostController@getFollow')
+        ->name('follow.post');
     });
 
     //create rating course

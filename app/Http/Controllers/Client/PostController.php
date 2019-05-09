@@ -6,17 +6,23 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Services\Post\PostService;
-use Auth;
+use App\Services\Follow\FollowService;
 use App\Http\Requests\PostRequest;
+use Illuminate\Pagination\LengthAwarePaginator;
+use Auth;
 use Session;
+use Exception;
+use DB;
 
 class PostController extends Controller
 {
     protected $postService;
+    protected $followService;
 
-    public function __construct(PostService $postService)
+    public function __construct(PostService $postService, FollowService $followService)
     {
         $this->postService = $postService;
+        $this->followService = $followService;
     }
     public function index()
     {
@@ -215,5 +221,103 @@ class PostController extends Controller
                 'message' => trans('lang.error')
             ]);
        }
+    }
+
+    public function follow(Request $request)
+    {
+        if (!$request->ajax()) {
+            return response()->json([
+                'success' => false
+            ]);
+        }
+
+        DB::beginTransaction();
+
+        try {
+            $data = $request->data;
+
+            $input = [
+                'user_id' => Auth::user()->id,
+                'follower_id' => $data
+            ];
+
+            $follow = $this->followService->create($input);
+
+            if (!$follow) {
+                throw new Exception(trans('lang.create_fail'), 1);
+            }
+
+            DB::commit();
+
+            return response()->json([
+                'success' => true,
+                'userId' => $data
+            ]);
+
+        } catch (Exception $e) {
+            DB::rollback();
+
+            return response()->json([
+                'success' => false,
+                'message' => trans('lang.error')
+            ]);
+        }
+    }
+
+    public function getFollow(Request $request) {
+        $users = $this->followService->getFollow();
+        $posts = [];
+
+        foreach ($users as $user) {
+            foreach ($user->posts as $value) {
+                $posts[] = $value;
+            }
+        }
+
+        $currentPage = LengthAwarePaginator::resolveCurrentPage();
+        $posts = collect($posts);
+        $perPage = config('settings.paginate.list_post_follow');
+        $currentPageItems = $posts->slice(($currentPage * $perPage) - $perPage, $perPage)->all();
+        $posts= new LengthAwarePaginator($currentPageItems , count($posts), $perPage);
+        $posts->setPath($request->url());
+
+        return view('clients.follows.index', compact('posts'));
+    }
+
+    public function unFollow(Request $request)
+    {
+
+        if (!$request->ajax()) {
+            return response()->json([
+                'success' => false
+            ]);
+        }
+
+        DB::beginTransaction();
+
+        try {
+            $data = $request->data;
+
+            $unFollow = $this->followService->unFollow($data);
+
+            if (!$unFollow) {
+                throw new Exception(trans('lang.fail'), 1);
+            }
+
+            DB::commit();
+
+            return response()->json([
+                'success' => true,
+                'userId' => $data
+            ]);
+
+        } catch (Exception $e) {
+            DB::rollback();
+
+            return response()->json([
+                'success' => false,
+                'message' => trans('lang.error')
+            ]);
+        }
     }
 }
