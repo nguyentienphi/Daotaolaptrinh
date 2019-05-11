@@ -1,0 +1,39 @@
+body {
+    font-family: Arial;
+}
+.btn-action {
+    background: #1f201f;
+    padding: 8px 25px;
+    margin-right: 10px;
+    border: #101010 1px solid;
+    color: #ccc;
+}
+.app-row {
+    margin-top: 20px;
+    text-align: center;
+}
+
+#result {
+    border: #d0d0d0 1px solid;
+    padding: 10px;
+    min-height: 100px;
+}
+
+#error {
+    display:none;
+    color: #d63f3f;
+}
+
+.code-app {
+    margin: 0px;
+    background: #38e13b8f;
+    color: black;
+    font-size: 15px;
+    padding: 5px;
+    text-transform: uppercase;
+}
+
+.code-active {
+    background: #212529;
+    color: #D2A8A1;
+}
