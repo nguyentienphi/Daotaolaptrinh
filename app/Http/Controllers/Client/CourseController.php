@@ -65,7 +65,7 @@ class CourseController extends Controller
                 ]);
             } else {
                 $this->userService->registerCoures($course_id);
-                $this->userService->updateCoinNumber(Auth::user()->id, $coin_number);
+                $this->userService->updateCoinNumber(Auth::user()->id, $coin_number, $course_id);
                 $request->session()->flash('success', trans('course.register_success'));
 
                 return response()->json([
@@ -100,8 +100,9 @@ class CourseController extends Controller
     public function showVideoCourse($id)
     {
         $video = $this->videoService->findOrFail($id);
+        $comments = $video->comment()->get();
 
-        return view('clients.courses.register.detail', compact('video'));
+        return view('clients.courses.register.detail', compact('comments', 'video'));
     }
 
     public function rating(RatingRequest $request)

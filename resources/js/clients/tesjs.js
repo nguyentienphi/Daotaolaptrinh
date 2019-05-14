@@ -146,7 +146,7 @@ $(document).ready(function () {
         $(`#box_show_question_${value} input[name^="question"]`).each(function () {
             $(this).rules('add', {
                 required: true,
-                maxlength: 255,
+                maxlength: 200,
                 questionunique: false,
             });
         });
@@ -176,9 +176,9 @@ $(document).ready(function () {
 
     })
 
-    $('input').click(function () {
+    $(document).on('click', 'input', function() {
         $(this).parent().find('.error').text('');
+        $(this).removeClass('error');
         $(this).parent().find('.error').css('margin', '0px');
-    });
-
+    })
 });

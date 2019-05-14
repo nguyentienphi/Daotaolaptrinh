@@ -24,9 +24,9 @@ class RegisterRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required',
-            'email' => 'required|unique:users',
-            'password' => 'required|min:6|regex:/^\S*(?=\S*[a-zA-Z])(?=\S*[\W])(?=\S*[\d])\S*$/|confirmed',
+            'name' => 'required|max:32',
+            'email' => 'required|email|unique:users|max:40',
+            'password' => 'required|min:6|max:32|regex:/^\S*(?=\S*[a-zA-Z])(?=\S*[\W])(?=\S*[\d])\S*$/|confirmed',
         ];
     }
 
@@ -34,6 +34,9 @@ class RegisterRequest extends FormRequest
     {
         return [
             'password.regex' => trans('validation.password_without_spaces_and_require_letter_number_special_character'),
+            'password.min' => 'Mật khẩu phải nhiều hơn 6 ký tự và ít hơn 32 ký tự',
+            'password.max' => 'Mật khẩu phải nhiều hơn 6 ký tự và ít hơn 32 ký tự',
+            'email.max' => 'Email nhập không quá 40 ký tự',
         ];
     }
 }

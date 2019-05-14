@@ -28,6 +28,7 @@ class TestController extends Controller
         $this->courseService = $courseService;
         $this->questionService = $questionService;
         $this->answerService = $answerService;
+        $this->middleware('checkTeach');
     }
 
     //get list test of course

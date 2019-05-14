@@ -54,4 +54,12 @@ class CommentService extends BaseService
         return Comment::orderBy('created_at', 'desc')
             ->paginate(7);
     }
+
+    public function addCommentVideo($video, $content) {
+        return $video->comment()->create([
+            'user_id' => Auth::user()->id,
+            'content' => $content,
+            'parent_id' => config('settings.comment')
+        ]);
+    }
 }

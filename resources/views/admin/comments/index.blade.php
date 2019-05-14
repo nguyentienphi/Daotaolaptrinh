@@ -29,7 +29,11 @@
                             @foreach($comments as $comment)
                                 <tr>
                                     <td>{{ isset($comment->id) ? $comment->id : '' }}</td>
+<<<<<<< 17daff9136224c658be14f5d722672b54955c6b5
                                     <td>{{ $comment->getNameRelation() }}</td>
+=======
+                                    <td>{{ isset($comment-> ) ? $comment->target_id : '' }}</td>
+>>>>>>> comment video
                                     <td>{{ isset($comment->content) ? $comment->content : '' }}</td>
                                     <td>
                                         <a href="{{ route('admin.comments.destroy', $comment->id) }}" class="btn btn-danger">Xoá</a>

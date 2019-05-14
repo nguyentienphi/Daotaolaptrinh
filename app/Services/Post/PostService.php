@@ -16,8 +16,8 @@ class PostService extends BaseService
 
     public function getAllComment($postId)
     {
-        $comments = Comment::where('commentable_id', $postId)
-        ->paginate(config('settings.paginate.comment'));
+        $post = Post::findOrFail($postId);
+        $comments = $post->comments()->paginate(config('settings.paginate.comment'));
 
         return $comments;
     }

@@ -5,7 +5,7 @@ return [
     'list' => 'Danh sách bài kiểm tra',
     'add' => 'Thêm bài kiểm tra',
     'name' => 'Tên bài kiểm tra',
-    'time' => 'Thời gian làm bài',
+    'time' => 'Thời gian làm bài (phút)',
     'question_first' => 'Câu 1',
     'placeholder_name' => 'Nhập tên bài kiểm tra',
     'placeholder_time' => 'Thời gian làm bài',

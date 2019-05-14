@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Services\Comment\CommentService;
 use App\Services\Post\PostService;
 use App\Services\User\UserService;
+use App\Services\Video\VideoService;
 use Auth;
 use App\Notifications\CommentNotification;
 use Pusher\Pusher;
@@ -16,16 +17,19 @@ class CommentController extends Controller
     protected $commentService;
     protected $postService;
     protected $userService;
+    protected $videoService;
 
     public function __construct(
         CommentService $commentService,
         PostService $postService,
-        UserService $userService
+        UserService $userService,
+        VideoService $videoService
     )
     {
         $this->commentService = $commentService;
         $this->postService = $postService;
         $this->userService = $userService;
+        $this->videoService = $videoService;
     }
 
     public function addCommentPost(Request $request)
@@ -121,6 +125,29 @@ class CommentController extends Controller
 
         $pusher->trigger('send-comment', 'NotifyComment', $data);
 
+    }
+
+    public function addCommentVideo(Request $request)
+    {
+        if (!$request->ajax()) {
+            return response()->json([
+                'success' => false
+            ]);
+        }
+
+        $videoId = $this->videoService->findOrFail($request->videoId);
+        $content = $request->content;
+        $course = $videoId->courses()->first();
+        $user = $course->users()->where('role', 3)->first();
+
+        $commentVideo = $this->commentService->addCommentVideo($videoId, $content);
+
+        return response()->json([
+            'success' => true,
+            'image' => asset(Auth::user()->avatar),
+            'name' => Auth::user()->name,
+            'id' => $commentVideo->id
+        ]);
     }
 
 }
