@@ -18,7 +18,8 @@
             'comment' => 10,
             'management_course' => 10,
             'list_user' => 15,
-            'list_test' => 10
+            'list_test' => 10,
+            'list_post_follow' => 10
         ],
         'comment' => 0,
         'page' => 1,

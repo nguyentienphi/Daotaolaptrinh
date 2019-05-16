@@ -11,10 +11,28 @@
                 <div class="header-post-detail">
                     <a class="title author-post" href="">{{ $post->user->name }}</a>
                     @guest
-                        {{ Form::button('<i class="ti-plus"></i> Follow', ['class' => 'btn btn-primary btn-sm']) }}
+                        {{ Form::button('<i class="ti-plus"></i> Theo dõi', ['class' => 'btn btn-primary btn-sm', 'data-toggle' => 'modal', 'data-target' => '#modalLogin' ]) }}
                     @else
+                        @php
+                            $checkFollow = false;
+                        @endphp
                         @if ($post->user->id != Auth::user()->id)
-                            {{ Form::button('<i class="ti-plus"></i> Follow', ['class' => 'btn btn-primary btn-sm']) }}
+                            <div style="display: inline-block;">
+                                @foreach (Auth::user()->follows as $follow)
+
+                                    @if ($follow->follower_id == $post->user->id)
+                                        @php
+                                            $checkFollow = true;
+                                        @endphp
+                                    @endif
+                                @endforeach
+
+                                @if ($checkFollow)
+                                     <a href="{{ route('un-follow') }}" data-id = "{{ $post->user->id }}" class="btn btn-primary btn-sm" id="btn-unfollow">@lang('lang.un_follow')</a>
+                                @else
+                                    <a href="{{ route('follow') }}" class="btn btn-primary btn-sm" id="btn-follow" data-id="{{ $post->user->id }}"><i class="ti-plus"></i> @lang('lang.follow')</a>
+                                @endif
+                            </div>
                         @endif
                     @endguest
                     <div style="float: right;">
@@ -123,4 +141,5 @@
 @endsection
 @section('js')
     {{ Html::script(asset('js/clients/add-form-comment.js')) }}
+    {{ Html::script(asset('js/clients/follow.js')) }}
 @endsection
