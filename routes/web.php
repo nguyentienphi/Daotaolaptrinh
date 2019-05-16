@@ -176,6 +176,12 @@ Route::group(['namespace' => 'Client'], function () {
 
          Route::get('follow/post', 'PostController@getFollow')
         ->name('follow.post');
+
+        Route::get('show-code', 'CodeController@showCode');
+        Route::post('write-code', 'CodeController@writeCode');
+        Route::get('abc', function () {
+            return view('clients.codes.php');
+        });
     });
 
     //create rating course

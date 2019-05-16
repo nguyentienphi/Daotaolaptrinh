@@ -6,15 +6,22 @@
         <div class="row">
             <div class="col-md-4">
                 <div class="box-title-video">
-                    <h4>{{ $video->title }}</h4>
+                    <div style="margin-top: 15px; background: #fff">
+                    <h4 style="text-align: center;">Thực hành code tại đây</h4>
                     <hr>
-                <p>{{ $video->description }}</p>
+                    @include('clients.codes.php')
+                </div>
                 </div>
             </div>
             <div class="col-md-8 show-detail-course-video">
+                <div>
+                    <h4>{{ $video->title }}</h4>
+                    <hr>
+                <p>{{ $video->description }}</p>
                 <video width="100%" height="100%" controls>
                     <source src="{{ asset($video->url) }}" type="video/mp4">
                 </video>
+                </div>
             </div>
 
         </div>
