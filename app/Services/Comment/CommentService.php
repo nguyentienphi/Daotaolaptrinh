@@ -48,4 +48,10 @@ class CommentService extends BaseService
 
         return $notification;
     }
+
+    public function getAll()
+    {
+        return Comment::orderBy('created_at', 'desc')
+            ->paginate(7);
+    }
 }

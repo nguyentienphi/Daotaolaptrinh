@@ -11,6 +11,7 @@ use App\Models\User;
 use App\Services\User\UserService;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Zend\Diactoros\Request;
 
@@ -71,7 +72,7 @@ class UserController extends Controller
         $data = [
             'name' => $request->get('name'),
             'email' => $request->get('email'),
-            'password' => bcrypt($request->get('password')),
+            'password' => $request->password,
             'role' => $request->role,
             'coin_number' => config('settings.coin_default'),
             'avatar' => config('settings.avatar')
@@ -117,9 +118,9 @@ class UserController extends Controller
             'role' => $request->role
         ];
 
-        $this->userService->updateUser($data, $user);
-
-        return back()->withInput();
+        if ($this->userService->updateUser($data, $user)) {
+            return redirect()->route('admin.users.index');
+        }
     }
 
     /**

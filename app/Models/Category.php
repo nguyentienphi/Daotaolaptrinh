@@ -10,6 +10,16 @@ class Category extends Model
         'name'
     ];
 
+    public static function boot()
+    {
+        parent::boot();
+
+        static::deleting(function ($category) {
+            $category->posts()->get()->each->delete();
+            $category->courses()->get()->each->delete();
+        });
+    }
+
     public function posts()
     {
         return $this->hasMany(Post::class);

@@ -7,6 +7,7 @@ use App\Models\Course;
 use App\Models\Rating;
 use Auth;
 use DB;
+use phpDocumentor\Reflection\Types\Parent_;
 
 class CourseService extends BaseService
 {
@@ -44,6 +45,21 @@ class CourseService extends BaseService
 
         return $course->userCourse()->create($userCourse);
     }
+
+    /**
+     * @param array $course
+     * @param array $userCourse
+     * @return mixed
+     */
+    public function updateCourse(Course $course, array $userCourse, array $dataCourse)
+    {
+        $this->uploadImage($course['content_image'], $course['image']);
+
+        $course = parent::update($course->id, $dataCourse);
+
+        return $course->userCourse()->update($userCourse);
+    }
+
 
     public function getNumberUserRegister($courses)
     {
