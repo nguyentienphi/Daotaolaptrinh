@@ -4,7 +4,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav flex-column">
                     <li class="nav-divider">
-                        Menu
+                        Menu - <span style="color: red">{{ auth()->user()->name }}</span>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#" data-toggle="collapse"
@@ -105,6 +105,9 @@
                                 </li>
                             </ul>
                         </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('admin.logout') }}"><i class="fa fa-fw fa-rocket"></i>Đăng Xuất</a>
                     </li>
                 </ul>
             </div>

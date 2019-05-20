@@ -59,7 +59,7 @@ class CourseController extends Controller
 
         $data['users'] = $this->userService->getAll();
 
-        $data['activeMenu'] = ['menu' => 'users', 'item' => 'add_course'];
+        $data['activeMenu'] = ['menu' => 'courses', 'item' => 'add_course'];
 
         return view('admin.courses.add', $data);
     }
