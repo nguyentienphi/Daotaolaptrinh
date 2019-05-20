@@ -90,4 +90,7 @@ return [
     'no' => 'Không',
     'create_fail' => 'Tạo thất bại!',
     'next' => 'Tiếp',
+    'fail' => 'Thất bại',
+    'follow' => 'Theo dõi',
+    'un_follow' => 'Bõ theo dõi'
 ];
