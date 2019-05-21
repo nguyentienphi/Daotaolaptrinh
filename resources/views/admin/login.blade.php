@@ -39,6 +39,9 @@
             <form action="{{ route('admin.login.post') }}" method="post">
                 @csrf
                 <h2 class="text-center">Đăng Nhập</h2>
+                @if(session()->has('msg_fail'))
+                    <span class="text-danger btn-block">{{ session('msg_fail') }}</span>
+                @endif
                 <div class="form-group">
                     <input class="form-control form-control-lg" id="emai" name="email" type="text" placeholder="email" autocomplete="off">
                     <span class="text-danger">{{ $errors->first('email') }}</span>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Http\Requests\LoginRequest;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -18,7 +19,7 @@ class AdminLoginController extends Controller
         return view('admin.login');
     }
 
-    public function loginPost(Request $request)
+    public function loginPost(LoginRequest $request)
     {
         $data = [
             'email' => $request->email,
