@@ -7,7 +7,9 @@
                         <a href="{{ route('profile.index') }}" class="title-profile">@lang('profile.information')</a>
                     </div>
                     <div class="col-md-6 text-center">
-                        <a href="" class="title-profile">@lang('profile.add_coin')</a>
+                        @if (Auth::user()->role == config('settings.user'))
+                            <a href="{{ route('add-coin') }}" class="title-profile">@lang('profile.add_coin')</a>
+                        @endif
                     </div>
                 </div>
             </div>

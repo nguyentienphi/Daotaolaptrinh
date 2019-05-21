@@ -30,7 +30,7 @@
                                     <td class="text-center">{{ $postUser->created_at }}</td>
                                     <td class="text-center">
                                         <span title="{{trans('post.view')}}"><i class="ti-eye icons-post-items"></i>{{ $postUser->view_number }}</span> &nbsp &nbsp
-                                        <span title="{{trans('post.comment')}}"><i class="ti-comment icons-post-items"></i>{{count($postUser->comment)}}</span>
+                                        <span title="{{trans('post.comment')}}"><i class="ti-comment icons-post-items"></i>{{count($postUser->comments)}}</span>
                                     </td>
                                     <td class="text-center">
                                         @if ($postUser->status == config('settings.status.approved'))

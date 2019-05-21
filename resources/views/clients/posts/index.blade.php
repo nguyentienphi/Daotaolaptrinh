@@ -71,18 +71,6 @@
                     <p><button class="btn btn-primary">Follow</button></p>
                 </div>
                 <hr>
-                <div>
-                    {{ Html::image(asset('storage/image/bg/18698271_386164775111588_1630485189916696433_n.jpg'), '', ['class' => 'img-user-post']) }}
-                </div>
-                    <div class="content title-post">
-                    <a class="title author-post" href="">Nguyen Tien Phi</a>
-                    <br>
-                    <p>
-                        <span title="Bài viết"><i class="ti-pencil icons-post-items"></i>30</span>
-                        <span class="icons-post" title="Theo dõi"><i class="ti-user icons-post-items"></i>30</span>
-                    </p>
-                    <p><button class="btn btn-primary">Follow</button></p>
-                </div>
             </div>
         </div>
     </div>

@@ -34,7 +34,7 @@
                                     <td>{{ $post->getUserName() }}</td>
                                     <td>{{ $post->getNameCategory() }}</td>
                                     <td>{{ isset($post->title) ? $post->title : '' }}</td>
-                                    <td>{{ isset($post->content) ? $post->content : '' }}</td>
+                                    <td>{!! isset($post->content) ? $post->content : '' !!}</td>
                                     <td>
                                         <a href="{{ route('admin.posts.edit', $post->id) }}" class="btn btn-primary">Sửa</a>
                                         <a href="{{ route('admin.posts.destroy', $post->id) }}" class="btn btn-danger">Xoá</a>

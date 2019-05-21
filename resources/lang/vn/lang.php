@@ -92,5 +92,6 @@ return [
     'next' => 'Tiếp',
     'fail' => 'Thất bại',
     'follow' => 'Theo dõi',
-    'un_follow' => 'Bõ theo dõi'
+    'un_follow' => 'Bõ theo dõi',
+    'title' => 'Thông báo'
 ];

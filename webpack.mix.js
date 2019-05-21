@@ -19,6 +19,7 @@ mix.copyDirectory('resources/js/clients', 'public/js/clients');
 mix.copyDirectory('resources/css/clients', 'public/css/clients');
 mix.copyDirectory('resources/css/clients/codes', 'public/css/clients/codes');
 mix.copyDirectory('resources/js/clients/codes', 'public/js/clients/codes');
+mix.copyDirectory('resources/assets', 'public/assets');
 
 //
 mix.sass('resources/sass/libs.scss', 'public/css')

@@ -4,6 +4,7 @@ namespace App\Services\User;
 
 use App\Services\BaseService;
 use App\Models\User;
+use App\Models\Course;
 use Auth;
 use DB;
 
@@ -31,11 +32,15 @@ class UserService extends BaseService
         return $this->findOrFail(Auth::user()->id)->courses()->paginate(config('settings.paginate.register_course'));
     }
 
-    public function updateCoinNumber($user_id, $coin_number)
+    public function updateCoinNumber($user_id, $coin_number, $course_id)
     {
         $user = $this->findOrFail($user_id);
+        $course = Course::findOrFail($course_id);
+        $price = $course->price;
+        $teacher = $course->users()->where('role', config('settings.teacher'))->first();
 
         $user->update(['coin_number' => $coin_number]);
+        $teacher->update(['coin_number' => $price - $price*0.02]);
     }
 
     public function checkRegisterCourse($course_id)

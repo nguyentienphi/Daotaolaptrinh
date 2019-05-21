@@ -23,6 +23,7 @@ class PostController extends Controller
     {
         $this->postService = $postService;
         $this->followService = $followService;
+        $this->middleware('profile')->only('create');
     }
     public function index()
     {
@@ -159,6 +160,7 @@ class PostController extends Controller
     public function destroy($id, Request $request)
     {
         try {
+            $this->postService->findOrFail($id)->comments()->delete();
             $this->postService->findOrFail($id)->delete();
             $request->session()->flash('success', trans('post.delete_success'));
         } catch (Exception $e) {

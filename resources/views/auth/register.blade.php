@@ -22,7 +22,7 @@
                     </div>
                     {{ Form::label('email', trans('lang.email') . '(*)', ['data-error' => ' ', 'data-success' => ' ', 'class' => 'label-register']) }}
                     <div class="md-form mb-5">
-                        {{ Form::email('email', old('email'), [
+                        {{ Form::text('email', old('email'), [
                             'class' => 'form-control validate input',
                             'placeholder' => trans('lang.email_placeholder'),
                             'id' => 'email-register',

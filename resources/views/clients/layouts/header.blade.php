@@ -133,9 +133,14 @@
                                             <li>
                                                 <a href="{{ route('follow.post') }}">Theo dõi</a>
                                             </li>
-                                            <li>
-                                                <a href="">@lang('lang.add_coin')</a>
-                                            </li>
+                                            @guest
+                                            @else
+                                                @if (Auth::user()->role == config('settings.user'))
+                                                    <li>
+                                                        <a href="{{ route('add-coin') }}">@lang('lang.add_coin')</a>
+                                                    </li>
+                                                @endif
+                                            @endguest
                                             <li>
                                                 <a href="{{ route('logout') }}">@lang('lang.logout')</a>
                                             </li>

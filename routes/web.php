@@ -250,14 +250,19 @@ Route::group(['namespace' => 'Client'], function () {
 
         Route::get('show-code', 'CodeController@showCode');
         Route::post('write-code', 'CodeController@writeCode');
-        Route::get('abc', function () {
-            return view('clients.codes.php');
-        });
+
+        //add coin
+        Route::get('add-coin', 'CoinController@index')
+            ->name('add-coin');
     });
 
     //create rating course
     Route::post('rating', 'CourseController@rating')
         ->name('rating.store');
+
+    //comment video
+    Route::post('add-comment-video', 'CommentController@addCommentVideo')
+        ->name('add.comment.video');
 });
 
 Route::get('list-notification', 'HomeController@listNotification')

@@ -23,25 +23,48 @@
                 </video>
                 </div>
             </div>
-
         </div>
         <div class="row box-comment-video">
+            <input type="hidden" name="">
             <div class="col-md-4"></div>
             <div class="col-md-8 comment-video">
                 <h4>@lang('lang.comment')</h4>
-                <div class="content-comment-video">
+               <div class="show-content-comment-video">
+                    @foreach ($comments as $comment)
+                        @if (Auth::user()->id == $comment->user->id)
+                            <div class="item-comment">
+                            <img src="{{ asset($comment->user->avatar) }}" class="img-comment">
+                            <div class="content-comment-video">
+                                <a href="">{{ $comment->user->name }}</a>
+                                <p>{{ $comment->content }}</p>
+                                <input type="hidden" name="parent-comment-video" value="{{ $comment->id }}">
+                                <input type="hidden" name="parent-comment-reply" value="{{ count($comment->replysComment) ? $comment->replysComment->last()->id : $comment->id }}">
+                                @guest
+                                @else
+                                    <a href="javascript:void(0)" class="reply-comment-video">@lang('lang.reply')</a>
+                                @endguest
+                                <div class="reply-content">
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                            <hr>
+                        </div>
+                        @endif
+
+                    @endforeach
                 </div>
-                {{ Form::open() }}
+                {{ Form::open(['id' => 'formCommentVideo', 'route' => 'add.comment.video']) }}
+                    {{ Form::hidden('videoId',$video->id ,['id' => 'videoId']) }}
                     {{ Form::hidden('avatar', asset(Auth::user()->avatar), ['class' => 'avatar']) }}
                     <div class="form-comment-video">
                         <div class="box-img-comment">
                             {{ Html::image(asset(Auth::user()->avatar), '', ['class' => 'img-form-comment']) }}
                         </div>
                         <div class="content-form-comment">
-                            {{ Form::textarea('comment', '', ['class' => 'form-control comment-post auto-resize', 'rows' => 1, 'placeholder' => trans('lang.placeholder_comment')]) }}
+                            {{ Form::textarea('comment-video', '', ['class' => 'form-control auto-resize', 'rows' => 1, 'placeholder' => trans('lang.placeholder_comment'), 'id' => 'content-comment-video']) }}
                         </div>
                         <div class="btn-comment">
-                            {{ Form::button(trans('lang.comment'), ['class' => 'btn btn-primary btn-sm']) }}
+                            {{ Form::submit(trans('lang.comment'), ['class' => 'btn btn-primary btn-sm']) }}
                         </div>
                         <div class="clearfix"></div>
                     </div>
@@ -51,3 +74,6 @@
     </div>
 @endsection
 @extends('clients.layouts.master')
+@section('js')
+    {{ Html::script('js/clients/comment_video.js') }}
+@endsection

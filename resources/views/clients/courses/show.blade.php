@@ -73,7 +73,9 @@
                 @guest
                     {{ Form::button(trans('course.register'), ['class' => 'btn-register-course form-control', 'data-toggle' => 'modal', 'data-target' => '#modalLogin']) }}
                 @else
-                    @if ($check)
+                    @if(Auth::user()->role == 3)
+                        {{ Form::button(trans('course.register'), ['class' => 'btn-register-course form-control', 'id' => 'message-course', 'data-target' => '#messaseCourse', 'data-toggle' => 'modal']) }}
+                    @elseif ($check)
                         <a href="{{ route('course-detail', $course->id) }}" class="btn btn-success form-control">@lang('course.get_course')</a>
                     @else
                         {{ Form::button(trans('course.register'), ['class' => 'btn-register-course form-control', 'id' => 'btn-register-course']) }}
@@ -133,6 +135,24 @@
                     </div>
                 </div>
             </div>
+    </div>
+    <div class="modal" id="messaseCourse" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">@lang('lang.title')</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Bạn không được phép đăng ký khóa học này
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">OK</button>
+                </div>
+            </div>
+        </div>
     </div>
 @include('clients.elements.modal_coin')
 @include('clients.elements.modal_register_course')
