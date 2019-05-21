@@ -61,6 +61,20 @@ class UserService extends BaseService
     }
 
     /**
+     * Get list teacher
+     *
+     * @return mixed
+     */
+    public function getAllTeacher()
+    {
+        $users = User::orderBy('id', 'desc')
+            ->where('role', User::ROLE_TEACHER)
+            ->paginate();
+
+        return $users;
+    }
+
+    /**
      * @param array $dataUser
      * @return mixed
      */

@@ -57,7 +57,7 @@ class CourseController extends Controller
     {
         $data['categories'] = $this->categoryService->getAll();
 
-        $data['users'] = $this->userService->getAll();
+        $data['users'] = $this->userService->getAllTeacher();
 
         $data['activeMenu'] = ['menu' => 'courses', 'item' => 'add_course'];
 
@@ -100,7 +100,7 @@ class CourseController extends Controller
 
         $data['categories'] = $this->categoryService->getAll();
 
-        $data['users'] = $this->userService->getAll();
+        $data['users'] = $this->userService->getAllTeacher();
 
         $data['courseUser'] = $course->userCourse()->firstOrFail();
 
