@@ -28,4 +28,14 @@ class Comment extends Model
     {
         return $this->hasMany(Comment::class, 'parent_id');
     }
+
+    public function getNameRelation()
+    {
+        if (empty($this->commentable)) {
+            return '';
+        }
+
+        return $this->commentable->title;
+    }
+
 }
