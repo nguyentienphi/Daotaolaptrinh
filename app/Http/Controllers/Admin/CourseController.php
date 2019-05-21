@@ -59,6 +59,8 @@ class CourseController extends Controller
 
         $data['users'] = $this->userService->getAll();
 
+        $data['activeMenu'] = ['menu' => 'courses', 'item' => 'add_course'];
+
         return view('admin.courses.add', $data);
     }
 
@@ -92,6 +94,41 @@ class CourseController extends Controller
         }
     }
 
+    public function edit(Course $course)
+    {
+        $data['course'] = $course;
+
+        $data['categories'] = $this->categoryService->getAll();
+
+        $data['users'] = $this->userService->getAll();
+
+        $data['courseUser'] = $course->userCourse()->firstOrFail();
+
+        return view('admin.courses.edit', $data);
+    }
+
+    public function update(AddCourseRequest $request, Course $course)
+    {
+        $nameImage = time().'.'.$request->picture->getClientOriginalExtension();
+
+        $dataCourse = [
+            'name' => $request->get('name'),
+            'title' => $request->get('title'),
+            'description' => $request->get('description'),
+            'image' => $nameImage,
+            'content_image' => $request->picture,
+            'price' => $request->get('price'),
+            'category_id' => $request->get('category_id')
+        ];
+
+        $userCourse = [
+            'user_id' => $request->user_id
+        ];
+
+        if ($this->courseService->updateCourse($course, $userCourse, $dataCourse)) {
+            return redirect()->route('admin.courses.index');
+        }
+    }
     /**
      * Function delete course and relation
      *

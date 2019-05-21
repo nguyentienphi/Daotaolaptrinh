@@ -17,4 +17,14 @@ class CategoryService extends BaseService
     {
         return $this->all();
     }
+
+    public function createCategory(array $data)
+    {
+        return $this->create($data);
+    }
+
+    public function updateCategory(array $data, $category)
+    {
+        return $category->update($data);
+    }
 }

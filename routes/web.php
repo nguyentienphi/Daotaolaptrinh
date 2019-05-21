@@ -15,15 +15,28 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/', 'HomeController@index');
 
+Route::get('/admin/login', [
+    'as' => 'admin.login', 'uses' => 'Auth\AdminLoginController@login'
+]);
+
+Route::post('/admin/login', [
+    'as' => 'admin.login.post', 'uses' => 'Auth\AdminLoginController@loginPost'
+]);
+
+Route::get('/admin/logout', [
+    'as' => 'admin.logout', 'uses' => 'Auth\AdminLoginController@logout'
+]);
+
 Auth::routes();
 
 Route::group([
     'namespace' => 'Admin',
-    'prefix' => 'admin'
+    'prefix' => 'admin',
+    'middleware' => ['auth', 'admin']
 ], function () {
     Route::get('/', function () {
         return view('admin.layouts.master');
-    });
+    })->name('dashboard.admin');
 
     Route::group([
         'prefix' => 'users'
@@ -58,8 +71,66 @@ Route::group([
         Route::post('/', 'CourseController@store')
             ->name('admin.courses.store');
 
+        Route::get('/{course}/edit', 'CourseController@edit')
+            ->name('admin.courses.edit');
+
+        Route::post('/{course}', 'CourseController@update')
+            ->name('admin.courses.update');
+
         Route::get('/{course}', 'CourseController@destroy')
             ->name('admin.courses.destroy');
+    });
+
+    Route::group([
+        'prefix' => 'posts'
+    ], function (){
+        Route::get('/', 'PostController@index')->name('admin.posts.index');
+
+        Route::get('/create', 'PostController@create')
+            ->name('admin.posts.create');
+
+        Route::post('/', 'PostController@store')
+            ->name('admin.posts.store');
+
+        Route::get('/{post}/edit', 'PostController@edit')
+            ->name('admin.posts.edit');
+
+        Route::post('/{post}', 'PostController@update')
+            ->name('admin.posts.update');
+
+        Route::get('/{post}', 'PostController@destroy')
+            ->name('admin.posts.destroy');
+    });
+
+    Route::group([
+        'prefix' => 'comments'
+    ], function (){
+        Route::get('/', 'CommentController@index')->name('admin.comments.index');
+
+        Route::get('/{comment}', 'CommentController@destroy')
+            ->name('admin.comments.destroy');
+    });
+
+    Route::group([
+        'prefix' => 'categories'
+    ], function (){
+        Route::get('/', 'CategoryController@index')->name('admin.categories.index');
+
+        Route::get('/create', 'CategoryController@create')
+            ->name('admin.categories.create');
+
+        Route::post('/', 'CategoryController@store')
+            ->name('admin.categories.store');
+
+        Route::get('/{category}/edit', 'CategoryController@edit')
+            ->name('admin.categories.edit');
+
+        Route::post('/{category}', 'CategoryController@update')
+            ->name('admin.categories.update');
+
+        Route::get('/{category}', 'CategoryController@destroy')
+            ->name('admin.categories.destroy');
+
     });
 });
 

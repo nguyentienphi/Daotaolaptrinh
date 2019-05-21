@@ -35,4 +35,20 @@ class PostService extends BaseService
 
         return $morePost;
     }
+
+    public function getAllPost()
+    {
+        return Post::orderBy('created_at', 'desc')
+                ->paginate(7);
+    }
+
+    public function updatePost(array $data, $post)
+    {
+        return $post->fill($data)->save();
+    }
+
+    public function createPost(array $data)
+    {
+        return $this->fill($data)->save();
+    }
 }

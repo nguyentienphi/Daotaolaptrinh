@@ -15,27 +15,29 @@
             <div class="card">
                 <div class="card-body">
                     <div class="table-responsive">
-                        @if(!$courses->isEmpty())
+                        @if(!$posts->isEmpty())
                         <table class="table table-striped table-bordered first">
                             <thead>
                             <tr>
-                                <th>{{ trans('list_courses.table.name') }}</th>
-                                <th>{{ trans('list_courses.table.description') }}</th>
-                                <th>{{ trans('list_courses.table.category') }}</th>
-                                <th>{{ trans('list_courses.table.price') }}</th>
-                                <th>{{ trans('list_courses.table.function') }}</th>
+                                <th>{{ trans('list_posts.table.id') }}</th>
+                                <th>{{ trans('list_posts.table.user') }}</th>
+                                <th>{{ trans('list_posts.table.category') }}</th>
+                                <th>{{ trans('list_posts.table.title') }}</th>
+                                <th>{{ trans('list_posts.table.description') }}</th>
+                                <th>{{ trans('list_posts.table.function') }}</th>
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach($courses as $course)
+                            @foreach($posts as $post)
                                 <tr>
-                                    <td>{{ isset($course->name) ? $course->name : '' }}</td>
-                                    <td>{{ isset($course->description) ? $course->description : '' }}</td>
-                                    <td>{{  $course->nameCategory }}</td>
-                                    <td>{{ isset($course->price) ? $course->price : '' }}</td>
+                                    <td>{{ isset($post->id) ? $post->id : '' }}</td>
+                                    <td>{{ $post->getUserName() }}</td>
+                                    <td>{{ $post->getNameCategory() }}</td>
+                                    <td>{{ isset($post->title) ? $post->title : '' }}</td>
+                                    <td>{{ isset($post->content) ? $post->content : '' }}</td>
                                     <td>
-                                        <a href="{{ route('admin.courses.edit', $course->id) }}" class="btn btn-primary">Sửa</a>
-                                        <a href="{{ route('admin.courses.destroy', $course->id) }}" class="btn btn-danger">Xoá</a>
+                                        <a href="{{ route('admin.posts.edit', $post->id) }}" class="btn btn-primary">Sửa</a>
+                                        <a href="{{ route('admin.posts.destroy', $post->id) }}" class="btn btn-danger">Xoá</a>
                                 </tr>
                                 </tr>
                             @endforeach
@@ -46,7 +48,7 @@
                                 @include('clients.layouts.empty')
                             </div>
                         @endif
-                        {{ $courses->links() }}
+                        {{ $posts->links() }}
                     </div>
                 </div>
             </div>

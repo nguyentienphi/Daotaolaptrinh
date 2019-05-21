@@ -15,6 +15,7 @@
             <div class="card">
                 <div class="card-body">
                     <div class="table-responsive">
+                        @if(!$users->isEmpty())
                         <table class="table table-striped table-bordered first">
                             <thead>
                             <tr>
@@ -38,6 +39,11 @@
                                          </tr>
                             @endforeach
                         </table>
+                        @else
+                            <div class="single_course">
+                                @include('clients.layouts.empty')
+                            </div>
+                        @endif
                         {{ $users->links() }}
                     </div>
                 </div>

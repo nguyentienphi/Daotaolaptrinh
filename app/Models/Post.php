@@ -54,4 +54,22 @@ class Post extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function getUserName()
+    {
+        if (empty($this->user)) {
+            return '';
+        }
+
+        return $this->user->name;
+    }
+
+    public function getNameCategory()
+    {
+        if (empty($this->category)) {
+            return '';
+        }
+
+        return $this->category->name;
+    }
 }

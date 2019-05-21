@@ -8,7 +8,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="{{ asset('css/libs.css') }}">
     <link href="{{ asset('css/vendor.css') }}" rel="stylesheet">
-    <title>Concept - Bootstrap 4 Admin Dashboard Template</title>
+    <title>Đào Tạo Lập Trình</title>
 </head>
 
 <body>
